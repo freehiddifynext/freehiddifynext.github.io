@@ -1,4 +1,4 @@
-# 6月11日19.6M/S|Hiddify-Next免费节点每天更新订阅链接  更新时间 2024-06-11 10:50:06
+# 6月12日21.8M/S|Hiddify-Next免费节点每天更新订阅链接  更新时间 2024-06-12 11:31:35
 所有免费clash节点都爬取自网络，请勿用于非法用途 。节点地址：<a href="https://freehiddifynext.github.io" target="_blank">点击跳转</a>
 
 ## clash使用教程：
@@ -9,19 +9,19 @@
 
 ### Clash订阅链接
 
-- https://freehiddifynext.github.io/uploads/2024/06/0-20240611.yaml
-- https://freehiddifynext.github.io/uploads/2024/06/1-20240611.yaml
-- https://freehiddifynext.github.io/uploads/2024/06/2-20240611.yaml
-- https://freehiddifynext.github.io/uploads/2024/06/3-20240611.yaml
-- https://freehiddifynext.github.io/uploads/2024/06/4-20240611.yml
+- https://freehiddifynext.github.io/uploads/2024/06/0-20240612.yaml
+- https://freehiddifynext.github.io/uploads/2024/06/1-20240612.yaml
+- https://freehiddifynext.github.io/uploads/2024/06/2-20240612.yaml
+- https://freehiddifynext.github.io/uploads/2024/06/3-20240612.yaml
+- https://freehiddifynext.github.io/uploads/2024/06/4-20240612.yml
 
 ### V2ray订阅链接
 
-- https://freehiddifynext.github.io/uploads/2024/06/0-20240611.txt
-- https://freehiddifynext.github.io/uploads/2024/06/1-20240611.txt
-- https://freehiddifynext.github.io/uploads/2024/06/2-20240611.txt
-- https://freehiddifynext.github.io/uploads/2024/06/3-20240611.txt
-- https://freehiddifynext.github.io/uploads/2024/06/4-20240611.txt
+- https://freehiddifynext.github.io/uploads/2024/06/0-20240612.txt
+- https://freehiddifynext.github.io/uploads/2024/06/1-20240612.txt
+- https://freehiddifynext.github.io/uploads/2024/06/2-20240612.txt
+- https://freehiddifynext.github.io/uploads/2024/06/3-20240612.txt
+- https://freehiddifynext.github.io/uploads/2024/06/4-20240612.txt
 
 ## 更多clash节点订阅 ：
 
