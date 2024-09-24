@@ -1,4 +1,4 @@
-# 9月23日19.2M/S|Hiddify-Next免费节点每天更新订阅链接  更新时间 2024-09-23 08:51:56
+# 9月24日22.5M/S|Hiddify-Next免费机场订阅每天更新订阅链接  更新时间 2024-09-24 10:31:57
 所有免费clash节点都爬取自网络，请勿用于非法用途 。节点地址：<a href="https://freehiddifynext.github.io" target="_blank">点击跳转</a>
 
 ## clash使用教程：
@@ -9,19 +9,19 @@
 
 ### Clash订阅链接
 
-- https://freehiddifynext.github.io/uploads/2024/09/0-20240923.yaml
-- https://freehiddifynext.github.io/uploads/2024/09/1-20240923.yaml
-- https://freehiddifynext.github.io/uploads/2024/09/2-20240923.yaml
-- https://freehiddifynext.github.io/uploads/2024/09/3-20240923.yaml
-- https://freehiddifynext.github.io/uploads/2024/09/4-20240923.yml
+- https://freehiddifynext.github.io/uploads/2024/09/0-20240924.yaml
+- https://freehiddifynext.github.io/uploads/2024/09/1-20240924.yaml
+- https://freehiddifynext.github.io/uploads/2024/09/2-20240924.yaml
+- https://freehiddifynext.github.io/uploads/2024/09/3-20240924.yaml
+- https://freehiddifynext.github.io/uploads/2024/09/4-20240924.yml
 
 ### V2ray订阅链接
 
-- https://freehiddifynext.github.io/uploads/2024/09/0-20240923.txt
-- https://freehiddifynext.github.io/uploads/2024/09/1-20240923.txt
-- https://freehiddifynext.github.io/uploads/2024/09/2-20240923.txt
-- https://freehiddifynext.github.io/uploads/2024/09/3-20240923.txt
-- https://freehiddifynext.github.io/uploads/2024/09/4-20240923.txt
+- https://freehiddifynext.github.io/uploads/2024/09/0-20240924.txt
+- https://freehiddifynext.github.io/uploads/2024/09/1-20240924.txt
+- https://freehiddifynext.github.io/uploads/2024/09/2-20240924.txt
+- https://freehiddifynext.github.io/uploads/2024/09/3-20240924.txt
+- https://freehiddifynext.github.io/uploads/2024/09/4-20240924.txt
 
 ## 更多clash节点订阅 ：
 
