@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freehiddifynext.github.io/news/article-23756.htm" />
+    <title>Java数组foreach赋值不生效的问题</title>
+        <meta name="description" content="问题是我在完成LeetCode第23题时遇到的，我采用的是最小堆加上递归的解决方式。递归中，我对参数数组lists做了foreach，并且赋值，发现lists的值不会改变，结果是栈溢出。  当改成直接" />
+        <link rel="icon" href="/assets/website/img/freehiddifynext/favicon.ico" type="image/x-icon"/>
+    <!--meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+      }, false);
+      
+      function hideURLbar() {
+        window.scrollTo(0, 1);
+      }
+    </script>
+    <!--//meta tags ends here-->
+    <!--booststrap-->
+    <link href="/assets/website/css/freehiddifynext/bootstrap.min.css" rel="stylesheet" type="text/css" media="all">
+    <!--//booststrap end-->
+    <!-- font-awesome icons -->
+    <link href="/assets/website/css/freehiddifynext/font-awesome.min.css" rel="stylesheet">
+    <!-- //font-awesome icons -->
+    <!--stylesheets-->
+    <link href="/assets/website/css/freehiddifynext/style.css" rel='stylesheet' type='text/css' media="all">
+    <!--//stylesheets-->
+    <link href="http://fonts.googleapis.com/css?family=Thasadith:400,700" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N7EH3QDE4Q"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N7EH3QDE4Q');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!--headder-->
+    <div class="header-outs inner_page-banner " id="home">
+                <div class="headder-top">
+            <!-- nav -->
+            <nav>
+                <div id="logo">
+                                        <a href="/">Free Hiddify Next</a>
+                                    </div>
+                <label for="drop" class="toggle">Menu</label>
+                <input type="checkbox" id="drop">
+                <ul class="menu mt-2">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                        <li>
+                        <a href="#">关于</a>
+                    </li>
+                    <li>
+                        <a href="#">联系</a>
+                    </li>
+                </ul>
+            </nav>
+            <!-- //nav -->
+        </div>
+    </div>
+    <!--//headder-->
+    <!-- short -->
+    <div class="using-border py-3">
+        <div class="inner_breadcrumb  ml-4">
+            <ul class="short_ls">
+                <li>
+                    <a href="/">首页</a>
+                    <span>/</span>
+                </li>
+                <li>
+                    <a href="/news/">新闻资讯</a>
+                    <span>/</span>
+                </li>
+                <li>正文</li>
+            </ul>
+        </div>
+    </div>
+    <!-- //short-->
+    <!-- about -->
+    <section class="about py-lg-4 py-md-3 py-sm-3 py-3" id="about">
+        <div class="container py-lg-5 py-md-4 py-sm-4 py-3">
+            <div class="row">
+                <div class="col-md-9">
+                  <h1 class="title text-center mb-lg-5 mb-md-4 mb-sm-4 mb-3">Java数组foreach赋值不生效的问题</h1>
+                                    				  				  				<div id="content_views" class="markdown_views prism-tomorrow-night"> <p>问题是我在完成LeetCode第23题时遇到的，我采用的是最小堆加上递归的解决方式。递归中，我对参数数组lists做了foreach，并且赋值，发现lists的值不会改变，结果是栈溢出。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20230207/4ca1c7e4d331840d607edf5187d08875.jpg" alt="Java数组foreach赋值不生效的问题"></p> <p>当改成直接修改数组元素时AC。</p> <pre><code>for (int i = 0; i &lt; lists.length; i++) {     if (lists[i] != null &amp;&amp; minVal == lists[i].val) {         pre.next = lists[i];         lists[i] = lists[i].next;         // 新链表头不为空，再次加入最小堆         if (lists[i] != null) {             minHeap.add(lists[i].val);         }         break;     } } </code></pre> <p>反编译两个代码，可以发现不同。<strong>foreach操作的不是原数组，而是一个拷贝数组，对数组元素的赋值相当于对一个临时变量赋值，没有影响到原数组的值。</strong></p> <pre><code class="prism language-java"><span class="token comment">// 普通for循环</span> <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">mergeKLists</span><span class="token punctuation">(</span><span class="token class-name">D23<span class="token punctuation">.</span>ListNode</span><span class="token punctuation">[</span><span class="token punctuation">]</span> lists<span class="token punctuation">,</span> <span class="token class-name">PriorityQueue</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">&gt;</span></span> minHeap<span class="token punctuation">,</span> <span class="token class-name">D23<span class="token punctuation">.</span>ListNode</span> pre<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>     <span class="token keyword">if</span> <span class="token punctuation">(</span>minHeap<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>         pre<span class="token punctuation">.</span>next <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>     <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{<!-- --></span>         <span class="token class-name">Integer</span> minVal <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">Integer</span><span class="token punctuation">)</span>minHeap<span class="token punctuation">.</span><span class="token function">poll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>          <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> lists<span class="token punctuation">.</span>length<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>             <span class="token keyword">if</span> <span class="token punctuation">(</span>lists<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> minVal <span class="token operator">==</span> lists<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>val<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>                 pre<span class="token punctuation">.</span>next <span class="token operator">=</span> lists<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>                 lists<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> lists<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>next<span class="token punctuation">;</span>                 <span class="token keyword">if</span> <span class="token punctuation">(</span>lists<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>                     minHeap<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>lists<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>val<span class="token punctuation">)</span><span class="token punctuation">;</span>                 <span class="token punctuation">}</span>                 <span class="token keyword">break</span><span class="token punctuation">;</span>             <span class="token punctuation">}</span>         <span class="token punctuation">}</span>          <span class="token function">mergeKLists</span><span class="token punctuation">(</span>lists<span class="token punctuation">,</span> minHeap<span class="token punctuation">,</span> pre<span class="token punctuation">.</span>next<span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token punctuation">}</span> <span class="token punctuation">}</span> </code></pre> <pre><code class="prism language-java"><span class="token comment">// foreach</span> <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">mergeKLists</span><span class="token punctuation">(</span><span class="token class-name">D23<span class="token punctuation">.</span>ListNode</span><span class="token punctuation">[</span><span class="token punctuation">]</span> lists<span class="token punctuation">,</span> <span class="token class-name">PriorityQueue</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">&gt;</span></span> minHeap<span class="token punctuation">,</span> <span class="token class-name">D23<span class="token punctuation">.</span>ListNode</span> pre<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>     <span class="token keyword">if</span> <span class="token punctuation">(</span>minHeap<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>         pre<span class="token punctuation">.</span>next <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>     <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{<!-- --></span>         <span class="token class-name">Integer</span> minVal <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">Integer</span><span class="token punctuation">)</span>minHeap<span class="token punctuation">.</span><span class="token function">poll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token class-name">D23<span class="token punctuation">.</span>ListNode</span><span class="token punctuation">[</span><span class="token punctuation">]</span> var4 <span class="token operator">=</span> lists<span class="token punctuation">;</span>         <span class="token keyword">int</span> var5 <span class="token operator">=</span> lists<span class="token punctuation">.</span>length<span class="token punctuation">;</span>          <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> var6 <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> var6 <span class="token operator">&lt;</span> var5<span class="token punctuation">;</span> <span class="token operator">++</span>var6<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>             <span class="token class-name">D23<span class="token punctuation">.</span>ListNode</span> cur <span class="token operator">=</span> var4<span class="token punctuation">[</span>var6<span class="token punctuation">]</span><span class="token punctuation">;</span>             <span class="token keyword">if</span> <span class="token punctuation">(</span>cur <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> minVal <span class="token operator">==</span> cur<span class="token punctuation">.</span>val<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>                 pre<span class="token punctuation">.</span>next <span class="token operator">=</span> cur<span class="token punctuation">;</span>                 cur <span class="token operator">=</span> cur<span class="token punctuation">.</span>next<span class="token punctuation">;</span>                 <span class="token keyword">if</span> <span class="token punctuation">(</span>cur <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>                     minHeap<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>cur<span class="token punctuation">.</span>val<span class="token punctuation">)</span><span class="token punctuation">;</span>                 <span class="token punctuation">}</span>                 <span class="token keyword">break</span><span class="token punctuation">;</span>             <span class="token punctuation">}</span>         <span class="token punctuation">}</span>          <span class="token function">mergeKLists</span><span class="token punctuation">(</span>lists<span class="token punctuation">,</span> minHeap<span class="token punctuation">,</span> pre<span class="token punctuation">.</span>next<span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token punctuation">}</span> <span class="token punctuation">}</span> </code></pre> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-23295.htm">Redis持久化机制及缓存失效解决方案</a></p>
+                                        <p>下一个：<a href="/news/article-23757.htm">青浦二中2020中考最低录取分数线（上海2020年青浦二中升学率）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                  <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-10-6-free-node-subscribe.htm" title="10月6日19.5M/S|Hiddify-Next免费机场订阅每天更新订阅链接">10月6日19.5M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-6-29-node-share.htm" title="6月29日19.7M/S|Hiddify-Next免费节点每天更新订阅链接">6月29日19.7M/S|Hiddify-Next免费节点每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-19-free-subscribe-node.htm" title="9月19日18.8M/S|Hiddify-Next免费节点每天更新订阅链接">9月19日18.8M/S|Hiddify-Next免费节点每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-5-25-free-clash.htm" title="5月25日20.3M/S|Hiddify-Next免费节点每天更新订阅链接">5月25日20.3M/S|Hiddify-Next免费节点每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-15-node-share.htm" title="11月15日19.4M/S|Hiddify-Next免费机场订阅每天更新订阅链接">11月15日19.4M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-7-free-shadowrocket-node.htm" title="10月7日21.4M/S|Hiddify-Next免费机场订阅每天更新订阅链接">10月7日21.4M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-5-free-v2ray.htm" title="9月5日20.7M/S|Hiddify-Next免费节点每天更新订阅链接">9月5日20.7M/S|Hiddify-Next免费节点每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-6-22-node-share.htm" title="6月22日20.8M/S|Hiddify-Next免费节点每天更新订阅链接">6月22日20.8M/S|Hiddify-Next免费节点每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-6-8-shadowrocket-node.htm" title="6月8日20.1M/S|Hiddify-Next免费节点每天更新订阅链接">6月8日20.1M/S|Hiddify-Next免费节点每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-29-clash-v2ray-ss-ssr.htm" title="10月29日21.5M/S|Hiddify-Next免费机场订阅每天更新订阅链接">10月29日21.5M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">33</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2024-07/" title="2024-07 归档">2024-07</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">29</span> <a href="/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">29</span> <a href="/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">17</span> <a href="/date/2024-04/" title="2024-04 归档">2024-04</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //about -->
+    
+    <!-- footer -->
+<footer class="py-lg-4 py-md-3 py-sm-3 py-3">
+    <div class="container py-lg-5 py-md-5 py-sm-4 py-3">
+        <div class="bottem-wthree-footer text-center pt-md-4 pt-3">
+            <p>
+                <a href="/">FreeHiddifyNext节点订阅站</a> 版权所有
+                <br />
+                Powered by WordPress
+            </p>
+        </div>
+        <!-- move icon -->
+        <div class="text-center">
+            <a href="#home" class="move-top text-center mt-3"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+        </div>
+        <!--//move icon -->
+    </div>
+</footer>
+<!--//footer -->
+<script src="/assets/website/js/frontend/freehiddifynext/jquery-1.11.1.min.js"></script>
+<script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
