@@ -5,7 +5,7 @@
         <link rel="canonical" href="https://freehiddifynext.github.io/news/article-21927.htm" />
     <title>Quartz高可用定时任务快速上手</title>
         <meta name="description" content="定时任务使用指南 如果你想做定时任务，有高可用方面的需求，或者仅仅想入门快，上手简单，那么选用它准没错。 定时任务模块是对Quartz框架进一步封装，使用更加简洁。 1、引入依赖 &lt;depend" />
-        <link rel="icon" href="__ADDON__/img/freehiddifynext/favicon.ico" type="image/x-icon"/>
+        <link rel="icon" href="/assets/website/img/freehiddifynext/favicon.ico" type="image/x-icon"/>
     <!--meta tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -94,7 +94,8 @@
             <div class="row">
                 <div class="col-md-9">
                   <h1 class="title text-center mb-lg-5 mb-md-4 mb-sm-4 mb-3">Quartz高可用定时任务快速上手</h1>
-                                    				  				  				<h3 id="定时任务使用指南">定时任务使用指南</h3> <p>如果你想做定时任务，有<code>高可用</code>方面的需求，或者仅仅想<code>入门快</code>，上手简单，那么选用它准没错。</p> <p>定时任务模块是对Quartz框架进一步封装，使用更加简洁。</p> <h5 id="1引入依赖">1、引入依赖</h5> <pre><code class="language-xml">&lt;dependency&gt;     &lt;groupId&gt;xin.altitude.cms&lt;/groupId&gt;     &lt;artifactId&gt;ucode-cms-quartz&lt;/artifactId&gt;     &lt;version&gt;1.5.4.1&lt;/version&gt; &lt;/dependency&gt;</code></pre> <h5 id="2快速上手">2、快速上手</h5> <p>实现<code>org.quartz.Job</code>接口；使用注解<code>CronExp</code>添加任务的调度策略；使用注解<code>Component</code>将任务注入容器中。</p> <p>启动项目，定时任务便处于监听与运行中。</p> <pre><code class="language-java">@Component @DisallowConcurrentExecution @CronExp(cron = "0/5 * * * * ?") public class DemoJob implements Job {     @Override     public void execute(JobExecutionContext context) {         System.out.println("任务1：" + LocalDateTime.now());     } }</code></pre> <hr/> <h5 id="3手动触发定时任务">3、手动触发定时任务</h5> <p>定时任务除了以既有频率周期性运行外，还有通过接口手动被触发的能力。</p> <p>调用如下接口，可手动触发任务ID编号为<code>jobId</code>的任务。</p> <pre><code class="language-http">http://localhost:8080/cms-api/quartz/job/{jobId}</code></pre> <p>如果有手动触发定时任务的需求，则需要任务ID<code>唯一并</code>且<code>已知</code>，因此需要在编写定时任务时手动指定。</p> <pre><code class="language-java">@CronExp(id = 1, cron = "0/5 * * * * ?")</code></pre> <p>通过注解<code>CronExp</code>的id属性可指定任务ID，不显示指定则使用随机ID，不满足已知的条件，因此无法手动触发。</p> <h5 id="4带参数任务">4、带参数任务</h5> <p>尽管大多数任务不需要注入参数，但仍有少量的场景需要向定时任务注入参数。</p> <pre><code class="language-java">public void execute(JobExecutionContext context) {     /* 如果在调用任务时传入了参数，则能够从Map中获取 */     Map&lt;String, Object&gt; dataMap = context.getMergedJobDataMap();     /* 比如从Map中获取一个键值对，一般来说参数均为基本数据类型 */     Object key = dataMap.get("key");     System.out.println("任务2：" + LocalDateTime.now() + ": " + key); }</code></pre> <p>在编写定时任务时，可从<code>JobExecutionContext</code>对象中解析一个Map，从而完成参数的注入。</p> <pre><code class="language-http">http://localhost:8080/cms-api/quartz/job/1?key=a</code></pre> <p>上述http调用的含义是手动触发任务ID为【1】的任务，并且向其传递参数为【key】值为【a】的参数。</p> <h5 id="5任务并发">5、任务并发</h5> <p>本框架不支持任务并发，换句话说并发对定时任务不利，因此需要手动禁止。</p> <p>需要注意的是<code>Quartz</code>的并发是指当任务执行耗时超过任务调度周期时，上一个任务未执行完，新任务是否执行。</p> <p>一般来说需要显示禁止并发，在任务类上添加注解<code>DisallowConcurrentExecution</code>即可禁止任务并发。</p> <h5 id="6持久化">6、持久化</h5> <p>如果定时任务有高可用的需求，那么需要对任务进行持久化。定时任务数据持久化到数据库中后，支持应用程序多开。定时任务持久化多节点部署后，集群中单节点故障不影响定时任务的执行。</p> <p>定时任务持久化，仅需修改yml文件配置即可达到目标，无需修改代码。一般而言使用Mysql做持久化的容器。</p> <pre><code class="language-yaml">spring:   quartz:     properties:       org.quartz.jobStore.isClustered: true       org.quartz.jobStore.class: org.quartz.impl.jdbcjobstore.JobStoreTX       org.quartz.jobStore.driverDelegateClass: org.quartz.impl.jdbcjobstore.StdJDBCDelegate       org.quartz.jobStore.dataSource: qzDS       org.quartz.dataSource.qzDS.driver: com.mysql.cj.jdbc.Driver       org.quartz.dataSource.qzDS.URL: jdbc:mysql://localhost:3306/quartz-demo       org.quartz.dataSource.qzDS.user: root       org.quartz.dataSource.qzDS.password: 123456</code></pre> <p>除了修改主机、端口、数据库名、用户名、密码五个参数外，其余参数使用默认值即可。</p> <blockquote> <p>配置完数据库连接后，使用SQL脚本，注意初始化数据库</p> </blockquote> 			                <div class="clearfix"></div>
+                                  <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<h3 id="定时任务使用指南">定时任务使用指南</h3> <p>如果你想做定时任务，有<code>高可用</code>方面的需求，或者仅仅想<code>入门快</code>，上手简单，那么选用它准没错。</p> <p>定时任务模块是对Quartz框架进一步封装，使用更加简洁。</p> <h5 id="1引入依赖">1、引入依赖</h5> <pre><code class="language-xml">&lt;dependency&gt;     &lt;groupId&gt;xin.altitude.cms&lt;/groupId&gt;     &lt;artifactId&gt;ucode-cms-quartz&lt;/artifactId&gt;     &lt;version&gt;1.5.4.1&lt;/version&gt; &lt;/dependency&gt;</code></pre> <h5 id="2快速上手">2、快速上手</h5> <p>实现<code>org.quartz.Job</code>接口；使用注解<code>CronExp</code>添加任务的调度策略；使用注解<code>Component</code>将任务注入容器中。</p> <p>启动项目，定时任务便处于监听与运行中。</p> <pre><code class="language-java">@Component @DisallowConcurrentExecution @CronExp(cron = "0/5 * * * * ?") public class DemoJob implements Job {     @Override     public void execute(JobExecutionContext context) {         System.out.println("任务1：" + LocalDateTime.now());     } }</code></pre> <hr/> <h5 id="3手动触发定时任务">3、手动触发定时任务</h5> <p>定时任务除了以既有频率周期性运行外，还有通过接口手动被触发的能力。</p> <p>调用如下接口，可手动触发任务ID编号为<code>jobId</code>的任务。</p> <pre><code class="language-http">http://localhost:8080/cms-api/quartz/job/{jobId}</code></pre> <p>如果有手动触发定时任务的需求，则需要任务ID<code>唯一并</code>且<code>已知</code>，因此需要在编写定时任务时手动指定。</p> <pre><code class="language-java">@CronExp(id = 1, cron = "0/5 * * * * ?")</code></pre> <p>通过注解<code>CronExp</code>的id属性可指定任务ID，不显示指定则使用随机ID，不满足已知的条件，因此无法手动触发。</p> <h5 id="4带参数任务">4、带参数任务</h5> <p>尽管大多数任务不需要注入参数，但仍有少量的场景需要向定时任务注入参数。</p> <pre><code class="language-java">public void execute(JobExecutionContext context) {     /* 如果在调用任务时传入了参数，则能够从Map中获取 */     Map&lt;String, Object&gt; dataMap = context.getMergedJobDataMap();     /* 比如从Map中获取一个键值对，一般来说参数均为基本数据类型 */     Object key = dataMap.get("key");     System.out.println("任务2：" + LocalDateTime.now() + ": " + key); }</code></pre> <p>在编写定时任务时，可从<code>JobExecutionContext</code>对象中解析一个Map，从而完成参数的注入。</p> <pre><code class="language-http">http://localhost:8080/cms-api/quartz/job/1?key=a</code></pre> <p>上述http调用的含义是手动触发任务ID为【1】的任务，并且向其传递参数为【key】值为【a】的参数。</p> <h5 id="5任务并发">5、任务并发</h5> <p>本框架不支持任务并发，换句话说并发对定时任务不利，因此需要手动禁止。</p> <p>需要注意的是<code>Quartz</code>的并发是指当任务执行耗时超过任务调度周期时，上一个任务未执行完，新任务是否执行。</p> <p>一般来说需要显示禁止并发，在任务类上添加注解<code>DisallowConcurrentExecution</code>即可禁止任务并发。</p> <h5 id="6持久化">6、持久化</h5> <p>如果定时任务有高可用的需求，那么需要对任务进行持久化。定时任务数据持久化到数据库中后，支持应用程序多开。定时任务持久化多节点部署后，集群中单节点故障不影响定时任务的执行。</p> <p>定时任务持久化，仅需修改yml文件配置即可达到目标，无需修改代码。一般而言使用Mysql做持久化的容器。</p> <pre><code class="language-yaml">spring:   quartz:     properties:       org.quartz.jobStore.isClustered: true       org.quartz.jobStore.class: org.quartz.impl.jdbcjobstore.JobStoreTX       org.quartz.jobStore.driverDelegateClass: org.quartz.impl.jdbcjobstore.StdJDBCDelegate       org.quartz.jobStore.dataSource: qzDS       org.quartz.dataSource.qzDS.driver: com.mysql.cj.jdbc.Driver       org.quartz.dataSource.qzDS.URL: jdbc:mysql://localhost:3306/quartz-demo       org.quartz.dataSource.qzDS.user: root       org.quartz.dataSource.qzDS.password: 123456</code></pre> <p>除了修改主机、端口、数据库名、用户名、密码五个参数外，其余参数使用默认值即可。</p> <blockquote> <p>配置完数据库连接后，使用SQL脚本，注意初始化数据库</p> </blockquote> 			                <div class="clearfix"></div>
                 <div class="col-md-12 mt-5">
                                         <p>上一个：<a href="/news/article-21465.htm">聊城宠物狗商家有哪些公司（聊城的宠物店）</a></p>
                                         <p>下一个：<a href="/news/article-21930.htm">有没有24小时营业的宠物店（这附近哪里有24小时宠物店）</a></p>
@@ -107,16 +108,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2024-5-10-node-share.htm" title="5月10日21.9M/S|V2ray/SSR/Shadowrocket/Clash免费节点每天更新订阅链接">5月10日21.9M/S|V2ray/SSR/Shadowrocket/Clash免费节点每天更新订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-8-29-clash-v2ray-ss-ssr.htm" title="8月29日21.2M/S|Hiddify-Next免费节点每天更新订阅链接">8月29日21.2M/S|Hiddify-Next免费节点每天更新订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-8-20-free-node-subscribe-links.htm" title="8月20日23M/S|Hiddify-Next免费节点每天更新订阅链接">8月20日23M/S|Hiddify-Next免费节点每天更新订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-29-clash-v2ray-ss-ssr.htm" title="10月29日21.5M/S|Hiddify-Next免费机场订阅每天更新订阅链接">10月29日21.5M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-15-node-share.htm" title="9月15日20.2M/S|Hiddify-Next免费节点每天更新订阅链接">9月15日20.2M/S|Hiddify-Next免费节点每天更新订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-5-6-free-v2ray-subscribe.htm" title="5月6日18.2M/S|Shadowrocket/V2ray/Clash/SSR免费节点每天更新订阅链接">5月6日18.2M/S|Shadowrocket/V2ray/Clash/SSR免费节点每天更新订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-8-21-clash-node-daily-updates.htm" title="8月21日21.2M/S|Hiddify-Next免费节点每天更新订阅链接">8月21日21.2M/S|Hiddify-Next免费节点每天更新订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-8-8-free-subscribe-node.htm" title="8月8日20M/S|Hiddify-Next免费节点每天更新订阅链接">8月8日20M/S|Hiddify-Next免费节点每天更新订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-26-free-ssr-subscribe.htm" title="10月26日22.1M/S|Hiddify-Next免费机场订阅每天更新订阅链接">10月26日22.1M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-21-clash-v2ray-ss-ssr.htm" title="11月21日21.3M/S|Hiddify-Next免费机场订阅每天更新订阅链接">11月21日21.3M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-6-11-free-subscribe-node.htm" title="6月11日22.1M/S|Hiddify-Next免费节点每天更新订阅链接">6月11日22.1M/S|Hiddify-Next免费节点每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-24506.htm" title="1-spring boot&#8211;FailureAnalyzer">1-spring boot&#8211;FailureAnalyzer</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-29-free-shadowrocket-node.htm" title="9月29日21.9M/S|Hiddify-Next免费机场订阅每天更新订阅链接">9月29日21.9M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-3-free-node-subscribe.htm" title="12月3日19.1M/S|Hiddify-Next免费机场订阅每天更新订阅链接">12月3日19.1M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-20551.htm" title="宠物用品一件代发进货渠道（宠物用品一件代发进货渠道在哪）">宠物用品一件代发进货渠道（宠物用品一件代发进货渠道在哪）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-17-shadowrocket-node.htm" title="12月17日21.2M/S|Hiddify-Next免费机场订阅每天更新订阅链接">12月17日21.2M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-24-free-v2ray.htm" title="8月24日22.2M/S|Hiddify-Next免费节点每天更新订阅链接">8月24日22.2M/S|Hiddify-Next免费节点每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-27022.htm" title="动物疫苗管理法律法规有哪些内容呢图片（动物疫苗新法案）">动物疫苗管理法律法规有哪些内容呢图片（动物疫苗新法案）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-14-free-high-speed-nodes.htm" title="12月14日22.5M/S|Hiddify-Next免费机场订阅每天更新订阅链接">12月14日22.5M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-5-node-share-links.htm" title="11月5日21.2M/S|Hiddify-Next免费机场订阅每天更新订阅链接">11月5日21.2M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
                     </ul>
     </div>
 </div>
@@ -128,7 +129,7 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">24</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+                <h4><span class="badge" style="float: right;">57</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
@@ -169,6 +170,15 @@
 <footer class="py-lg-4 py-md-3 py-sm-3 py-3">
     <div class="container py-lg-5 py-md-5 py-sm-4 py-3">
         <div class="bottem-wthree-footer text-center pt-md-4 pt-3">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
             <p>
                 <a href="/">FreeHiddifyNext节点订阅站</a> 版权所有
                 <br />
