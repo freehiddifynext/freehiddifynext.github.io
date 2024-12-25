@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freehiddifynext.github.io/news/article-30766.htm" />
+    <title>基于mybatis-plus实现多租户级别的数据隔离</title>
+        <meta name="description" content="一个平台系统通常需要提供给很多的用户进行使用，为了保证数据的安全性和完整性，用户之间是不能直接访问数据的，也就是说用户只能访问属于自己的数据。典型的场景就是电商平台，平台上有很多的商户，每个商户只能访" />
+        <link rel="icon" href="/assets/website/img/freehiddifynext/favicon.ico" type="image/x-icon"/>
+    <!--meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+      }, false);
+      
+      function hideURLbar() {
+        window.scrollTo(0, 1);
+      }
+    </script>
+    <!--//meta tags ends here-->
+    <!--booststrap-->
+    <link href="/assets/website/css/freehiddifynext/bootstrap.min.css" rel="stylesheet" type="text/css" media="all">
+    <!--//booststrap end-->
+    <!-- font-awesome icons -->
+    <link href="/assets/website/css/freehiddifynext/font-awesome.min.css" rel="stylesheet">
+    <!-- //font-awesome icons -->
+    <!--stylesheets-->
+    <link href="/assets/website/css/freehiddifynext/style.css" rel='stylesheet' type='text/css' media="all">
+    <!--//stylesheets-->
+    <link href="http://fonts.googleapis.com/css?family=Thasadith:400,700" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N7EH3QDE4Q"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N7EH3QDE4Q');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!--headder-->
+    <div class="header-outs inner_page-banner " id="home">
+                <div class="headder-top">
+            <!-- nav -->
+            <nav>
+                <div id="logo">
+                                        <a href="/">Free Hiddify Next</a>
+                                    </div>
+                <label for="drop" class="toggle">Menu</label>
+                <input type="checkbox" id="drop">
+                <ul class="menu mt-2">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                        <li>
+                        <a href="#">关于</a>
+                    </li>
+                    <li>
+                        <a href="#">联系</a>
+                    </li>
+                </ul>
+            </nav>
+            <!-- //nav -->
+        </div>
+    </div>
+    <!--//headder-->
+    <!-- short -->
+    <div class="using-border py-3">
+        <div class="inner_breadcrumb  ml-4">
+            <ul class="short_ls">
+                <li>
+                    <a href="/">首页</a>
+                    <span>/</span>
+                </li>
+                <li>
+                    <a href="/news/">新闻资讯</a>
+                    <span>/</span>
+                </li>
+                <li>正文</li>
+            </ul>
+        </div>
+    </div>
+    <!-- //short-->
+    <!-- about -->
+    <section class="about py-lg-4 py-md-3 py-sm-3 py-3" id="about">
+        <div class="container py-lg-5 py-md-4 py-sm-4 py-3">
+            <div class="row">
+                <div class="col-md-9">
+                  <h1 class="title text-center mb-lg-5 mb-md-4 mb-sm-4 mb-3">基于mybatis-plus实现多租户级别的数据隔离</h1>
+                                  <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> <p>一个平台系统通常需要提供给很多的用户进行使用，为了保证数据的安全性和完整性，用户之间是不能直接访问数据的，也就是说用户只能访问属于自己的数据。典型的场景就是电商平台，平台上有很多的商户，每个商户只能访问自己的商品，订单，账单等数据。</p> <p>为每个商户建立一个数据库，往往会存在巨大的成本压力和管理复杂度，此时可以采用通过数据库表中增加特定的标识字段来进行租户数据隔离。mybatis-plus提供的租户数据隔离方案，可以使得开发过程中，不用过多的关注租户隔离的处理，主要由mybatis-plus提供处理。</p> <p>说起来总是很抽象，这里以一个简单的示例来说明实现过程，项目采用mysql + mybatis-plus + druid。</p> <h3>1. 创建工程，添加相关依赖</h3> <pre><code>&lt;properties&gt;         &lt;maven.compiler.source&gt;8&lt;/maven.compiler.source&gt;         &lt;maven.compiler.target&gt;8&lt;/maven.compiler.target&gt;         &lt;mybatisplus.version&gt;3.4.2&lt;/mybatisplus.version&gt;         &lt;druid.version&gt;1.2.6&lt;/druid.version&gt;     &lt;/properties&gt;      &lt;dependencies&gt;          &lt;dependency&gt;             &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;             &lt;artifactId&gt;spring-boot-starter&lt;/artifactId&gt;             &lt;version&gt;2.3.12.RELEASE&lt;/version&gt;         &lt;/dependency&gt;          &lt;dependency&gt;             &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;             &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;             &lt;version&gt;2.3.12.RELEASE&lt;/version&gt;         &lt;/dependency&gt;          &lt;dependency&gt;             &lt;groupId&gt;com.baomidou&lt;/groupId&gt;             &lt;artifactId&gt;mybatis-plus-boot-starter&lt;/artifactId&gt;             &lt;version&gt;${mybatisplus.version}&lt;/version&gt;         &lt;/dependency&gt;          &lt;dependency&gt;             &lt;groupId&gt;com.baomidou&lt;/groupId&gt;             &lt;artifactId&gt;mybatis-plus&lt;/artifactId&gt;             &lt;version&gt;${mybatisplus.version}&lt;/version&gt;         &lt;/dependency&gt;          &lt;dependency&gt;             &lt;groupId&gt;mysql&lt;/groupId&gt;             &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;             &lt;version&gt;8.0.25&lt;/version&gt;         &lt;/dependency&gt;          &lt;!-- 阿里数据库连接池 --&gt;         &lt;dependency&gt;             &lt;groupId&gt;com.alibaba&lt;/groupId&gt;             &lt;artifactId&gt;druid-spring-boot-starter&lt;/artifactId&gt;             &lt;version&gt;${druid.version}&lt;/version&gt;         &lt;/dependency&gt;      &lt;/dependencies&gt;</code></pre> <h3>2. 添加配置类</h3> <pre><code>import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor; import com.baomidou.mybatisplus.extension.plugins.handler.TenantLineHandler; import com.baomidou.mybatisplus.extension.plugins.inner.TenantLineInnerInterceptor; import net.sf.jsqlparser.expression.Expression; import net.sf.jsqlparser.expression.LongValue; import org.mybatis.spring.annotation.MapperScan; import org.springframework.context.annotation.Bean; import org.springframework.context.annotation.Configuration;   @Configuration @MapperScan("com.platform.multitenant.mapper") public class MybatisPlusConfig {      /**      * 新多租户插件配置,一缓和二缓遵循mybatis的规则,需要设置 MybatisConfiguration#useDeprecatedExecutor = false 避免缓存万一出现问题      */     @Bean     public MybatisPlusInterceptor mybatisPlusInterceptor() {         MybatisPlusInterceptor interceptor = new MybatisPlusInterceptor();         interceptor.addInnerInterceptor(new TenantLineInnerInterceptor(new TenantLineHandler() {              /**              * 这里返回的租户id作为sql执行时自动添加的租户id              * 这里的租户id可以从线程本地变量中获取（当租户id提前设置到了线程本地变量中），              * 也可以从请求环境中获取（当租户id在请求环境中存在时）              * 为了简化演示，这里设置了一个固定值              * @return              */             @Override             public Expression getTenantId() {                 return new LongValue(1);             }              // 这是 default 方法,默认返回 false 表示所有表都需要拼多租户条件             @Override             public boolean ignoreTable(String tableName) {                 return !"user".equalsIgnoreCase(tableName);             }         }));         // 如果用了分页插件注意先 add TenantLineInnerInterceptor 再 add PaginationInnerInterceptor         // 用了分页插件必须设置 MybatisConfiguration#useDeprecatedExecutor = false //        interceptor.addInnerInterceptor(new PaginationInnerInterceptor());         return interceptor;     }  //    @Bean //    public ConfigurationCustomizer configurationCustomizer() { //        return configuration -&gt; configuration.setUseDeprecatedExecutor(false); //    } }</code></pre> <h3>3. mapper.xml</h3> <pre><code>&lt;mapper namespace="com.platform.multitenant.mapper.UserMapper"&gt;      &lt;select id="myCount" resultType="java.lang.Integer"&gt;         select count(1) from user     &lt;/select&gt;      &lt;select id="getUserAndAddr" resultType="com.platform.multitenant.entity.User"&gt;         select u.id, u.name, a.name as addr_name         from user u         left join user_addr a on a.user_id=u.id         &lt;where&gt;             &lt;if test="username!=null"&gt;                 u.name like concat(concat('%',#{username}),'%')             &lt;/if&gt;         &lt;/where&gt;     &lt;/select&gt;      &lt;select id="getAddrAndUser" resultType="com.platform.multitenant.entity.User"&gt;         select a.name as addr_name, u.id, u.name         from user_addr a         left join user u on u.id=a.user_id         &lt;where&gt;             &lt;if test="name!=null"&gt;                 a.name like concat(concat('%',#{name}),'%')             &lt;/if&gt;         &lt;/where&gt;     &lt;/select&gt; &lt;/mapper&gt;</code></pre> <p>可以看到，xml文件中并没有出现租户字段信息。</p> <h3>4. 参数配置（application.yml）</h3> <pre><code>spring:   application:     # 应用名称     name: multitenant-app   datasource:     type: com.alibaba.druid.pool.DruidDataSource     driverClassName: com.mysql.cj.jdbc.Driver     url: jdbc:mysql://localhost:3306/test?useUnicode=true&amp;characterEncoding=utf8&amp;zeroDateTimeBehavior=convertToNull&amp;useSSL=true&amp;serverTimezone=GMT%2B8     username: username     password: password   logging:   level:     com.platform.multitenant: debug</code></pre> <h3>5. 执行测试</h3> <pre><code>@RequestMapping("/test")     void testUser()     {         User user = new User();         user.setName("test1");          // add for test         userMapper.insert(user);          // select for test         user = userMapper.selectById(user.getId());          // delete for test         userMapper.deleteById(3L);          // update for test         User newUser = new User();         newUser.setId(1L);         user.setName("mp");         userMapper.updateById(user);          // count for test         System.out.println(userMapper.myCount());          userMapper.getAddrAndUser(null).forEach(System.out::println);         userMapper.getAddrAndUser("add").forEach(System.out::println);         userMapper.getUserAndAddr(null).forEach(System.out::println);         userMapper.getUserAndAddr("test1").forEach(System.out::println);     }</code></pre> <h3>6. 调试输出</h3> <pre><code>2022-04-07 15:56:54.651 DEBUG 26448 --- [nio-8080-exec-6] c.p.m.mapper.UserMapper.insert           : ==&gt;  Preparing: INSERT INTO user (id, name, tenant_id) VALUES (?, ?, 1) 2022-04-07 15:56:54.652 DEBUG 26448 --- [nio-8080-exec-6] c.p.m.mapper.UserMapper.insert           : ==&gt; Parameters: 1511976295397867521(Long), test1(String) 2022-04-07 15:56:54.661 DEBUG 26448 --- [nio-8080-exec-6] c.p.m.mapper.UserMapper.insert           : &lt;==    Updates: 1 2022-04-07 15:56:54.663 DEBUG 26448 --- [nio-8080-exec-6] c.p.m.mapper.UserMapper.selectById       : ==&gt;  Preparing: SELECT id, tenant_id, name FROM user WHERE id = ? AND tenant_id = 1 2022-04-07 15:56:54.663 DEBUG 26448 --- [nio-8080-exec-6] c.p.m.mapper.UserMapper.selectById       : ==&gt; Parameters: 1511976295397867521(Long) 2022-04-07 15:56:54.664 DEBUG 26448 --- [nio-8080-exec-6] c.p.m.mapper.UserMapper.selectById       : &lt;==      Total: 1 2022-04-07 15:56:54.665 DEBUG 26448 --- [nio-8080-exec-6] c.p.m.mapper.UserMapper.deleteById       : ==&gt;  Preparing: DELETE FROM user WHERE tenant_id = 1 AND id = ? 2022-04-07 15:56:54.665 DEBUG 26448 --- [nio-8080-exec-6] c.p.m.mapper.UserMapper.deleteById       : ==&gt; Parameters: 3(Long) 2022-04-07 15:56:54.666 DEBUG 26448 --- [nio-8080-exec-6] c.p.m.mapper.UserMapper.deleteById       : &lt;==    Updates: 0 2022-04-07 15:56:54.667 DEBUG 26448 --- [nio-8080-exec-6] c.p.m.mapper.UserMapper.updateById       : ==&gt;  Preparing: UPDATE user SET tenant_id = ?, name = ? WHERE tenant_id = 1 AND id = ? 2022-04-07 15:56:54.667 DEBUG 26448 --- [nio-8080-exec-6] c.p.m.mapper.UserMapper.updateById       : ==&gt; Parameters: 1(Long), mp(String), 1511976295397867521(Long) 2022-04-07 15:56:54.671 DEBUG 26448 --- [nio-8080-exec-6] c.p.m.mapper.UserMapper.updateById       : &lt;==    Updates: 1 2022-04-07 15:56:54.672 DEBUG 26448 --- [nio-8080-exec-6] c.p.m.mapper.UserMapper.myCount          : ==&gt;  Preparing: SELECT count(1) FROM user WHERE tenant_id = 1 2022-04-07 15:56:54.672 DEBUG 26448 --- [nio-8080-exec-6] c.p.m.mapper.UserMapper.myCount          : ==&gt; Parameters:  2022-04-07 15:56:54.674 DEBUG 26448 --- [nio-8080-exec-6] c.p.m.mapper.UserMapper.myCount          : &lt;==      Total: 1 19 2022-04-07 15:56:54.676 DEBUG 26448 --- [nio-8080-exec-6] c.p.m.mapper.UserMapper.getAddrAndUser   : ==&gt;  Preparing: SELECT a.name AS addr_name, u.id, u.name FROM user_addr a LEFT JOIN user u ON u.id = a.user_id AND u.tenant_id = 1 2022-04-07 15:56:54.676 DEBUG 26448 --- [nio-8080-exec-6] c.p.m.mapper.UserMapper.getAddrAndUser   : ==&gt; Parameters:  2022-04-07 15:56:54.677 DEBUG 26448 --- [nio-8080-exec-6] c.p.m.mapper.UserMapper.getAddrAndUser   : &lt;==      Total: 0 2022-04-07 15:56:54.679 DEBUG 26448 --- [nio-8080-exec-6] c.p.m.mapper.UserMapper.getAddrAndUser   : ==&gt;  Preparing: SELECT a.name AS addr_name, u.id, u.name FROM user_addr a LEFT JOIN user u ON u.id = a.user_id AND u.tenant_id = 1 WHERE a.name LIKE concat(concat('%', ?), '%') 2022-04-07 15:56:54.680 DEBUG 26448 --- [nio-8080-exec-6] c.p.m.mapper.UserMapper.getAddrAndUser   : ==&gt; Parameters: add(String) 2022-04-07 15:56:54.680 DEBUG 26448 --- [nio-8080-exec-6] c.p.m.mapper.UserMapper.getAddrAndUser   : &lt;==      Total: 0 2022-04-07 15:56:54.682 DEBUG 26448 --- [nio-8080-exec-6] c.p.m.mapper.UserMapper.getUserAndAddr   : ==&gt;  Preparing: SELECT u.id, u.name, a.name AS addr_name FROM user u LEFT JOIN user_addr a ON a.user_id = u.id WHERE u.tenant_id = 1 2022-04-07 15:56:54.682 DEBUG 26448 --- [nio-8080-exec-6] c.p.m.mapper.UserMapper.getUserAndAddr   : ==&gt; Parameters:  2022-04-07 15:56:54.684 DEBUG 26448 --- [nio-8080-exec-6] c.p.m.mapper.UserMapper.getUserAndAddr   : &lt;==      Total: 19</code></pre> <p>从日志输出中，可以看到自动添加了租户字段信息。</p> <h3>7. 数据库表脚本</h3> <pre><code>CREATE TABLE user ( 	id BIGINT(20) NOT NULL COMMENT '主键ID', 	tenant_id BIGINT(20) NOT NULL COMMENT '租户ID', 	name VARCHAR(30) NULL DEFAULT NULL COMMENT '姓名', 	PRIMARY KEY (id) );  CREATE TABLE USER_ADDR (   id BIGINT(20) NOT NULL COMMENT '主键ID',   user_id BIGINT(20) NOT NULL COMMENT 'user.id',   name VARCHAR(30) NULL DEFAULT NULL COMMENT '地址名称',   PRIMARY KEY (id) );</code></pre> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-30299.htm">篮球用什么牌子的好(篮球用什么牌子比较好)</a></p>
+                                        <p>下一个：<a href="/news/article-30767.htm">国内宠物粮上市公司名单 国内宠物粮上市公司名单最新</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                  <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-10-26-free-ssr-subscribe.htm" title="10月26日22.1M/S|Hiddify-Next免费机场订阅每天更新订阅链接">10月26日22.1M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-7-23-shadowrocket-node.htm" title="7月23日21.1M/S|Hiddify-Next免费节点每天更新订阅链接">7月23日21.1M/S|Hiddify-Next免费节点每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-14-free-subscribe-node.htm" title="8月14日20.9M/S|Hiddify-Next免费节点每天更新订阅链接">8月14日20.9M/S|Hiddify-Next免费节点每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-26557.htm" title="动物医院办理条件要求是什么呢（动物医院收费标准）">动物医院办理条件要求是什么呢（动物医院收费标准）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-16-free-subscribe-node.htm" title="8月16日21.8M/S|Hiddify-Next免费节点每天更新订阅链接">8月16日21.8M/S|Hiddify-Next免费节点每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-4-30-clash-v2ray-ss-ssr.htm" title="4月30日19.6M/S|Clash/Shadowrocket/V2ray/SSR免费节点每天更新订阅链接">4月30日19.6M/S|Clash/Shadowrocket/V2ray/SSR免费节点每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-6-22-node-share.htm" title="6月22日20.8M/S|Hiddify-Next免费节点每天更新订阅链接">6月22日20.8M/S|Hiddify-Next免费节点每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-5-clash-v2ray-ss-ssr.htm" title="12月5日18.9M/S|Hiddify-Next免费机场订阅每天更新订阅链接">12月5日18.9M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-5-10-node-share.htm" title="5月10日21.9M/S|V2ray/SSR/Shadowrocket/Clash免费节点每天更新订阅链接">5月10日21.9M/S|V2ray/SSR/Shadowrocket/Clash免费节点每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-20-clash-windows.htm" title="9月20日18.4M/S|Hiddify-Next免费节点每天更新订阅链接">9月20日18.4M/S|Hiddify-Next免费节点每天更新订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">75</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2024-07/" title="2024-07 归档">2024-07</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">29</span> <a href="/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">29</span> <a href="/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">17</span> <a href="/date/2024-04/" title="2024-04 归档">2024-04</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //about -->
+    
+    <!-- footer -->
+<footer class="py-lg-4 py-md-3 py-sm-3 py-3">
+    <div class="container py-lg-5 py-md-5 py-sm-4 py-3">
+        <div class="bottem-wthree-footer text-center pt-md-4 pt-3">
+            <p>
+                <a href="/">首页</a> |
+                <a href="/free-node/">免费节点</a> |
+                <a href="/news/">新闻资讯</a> |
+                <a href="/about-us.htm">关于我们</a> |
+                <a href="/disclaimer.htm">免责申明</a> |
+                <a href="/privacy.htm">隐私申明</a> |
+                <a href="/sitemap.xml">网站地图</a>
+            </p>
+            <p>
+                <a href="/">FreeHiddifyNext节点订阅站</a> 版权所有
+                <br />
+                Powered by WordPress
+            </p>
+        </div>
+        <!-- move icon -->
+        <div class="text-center">
+            <a href="#home" class="move-top text-center mt-3"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+        </div>
+        <!--//move icon -->
+    </div>
+</footer>
+<!--//footer -->
+<script src="/assets/website/js/frontend/freehiddifynext/jquery-1.11.1.min.js"></script>
+<script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+<script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
