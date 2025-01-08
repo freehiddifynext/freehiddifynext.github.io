@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freehiddifynext.github.io/news/article-37494.htm" />
+    <title>带你快速认识NamenodeHA和Yarn HA,为搭建HadoopHA集群打下基础!</title>
+        <meta name="description" content="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;本篇博客，博主主要为大家介绍的是什么是NamenodeHA 和Yarn HA。并在下一篇博客中为大家带来" />
+        <link rel="icon" href="/assets/website/img/freehiddifynext/favicon.ico" type="image/x-icon"/>
+    <!--meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+      }, false);
+      
+      function hideURLbar() {
+        window.scrollTo(0, 1);
+      }
+    </script>
+    <!--//meta tags ends here-->
+    <!--booststrap-->
+    <link href="/assets/website/css/freehiddifynext/bootstrap.min.css" rel="stylesheet" type="text/css" media="all">
+    <!--//booststrap end-->
+    <!-- font-awesome icons -->
+    <link href="/assets/website/css/freehiddifynext/font-awesome.min.css" rel="stylesheet">
+    <!-- //font-awesome icons -->
+    <!--stylesheets-->
+    <link href="/assets/website/css/freehiddifynext/style.css" rel='stylesheet' type='text/css' media="all">
+    <!--//stylesheets-->
+    <link href="http://fonts.googleapis.com/css?family=Thasadith:400,700" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N7EH3QDE4Q"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N7EH3QDE4Q');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!--headder-->
+    <div class="header-outs inner_page-banner " id="home">
+                <div class="headder-top">
+            <!-- nav -->
+            <nav>
+                <div id="logo">
+                                        <a href="/">Free Hiddify Next</a>
+                                    </div>
+                <label for="drop" class="toggle">Menu</label>
+                <input type="checkbox" id="drop">
+                <ul class="menu mt-2">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                        <li>
+                        <a href="#">关于</a>
+                    </li>
+                    <li>
+                        <a href="#">联系</a>
+                    </li>
+                </ul>
+            </nav>
+            <!-- //nav -->
+        </div>
+    </div>
+    <!--//headder-->
+    <!-- short -->
+    <div class="using-border py-3">
+        <div class="inner_breadcrumb  ml-4">
+            <ul class="short_ls">
+                <li>
+                    <a href="/">首页</a>
+                    <span>/</span>
+                </li>
+                <li>
+                    <a href="/news/">新闻资讯</a>
+                    <span>/</span>
+                </li>
+                <li>正文</li>
+            </ul>
+        </div>
+    </div>
+    <!-- //short-->
+    <!-- about -->
+    <section class="about py-lg-4 py-md-3 py-sm-3 py-3" id="about">
+        <div class="container py-lg-5 py-md-4 py-sm-4 py-3">
+            <div class="row">
+                <div class="col-md-9">
+                  <h1 class="title text-center mb-lg-5 mb-md-4 mb-sm-4 mb-3">带你快速认识NamenodeHA和Yarn HA,为搭建HadoopHA集群打下基础!</h1>
+                                  <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-atelier-sulphurpool-light"> <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;本篇博客，博主主要为大家介绍的是什么是<strong>NamenodeHA</strong> 和<strong>Yarn HA</strong>。并在下一篇博客中为大家带来关于搭建HadoopHA集群的详细步骤！</p> <p><font color="#2894FF"><strong>码字不易,先赞后看!</strong></font></p> <div class="toc"> <h3>文章目录</h3> <ul> <li> <ul> <li><a href="#Hadoop_High_Availability_8" rel="nofollow">Hadoop High Availability</a></li> <li> <ul> <li><a href="#_18" rel="nofollow">小结:</a></li> <li><a href="#1_Namenode_HA_34" rel="nofollow">1. Namenode HA</a></li> <li> <ul> <li><a href="#11_Namenode_HA_36" rel="nofollow">1.1 Namenode HA详解</a></li> <li><a href="#12__Failover_Controller_63" rel="nofollow">1.2 Failover Controller</a></li> </ul> </li> <li><a href="#2Yarn_HA_86" rel="nofollow">2.Yarn HA</a></li> </ul> </li> </ul> </li> </ul> </div> <hr/> <h2><a id="Hadoop_High_Availability_8" rel="nofollow"></a>Hadoop High Availability</h2> <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HA(High Available), 高可用，是保证业务连续性的有效解决方案，一般有两个或两个以上的节点，分为<font color="red">活动节点（Active）</font>及<font color="red">备用节点（Standby）</font>。通常把正在执行业务的称为活动节点，而作为活动节点的一个备份的则称为备用节点。当活动节点出现问题，导致正在运行的业务（任务）不能正常运行时，备用节点此时就会侦测到，并立即接续活动节点来执行业务。从而实现业务的不中断或短暂中断。</p> <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hadoop1.X版本，NN是HDFS集群的单点故障点，每一个集群只有一个NN,如果这个机器或进程不可用，整个集群就无法使用。为了解决这个问题，出现了一堆针对HDFS HA的解决方案（如：Linux HA, VMware FT, shared NAS+NFS, BookKeeper, QJM/Quorum Journal Manager, BackupNode等）。</p> <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在HA具体实现方法不同情况下，HA框架的流程是一致的, 不一致的就是如何存储、管理、同步edits编辑日志文件。</p> <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在Active NN和Standby NN之间要有个共享的存储日志的地方，Active NN把edit Log写到这个共享的存储日志的地方，Standby NN去读取日志然后执行，这样Active和Standby NN内存中的HDFS元数据保持着同步。一旦发生主从切换Standby NN可以尽快接管Active NN的工作。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220820/0f3b62b7c31e22ccd4c6efdd4824b3a2.jpg" alt="带你快速认识NamenodeHA和Yarn HA,为搭建HadoopHA集群打下基础!"></p> <h3><a id="_18" rel="nofollow"></a>小结:</h3> <blockquote> <p><font color="black">高可用方案中NN有两个，一个是Active状态，表示正在对外提供服务的，活跃的NN。StandBy状态，不是对外提供服务的，随时准备替换ActiveNN.</font><br /><font color="black"><br /> ZKFC:监控NN所在节点的硬件设备、软件（NN）、操作系统。同时维护与ZK的通信。HA方案中只有两个NN，每个NN都有一个ZKFC.</font></p> <p><font color="black">NN Active 状态和StandBy状态的确认：<br /> 两个NN到ZK集群注册一个临时的ZNode,哪个先注册成功，哪个就是Active,另外一个就是StandBy.</font></p> <p><font color="black">当ActiveNN节点故障 ActiveZKFC通知ZK删除临时ZNode StandBy状态的ZKFC订阅这个临时ZNode的变换，若ZNode消失，立刻同时StandBy NN StandBy NN 远程登录NN，执行Kill -9 ActiveNN StandBy NN通知StandBy ZKFC去ZK上注册临时ZNode。</p> <p> 两个元数据信息如何实现快速同步？<br /> JournalNode（JN） :高效的存储系统，能够实现数据的超快速写入与读取。JN是一个小集群（小的文件系统）。节点数需要是奇数台（1、3、5）</p> <p> ActiveNN实时将FSimage和日志接入JN。StandByNN实时获取JN内部的数据，实现两个节点的实时元数据同步。<br /></font></p> </blockquote> <h3><a id="1_Namenode_HA_34" rel="nofollow"></a>1. Namenode HA</h3> <h4><a id="11_Namenode_HA_36" rel="nofollow"></a>1.1 Namenode HA详解</h4> <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hadoop2.x之后，Clouera提出了QJM/Qurom Journal Manager，这是一个基于Paxos算法（分布式一致性算法）实现的HDFS HA方案，它给出了一种较好的解决思路和方案,QJM主要优势如下：</p> <ul> <li> <p>不需要配置额外的高共享存储，降低了复杂度和维护成本。</p> </li> <li> <p>消除spof(单点故障)。</p> </li> </ul> <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;基本原理就是用2N+1台 JournalNode 存储EditLog，每次写数据操作有&gt;=N+1返回成功时即认为该次写成功，数据不会丢失了。当然这个算法所能容忍的是最多有N台机器挂掉，如果多于N台挂掉，这个算法就失效了。这个原理是基于Paxos算法。</p> <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在HA架构里面SecondaryNameNode已经不存在了，为了保持standby NN时时的与Active NN的元数据保持一致，他们之间交互通过JournalNode进行操作同步。</p> <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;任何修改操作在 Active NN上执行时，JournalNode进程同时也会记录修改log到至少半数以上的JN中，这时 Standby NN 监测到JN 里面的同步log发生变化了会读取 JN 里面的修改log，然后同步到自己的目录镜像树里面，如下图：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220820/e5814dc66079404275fe967c36248ca5.jpg" alt="带你快速认识NamenodeHA和Yarn HA,为搭建HadoopHA集群打下基础!"><br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当发生故障时，Active的 NN 挂掉后，Standby NN 会在它成为Active NN 前，读取所有的JN里面的修改日志，这样就能高可靠的保证与挂掉的NN的目录镜像树一致，然后无缝的接替它的职责，维护来自客户端请求，从而达到一个高可用的目的。</p> <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在HA模式下，datanode需要确保同一时间有且只有一个NN能命令DN。为此：</p> <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;每个NN改变状态的时候，向DN发送自己的状态和一个序列号。</p> <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DN在运行过程中维护此序列号，当failover时，新的NN在返回DN心跳时会返回自己的active状态和一个更大的序列号。DN接收到这个返回则认为该NN为新的active。</p> <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;如果这时原来的active NN恢复，返回给DN的心跳信息包含active状态和原来的序列号，这时DN就会拒绝这个NN的命令。</p> <h4><a id="12__Failover_Controller_63" rel="nofollow"></a>1.2 Failover Controller</h4> <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HA模式下，会将<strong>FailoverController</strong>部署在每个NameNode的节点上，作为一个单独的进程用来监视NN的健康状态。<strong>FailoverController主要包括三个组件:</strong></p> <p><strong>HealthMonitor</strong>: 监控NameNode是否处于unavailable(不可用的)或unhealthy(不健康的)状态。当前通过RPC调用NN相应的方法完成。</p> <p><strong>ActiveStandbyElector</strong>: 监控NN在ZK中的状态。</p> <p><strong>ZKFailoverController:</strong> 订阅HealthMonitor 和ActiveStandbyElector 的事件，并管理NN的状态,另外zkfc还负责解决fencing（也就是脑裂问题）。</p> <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;上述三个组件都在跑在一个JVM中，这个JVM与NN的JVM在同一个机器上。但是两个独立的进程。一个典型的HA集群，有两个NN组成，每个NN都有自己的ZKFC进程。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220820/cc823b7f34f53ab630be9ea540e4ebd0.jpg" alt="带你快速认识NamenodeHA和Yarn HA,为搭建HadoopHA集群打下基础!"><br /><strong>ZKFailoverController主要职责：</strong></p> <ul> <li><font color="red"><strong>健康监测：</strong></font>周期性的向它监控的NN发送健康探测命令，从而来确定某个NameNode是否处于健康状态，如果机器宕机，心跳失败，那么zkfc就会标记它处于一个不健康的状态</li> <li><font color="red"><strong>会话管理：</strong></font>如果NN是健康的，zkfc就会在zookeeper中保持一个打开的会话，如果NameNode同时还是Active状态的，那么zkfc还会在Zookeeper中占有一个类型为短暂类型的znode，当这个NN挂掉时，这个znode将会被删除，然后备用的NN将会得到这把锁，升级为主NN，同时标记状态为Active</li> <li>当宕机的NN新启动时，它会再次注册zookeper，发现已经有znode锁了，便会自动变为Standby状态，如此往复循环，保证高可靠，需要注意，目前仅仅支持最多配置2个NN</li> <li><font color="red"><strong>master选举：</strong></font>通过在zookeeper中维持一个短暂类型的znode，来实现抢占式的锁机制，从而判断那个NameNode为Active状态</li> </ul> <h3><a id="2Yarn_HA_86" rel="nofollow"></a>2.Yarn HA</h3> <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Yarn作为资源管理系统，是上层计算框架（如MapReduce,Spark）的基础。在Hadoop 2.4.0版本之前，Yarn存在单点故障（即ResourceManager存在单点故障），一旦发生故障，恢复时间较长，且会导致正在运行的Application丢失，影响范围较大。从Hadoop 2.4.0版本开始，Yarn实现了ResourceManager HA，在发生故障时自动failover，大大提高了服务的可靠性。</p> <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ResourceManager（简写为RM）作为Yarn系统中的主控节点，负责整个系统的资源管理和调度，内部维护了各个应用程序的ApplictionMaster信息、NodeManager（简写为NM）信息、资源使用等。由于资源使用情况和NodeManager信息都可以通过NodeManager的心跳机制重新构建出来，因此只需要对ApplicationMaster相关的信息进行持久化存储即可。</p> <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在一个典型的HA集群中，两台独立的机器被配置成ResourceManger。在任意时间，有且只允许一个活动的ResourceManger,另外一个备用。切换分为两种方式：</p> <p><strong>手动切换</strong>：在自动恢复不可用时，管理员可用手动切换状态，或是从Active到Standby,或是从Standby到Active。</p> <p><strong>自动切换</strong>：基于Zookeeper，但是区别于HDFS的HA，2个节点间无需配置额外的ZFKC守护进程来同步数据。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220820/d9ecbe741305c0b819fae4110f4793ad.jpg" alt="带你快速认识NamenodeHA和Yarn HA,为搭建HadoopHA集群打下基础!"></p> </p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-36990.htm">网络层-IP地址详解&amp;Linux配置IP地址（centos7）</a></p>
+                                        <p>下一个：<a href="/news/article-37495.htm">猫体外驱虫药有哪些（猫体外驱虫药有哪些药）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                  <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-11-3-clash-windows.htm" title="11月3日20.4M/S|Hiddify-Next免费机场订阅每天更新订阅链接">11月3日20.4M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-32195.htm" title="瑞派宠物连锁医院（瑞派宠物医院全国分店）">瑞派宠物连锁医院（瑞派宠物医院全国分店）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-12-free-node-subscribe-links.htm" title="11月12日19.1M/S|Hiddify-Next免费机场订阅每天更新订阅链接">11月12日19.1M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-27482.htm" title="宠物粮食品牌名字4个字大全及图片（宠物粮食品牌名字4个字大全及图片及价格）">宠物粮食品牌名字4个字大全及图片（宠物粮食品牌名字4个字大全及图片及价格）</a></li>
+                        <li class="py-2"><a href="/news/article-30766.htm" title="基于mybatis-plus实现多租户级别的数据隔离">基于mybatis-plus实现多租户级别的数据隔离</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-25-clash-node.htm" title="10月25日22.3M/S|Hiddify-Next免费机场订阅每天更新订阅链接">10月25日22.3M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-21465.htm" title="聊城宠物狗商家有哪些公司（聊城的宠物店）">聊城宠物狗商家有哪些公司（聊城的宠物店）</a></li>
+                        <li class="py-2"><a href="/news/article-24506.htm" title="1-spring boot&#8211;FailureAnalyzer">1-spring boot&#8211;FailureAnalyzer</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-26-free-ssr-subscribe.htm" title="10月26日22.1M/S|Hiddify-Next免费机场订阅每天更新订阅链接">10月26日22.1M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-24-node-share.htm" title="10月24日19.1M/S|Hiddify-Next免费机场订阅每天更新订阅链接">10月24日19.1M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">24</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //about -->
+    
+    <!-- footer -->
+<footer class="py-lg-4 py-md-3 py-sm-3 py-3">
+    <div class="container py-lg-5 py-md-5 py-sm-4 py-3">
+        <div class="bottem-wthree-footer text-center pt-md-4 pt-3">
+            <p>
+                <a href="/">首页</a> |
+                <a href="/free-node/">免费节点</a> |
+                <a href="/news/">新闻资讯</a> |
+                <a href="/about-us.htm">关于我们</a> |
+                <a href="/disclaimer.htm">免责申明</a> |
+                <a href="/privacy.htm">隐私申明</a> |
+                <a href="/sitemap.xml">网站地图</a>
+            </p>
+            <p>
+                <a href="/">FreeHiddifyNext节点订阅站</a> 版权所有
+                <br />
+                Powered by WordPress
+            </p>
+        </div>
+        <!-- move icon -->
+        <div class="text-center">
+            <a href="#home" class="move-top text-center mt-3"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+        </div>
+        <!--//move icon -->
+    </div>
+</footer>
+<!--//footer -->
+<script src="/assets/website/js/frontend/freehiddifynext/jquery-1.11.1.min.js"></script>
+<script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+<script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
