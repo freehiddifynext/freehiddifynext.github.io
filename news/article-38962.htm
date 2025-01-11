@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freehiddifynext.github.io/news/article-38962.htm" />
+    <title>类和对象的学习心得</title>
+        <meta name="description" content="&nbsp;    &nbsp;    1，  类和对象的定义：    类就是一类对象的统称。对象就是这一类具体化的一个实例。    2，类和类的实例化    用类型创建对象的过程，称为类的实例化  " />
+        <link rel="icon" href="/assets/website/img/freehiddifynext/favicon.ico" type="image/x-icon"/>
+    <!--meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+      }, false);
+      
+      function hideURLbar() {
+        window.scrollTo(0, 1);
+      }
+    </script>
+    <!--//meta tags ends here-->
+    <!--booststrap-->
+    <link href="/assets/website/css/freehiddifynext/bootstrap.min.css" rel="stylesheet" type="text/css" media="all">
+    <!--//booststrap end-->
+    <!-- font-awesome icons -->
+    <link href="/assets/website/css/freehiddifynext/font-awesome.min.css" rel="stylesheet">
+    <!-- //font-awesome icons -->
+    <!--stylesheets-->
+    <link href="/assets/website/css/freehiddifynext/style.css" rel='stylesheet' type='text/css' media="all">
+    <!--//stylesheets-->
+    <link href="http://fonts.googleapis.com/css?family=Thasadith:400,700" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N7EH3QDE4Q"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N7EH3QDE4Q');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!--headder-->
+    <div class="header-outs inner_page-banner " id="home">
+                <div class="headder-top">
+            <!-- nav -->
+            <nav>
+                <div id="logo">
+                                        <a href="/">Free Hiddify Next</a>
+                                    </div>
+                <label for="drop" class="toggle">Menu</label>
+                <input type="checkbox" id="drop">
+                <ul class="menu mt-2">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                        <li>
+                        <a href="#">关于</a>
+                    </li>
+                    <li>
+                        <a href="#">联系</a>
+                    </li>
+                </ul>
+            </nav>
+            <!-- //nav -->
+        </div>
+    </div>
+    <!--//headder-->
+    <!-- short -->
+    <div class="using-border py-3">
+        <div class="inner_breadcrumb  ml-4">
+            <ul class="short_ls">
+                <li>
+                    <a href="/">首页</a>
+                    <span>/</span>
+                </li>
+                <li>
+                    <a href="/news/">新闻资讯</a>
+                    <span>/</span>
+                </li>
+                <li>正文</li>
+            </ul>
+        </div>
+    </div>
+    <!-- //short-->
+    <!-- about -->
+    <section class="about py-lg-4 py-md-3 py-sm-3 py-3" id="about">
+        <div class="container py-lg-5 py-md-4 py-sm-4 py-3">
+            <div class="row">
+                <div class="col-md-9">
+                  <h1 class="title text-center mb-lg-5 mb-md-4 mb-sm-4 mb-3">类和对象的学习心得</h1>
+                                  <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> <div>  &nbsp; </div> <div>  &nbsp; </div> <div>  1，<br />  <strong>类和对象的定义：</strong> </div> <div>  <span style="color:#333333;">类就是一类对象的统称。对象就是这一类具体化的一个实例。</span> </div> <div>  <span style="color:#333333;">2，<strong>类和类的实例化</strong></span> </div> <div>  <span style="color:#333333;">用类型创建对象的过程，称为类的实例化 </span> </div> <div> <div>   <span style="color:#333333;">1. </span><br />   <span style="color:#333333;">类只是</span><br />   <span style="color:#333333;">一个</span><br />   <span style="color:#333333;">模型</span><br />   <span style="color:#333333;">一样的东西，限定了类有哪些成员</span><br />   <span style="color:#333333;">. </span>  </div> <div>   <span style="color:#333333;">2. </span><br />   <span style="color:#333333;">一个类可以实例化出多个对象，实例化出的对象占用实际的物理空间，存储类成员变量。</span>  </div> <div>   <span style="color:#333333;">创建：</span>  </div> <div> <pre><code>class Person{     //成员属性     public String name ;          //访问修饰限定符：public   private   protected  什么都不写     public int age  ;             //name和age是实例成员变量     public static int count;       //静态成员变量，在方法区，不管new多少个，只有一个count     /*public boolean flg;     public char ch;*/     //成员方法     public void eat(){         System.out.println("吃饭");     } }</code></pre> <p>实例化：</p> <pre><code>public static void main(String[]args){         //Person是类型  person是局部变量（属于引用类型）          //person 1在栈上   new Person在堆上          Person person1 = new Person();//对象的实例化          Person person2 = new Person();          Person person3 = new Person();          Person person4 = new Person();          Person person5 = new Person();          System.out.println(person1);          System.out.println(person2);</code></pre> <p>访问：</p> <pre><code>public static void main(String[] args) {         Person person = new Person(); //实例化一个对象         System.out.println(person.age);         System.out.println(person.name);         person.eat();          /*System.out.println(person.flg);         System.out.println(person.ch);         int a;         System.out.println(a);   */     }</code></pre> <p><strong>局部变量</strong>：定义在方法当中，特点是当方法结束后该变量也随之消失，因为他存储在栈上。</p> <p>1.作用域：在当前方法的括号内</p> <p>2.生命周期：当方法结束，方法内的局部变量也随之消失。</p> </p></div> <p><strong>成员属性</strong>：（定义在类内部，方法外部的变量）</p> <p>1，实例成员变量&nbsp; ：age&nbsp; &nbsp;name （在堆上）</p> <p>2，静态成员变量&nbsp; ：count&nbsp; &nbsp;（在方法区）</p> <p>接下来看一下如何调用：</p> <pre><code>class Person {     //成员属性     public String name;          //访问修饰限定符：public   private   protected  什么都不写     public int age;             //name和age是实例成员变量     public static int count;       //静态成员变量，在方法区，不管new多少个，只有一个count      /*public boolean flg;     public char ch;*/     //成员方法     public void eat() {         System.out.println("吃饭");     }      public static void func() {         System.out.println("静态的方法");     }      public void show() {         System.out.println("姓名：" + name + "年龄" + age);     } } public class TestDemo {     public static void main(String[] args) {         Person person1 = new Person();         person1.name = "佐助";         person1.show();         System.out.println(person1);     }      public static void main7(String[] args) {         Person person1 = new Person();         person1.name = "佩奇001";         //person2这个引用指向了person1这个对象         Person person2 = person1;         System.out.println(person2.name);     }       public static void main6(String[] args) {         Person person1 = null;         person1.name = "佩奇";         System.out.println(person1.name);     }</code></pre> <p><strong>Alt+Insert快捷键直接生产show函数</strong></p> <p><strong>static关键字</strong></p> <p>1，修饰成员变量：静态成员变量</p> <p>2，修饰成员方法：静态成员方法</p> <p>3，修饰代码块：</p> <p>注意：静态的方法内部不能有实例数据成员。</p> <p>原因：1.静态的方法不依赖于对象，而实例数据成员需要通过实例化才能产生（new）</p> <p>2.静态的方法和静态的数据-&gt;静态的优先被执行的</p> <pre><code>public String name;          //访问修饰限定符：public   private   protected  什么都不写     public int age;             //name和age是实例成员变量     public static int count;  //静态成员变量，在方法区，不管new多少个，只有一个count     // 加static是静态的     public final int SIZE1 = 10;  //被final修饰的常量，对象，和final没关系，堆     public static final int SIZE2 = 10;  //方法区</code></pre> <p><strong>封装：</strong></p> <p><span style="color:#333333;"><strong>private</strong></span><span style="color:#333333;"><strong>实现封装 </strong></span>：</p> <pre><code>class Person2{     private String name;     private int age;     public void setName(String myName){         name = myName;     }     public void setAge(int myAge){         age = myAge;     }     public int getAge(){         return age;     }     public String getName(){         return name;     } } public class TestDemo2 {     public static void main(String[] args) {         Person2 person2 = new Person2();         person2.setAge(15);         person2.setName("卡卡西");         System.out.println(person2.getAge());         System.out.println(person2.getName());      } }</code></pre> <p>普通方法：public&nbsp; 返回值&nbsp; 方法名&nbsp; （参数列表）{<!-- --></p> <p>方法体</p> <p>}</p> <p><strong>构造方法：</strong></p> <p>前提问题：实例化一个对象分为几步？</p> <p>1.为对象分配内存</p> <p>2.调用合适的构造方法，才会产生一个对象。</p> <pre><code>class Person2{     private String name;     private int age;     //alt+insert     // (get and setter)快速生成     //(Constructor)     //this代表当前对象的引用。      public Person2(){         System.out.println("Person2()");     }     public Person2(String name){         this.name = name;         System.out.println("Person2(String)");         System.out.println(this.name);     }     public Person2(String name,int age){      this.name = name;      this.age = age;         System.out.println("Person2(String,int)");     }      public String getName() {         return name;     }      public void setName(String name) {         this.name = name;     }      public int getAge() {         return age;     }      public void setAge(int age) {         this.age = age;     }        private void func4(){         System.out.println("func()");     }     public void  func2(){         func4();     }    }   public class TestDemo2 {     public static void main(String[] args) {         Person2 person2 = new Person2();         Person2 person3 = new Person2("Java");         Person2 person4 = new Person2("鸣人",18);     }       public static void main1(String[] args) {         Person2 person2 = new Person2();         person2.setAge(15);         person2.setName("卡卡西");         person2.func2();         System.out.println(person2.getAge());         System.out.println(person2.getName());      } }</code></pre> <p>到此为止，下集更精彩</p> </div></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-38456.htm">喝中药能吃补中益气丸吗（喝中药能吃补中益气丸吗）</a></p>
+                                        <p>下一个：<a href="/news/article-38963.htm">我的树莓派 Raspberry Pi Zero 2W 折腾笔记，记录一些遇到的问题和解决办法</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                  <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-34106.htm" title="Java 18为什么要指定UTF-8为默认字符集_在线工具">Java 18为什么要指定UTF-8为默认字符集_在线工具</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-10-clash-node.htm" title="11月10日20.7M/S|Hiddify-Next免费机场订阅每天更新订阅链接">11月10日20.7M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-30113.htm" title="猫狗动物医院 猫狗动物医院ns">猫狗动物医院 猫狗动物医院ns</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-13-free-node-subscribe-links.htm" title="10月13日23M/S|Hiddify-Next免费机场订阅每天更新订阅链接">10月13日23M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-36990.htm" title="网络层-IP地址详解&amp;Linux配置IP地址（centos7）">网络层-IP地址详解&amp;Linux配置IP地址（centos7）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-31-clash-windows.htm" title="10月31日21.8M/S|Hiddify-Next免费机场订阅每天更新订阅链接">10月31日21.8M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-18629.htm" title="猫咪轻微抓伤破皮（猫咪抓伤轻微破皮要紧吗）">猫咪轻微抓伤破皮（猫咪抓伤轻微破皮要紧吗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-9-free-clash.htm" title="12月9日20.5M/S|Hiddify-Next免费机场订阅每天更新订阅链接">12月9日20.5M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-21012.htm" title="学美容美发的正规学校推荐（学美容美发的正规学校推荐西安）">学美容美发的正规学校推荐（学美容美发的正规学校推荐西安）</a></li>
+                        <li class="py-2"><a href="/news/article-27940.htm" title="动物疫苗间隔多久打一次好一点（动物疫苗间隔时间）">动物疫苗间隔多久打一次好一点（动物疫苗间隔时间）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">33</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //about -->
+    
+    <!-- footer -->
+<footer class="py-lg-4 py-md-3 py-sm-3 py-3">
+    <div class="container py-lg-5 py-md-5 py-sm-4 py-3">
+        <div class="bottem-wthree-footer text-center pt-md-4 pt-3">
+            <p>
+                <a href="/">首页</a> |
+                <a href="/free-node/">免费节点</a> |
+                <a href="/news/">新闻资讯</a> |
+                <a href="/about-us.htm">关于我们</a> |
+                <a href="/disclaimer.htm">免责申明</a> |
+                <a href="/privacy.htm">隐私申明</a> |
+                <a href="/sitemap.xml">网站地图</a>
+            </p>
+            <p>
+                <a href="/">FreeHiddifyNext节点订阅站</a> 版权所有
+                <br />
+                Powered by WordPress
+            </p>
+        </div>
+        <!-- move icon -->
+        <div class="text-center">
+            <a href="#home" class="move-top text-center mt-3"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+        </div>
+        <!--//move icon -->
+    </div>
+</footer>
+<!--//footer -->
+<script src="/assets/website/js/frontend/freehiddifynext/jquery-1.11.1.min.js"></script>
+<script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+<script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
