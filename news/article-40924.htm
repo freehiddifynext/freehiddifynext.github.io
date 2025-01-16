@@ -98,6 +98,7 @@
                   				  				  				<div id="content_views" class="htmledit_views"> </h1> <h2>1、首先将本地的Spring Boot 项目打包成Jar包</h2> <p>我们以SpringBootDemo项目为例，执行以下的 mvn 命令将项目进行打包</p> <pre><code>mvn clean package</code></pre> <p><img fetchpriority="high" decoding="async" alt="" height="1200" src="http://img.555519.xyz/uploads3/20220603/734ff518f9a73d072ec0784233d5ea93.jpg"></p> <p>项目打包完成，打包完成以后Jar包会默认保存在该项目的target文件里，同时在控制台也会输出jar包所在的位置</p> <p><img decoding="async" alt="" height="1200" src="http://img.555519.xyz/uploads3/20220603/3528eb9feee5ca90f69284de27dccbeb.jpg"></p> <p>然后打开命令窗口，进入jar包所在的目录，执行以下命令 （在本地启动服务以检验服务能否正常运行），并激活开发环境（dev）的profiles</p> <p><img decoding="async" alt="" height="1200" src="http://img.555519.xyz/uploads3/20220603/a1853cefde06fbb87a5def0dfab183c8.jpg"></p> <pre><code>java -jar .\SpringBootDemo-1.0-SNAPSHOT.jar --spring.profiles.active=dev</code></pre> <p>以上命令中，--spring.profiles.active=dev 表示激活开发环境（dev）profile的命令行参数</p> <p>项目区启动成功的效果图：</p> <p><img loading="lazy" decoding="async" alt="" height="1200" src="http://img.555519.xyz/uploads3/20220603/701926383c35f23f4a59fa05b6eeb943.jpg"></p> <p>项目启动成功以后，通过浏览器访问&nbsp; http://localhost:8081/资源地址 测试是否能够访问到服务，例如我的：<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://localhost:8081/area/getAll"  title="&nbsp;http://localhost:8081/area/getAll" rel="nofollow">&nbsp;http://localhost:8081/area/getAll</a>&nbsp; ，如果能够正常访问到后台接口，那么即表示jar包打包成功</p> <p><img loading="lazy" decoding="async" alt="" height="1200" src="http://img.555519.xyz/uploads3/20220603/f076d0c5da759fc42e4b9cb48b243b2d.jpg"></p> <h2>2、然后通过FileZilla将本地的Jar包上传到远程服务器，并启动服务一直在后台运行</h2> <p>打包完成以后，通过FileZilla将本地的Jar包上传到远程服务器中。</p> <pre><code>nohup java –jar jar包名称 &amp;</code></pre> <p>其中，nohup 表示运行前会新建一个nohup.out文件用来记录该项目的运行日志情况。&amp;表示一直在后台运行。如果没有加，那么表示临时运行，关闭窗口就会停止运行。</p> <p>如果想让jar包一直在后台运行，并且指定端口，那么通过如下命令来实现</p> <pre><code>nohup java -jar jar名称 --server.port=8090 &amp;</code></pre> </div> 			                <div class="clearfix"></div>
                 <div class="col-md-12 mt-5">
                                         <p>上一个：<a href="/news/article-40923.htm">java8新特性详解_JAVA8 十大新特性详解</a></p>
+                                        <p>下一个：<a href="/news/article-41426.htm">python 在sql语句中使用%s,%d,%f</a></p>
                                     </div>
                                 </div>
                 <div class="col-md-3">
@@ -107,16 +108,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/news/article-33631.htm" title="被家猫咬了一个小孔就一丁点血,然后早上伤口已经愈合（被猫咬出一个小伤口流血了）">被家猫咬了一个小孔就一丁点血,然后早上伤口已经愈合（被猫咬出一个小伤口流血了）</a></li>
-                        <li class="py-2"><a href="/news/article-38963.htm" title="我的树莓派 Raspberry Pi Zero 2W 折腾笔记，记录一些遇到的问题和解决办法">我的树莓派 Raspberry Pi Zero 2W 折腾笔记，记录一些遇到的问题和解决办法</a></li>
-                        <li class="py-2"><a href="/news/article-27022.htm" title="动物疫苗管理法律法规有哪些内容呢图片（动物疫苗新法案）">动物疫苗管理法律法规有哪些内容呢图片（动物疫苗新法案）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-6-clash-node.htm" title="11月6日19.4M/S|Hiddify-Next免费机场订阅每天更新订阅链接">11月6日19.4M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-12-free-high-speed-nodes.htm" title="10月12日21.2M/S|Hiddify-Next免费机场订阅每天更新订阅链接">10月12日21.2M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-35420.htm" title="2021公务员考试国考报名条件及流程（公务员国考报考指南）">2021公务员考试国考报名条件及流程（公务员国考报考指南）</a></li>
-                        <li class="py-2"><a href="/news/article-27942.htm" title="哈尔滨农大宠物医院的地址和电话号码（哈尔滨农大动物医院地址）">哈尔滨农大宠物医院的地址和电话号码（哈尔滨农大动物医院地址）</a></li>
-                        <li class="py-2"><a href="/news/article-31194.htm" title="孕妇被猫抓伤出一丝丝血要***吗（孕妇被猫抓伤出一丝丝血要***吗有影响吗）">孕妇被猫抓伤出一丝丝血要***吗（孕妇被猫抓伤出一丝丝血要***吗有影响吗）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-26-free-ssr-subscribe.htm" title="10月26日22.1M/S|Hiddify-Next免费机场订阅每天更新订阅链接">10月26日22.1M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-26095.htm" title="附近免费领养小猫小狗（附近领养宠物小猫）">附近免费领养小猫小狗（附近领养宠物小猫）</a></li>
+                        <li class="py-2"><a href="/news/article-38962.htm" title="类和对象的学习心得">类和对象的学习心得</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-28-clash-node-daily-updates.htm" title="11月28日22.1M/S|Hiddify-Next免费机场订阅每天更新订阅链接">11月28日22.1M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-36495.htm" title="宠物领养活动广告词大全（宠物领养广告文案）">宠物领养活动广告词大全（宠物领养广告文案）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-31-clash-windows.htm" title="12月31日18.1M/S|Hiddify-Next免费机场订阅每天更新订阅链接">12月31日18.1M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-22839.htm" title="动物疫苗接种的注意事项包括有哪些内容（动物疫苗接种的注意事项包括有哪些内容呢）">动物疫苗接种的注意事项包括有哪些内容（动物疫苗接种的注意事项包括有哪些内容呢）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-23-clash-v2ray-ss-ssr.htm" title="12月23日19.4M/S|Hiddify-Next免费机场订阅每天更新订阅链接">12月23日19.4M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-10-free-high-speed-nodes.htm" title="1月10日19.9M/S|Hiddify-Next免费机场订阅每天更新订阅链接">1月10日19.9M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-30-shadowrocket-node.htm" title="10月30日18.5M/S|Hiddify-Next免费机场订阅每天更新订阅链接">10月30日18.5M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-29-clash-v2ray-ss-ssr.htm" title="10月29日21.5M/S|Hiddify-Next免费机场订阅每天更新订阅链接">10月29日21.5M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-29328.htm" title="申请动物诊疗机构提交的资料有哪些（申请动物诊疗机构的条件）">申请动物诊疗机构提交的资料有哪些（申请动物诊疗机构的条件）</a></li>
                     </ul>
     </div>
 </div>
@@ -128,7 +129,7 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">45</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+                <h4><span class="badge" style="float: right;">48</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
