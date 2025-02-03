@@ -1,11 +1,22 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html xml:lang="zh-CN" lang="zh-CN">
 
 <head>
         <link rel="canonical" href="https://freehiddifynext.github.io/news/article-21927.htm" />
     <title>Quartz高可用定时任务快速上手</title>
         <meta name="description" content="定时任务使用指南 如果你想做定时任务，有高可用方面的需求，或者仅仅想入门快，上手简单，那么选用它准没错。 定时任务模块是对Quartz框架进一步封装，使用更加简洁。 1、引入依赖 &lt;depend" />
         <link rel="icon" href="/assets/website/img/freehiddifynext/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="FreeHiddifyNext节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freehiddifynext.github.io/news/article-21927.htm" />
+    <meta property="og:site_name" content="FreeHiddifyNext节点订阅站" />
+    <meta property="og:title" content="Quartz高可用定时任务快速上手" />
+    <meta property="og:image" content="https://freehiddifynext.github.io/uploads/20240414/10c868be3c151570b43d4c1639e32a7d.webp" />
+        <meta property="og:release_date" content="2024-12-06T09:13:48" />
+    <meta property="og:updated_time" content="2024-12-06T09:13:48" />
+        <meta property="og:description" content="定时任务使用指南 如果你想做定时任务，有高可用方面的需求，或者仅仅想入门快，上手简单，那么选用它准没错。 定时任务模块是对Quartz框架进一步封装，使用更加简洁。 1、引入依赖 &lt;depend" />
+        
     <!--meta tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,6 +30,24 @@
       }
     </script>
     <!--//meta tags ends here-->
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Quartz高可用定时任务快速上手">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    
     <!--booststrap-->
     <link href="/assets/website/css/freehiddifynext/bootstrap.min.css" rel="stylesheet" type="text/css" media="all">
     <!--//booststrap end-->
@@ -108,16 +137,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2024-5-14-clash-node.htm" title="5月14日22.7M/S|Shadowrocket/Clash/SSR/V2ray免费节点每天更新订阅链接">5月14日22.7M/S|Shadowrocket/Clash/SSR/V2ray免费节点每天更新订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-8-29-clash-v2ray-ss-ssr.htm" title="8月29日21.2M/S|Hiddify-Next免费节点每天更新订阅链接">8月29日21.2M/S|Hiddify-Next免费节点每天更新订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-4-15-free-shadowrocket-node.htm" title="4月15日18.6M/S|SSR/Clash/V2ray/Shadowrocket免费节点每天更新订阅链接">4月15日18.6M/S|SSR/Clash/V2ray/Shadowrocket免费节点每天更新订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-31717.htm" title="宠物打疫苗不能吃什么食物（宠物打疫苗之前可以吃东西吗）">宠物打疫苗不能吃什么食物（宠物打疫苗之前可以吃东西吗）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-11-clash-windows.htm" title="10月11日19.4M/S|Hiddify-Next免费机场订阅每天更新订阅链接">10月11日19.4M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-17-clash-node-daily-updates.htm" title="10月17日20.6M/S|Hiddify-Next免费机场订阅每天更新订阅链接">10月17日20.6M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-24689.htm" title="内江宠物店有狗卖的在哪里（内江宠物店位置）">内江宠物店有狗卖的在哪里（内江宠物店位置）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-3-free-node-subscribe.htm" title="12月3日19.1M/S|Hiddify-Next免费机场订阅每天更新订阅链接">12月3日19.1M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-4-16-free-ssr-node.htm" title="4月16日19.3M/S|Shadowrocket/V2ray/Clash/SSR免费节点每天更新订阅链接">4月16日19.3M/S|Shadowrocket/V2ray/Clash/SSR免费节点每天更新订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-7-18-clash-v2ray-ss-ssr.htm" title="7月18日19.2M/S|Hiddify-Next免费节点每天更新订阅链接">7月18日19.2M/S|Hiddify-Next免费节点每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-1-free-node-subscribe-links.htm" title="1月1日19.5M/S|Hiddify-Next免费机场订阅每天更新订阅链接">1月1日19.5M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-14-free-ssr-subscribe.htm" title="11月14日21.9M/S|Hiddify-Next免费机场订阅每天更新订阅链接">11月14日21.9M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-13-free-node-subscribe.htm" title="12月13日21.8M/S|Hiddify-Next免费机场订阅每天更新订阅链接">12月13日21.8M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-22-clash-node.htm" title="12月22日18.6M/S|Hiddify-Next免费机场订阅每天更新订阅链接">12月22日18.6M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-27482.htm" title="宠物粮食品牌名字4个字大全及图片（宠物粮食品牌名字4个字大全及图片及价格）">宠物粮食品牌名字4个字大全及图片（宠物粮食品牌名字4个字大全及图片及价格）</a></li>
+                        <li class="py-2"><a href="/news/article-41914.htm" title="新手开店做什么比较好（新手开店做什么比较好呢）">新手开店做什么比较好（新手开店做什么比较好呢）</a></li>
+                        <li class="py-2"><a href="/news/article-35899.htm" title="宠颐生中心医院（宠颐生中心医院怎么样）">宠颐生中心医院（宠颐生中心医院怎么样）</a></li>
+                        <li class="py-2"><a href="/news/article-33169.htm" title="动物疫苗行业会议记录范文（动物疫苗行业会议记录范文模板）">动物疫苗行业会议记录范文（动物疫苗行业会议记录范文模板）</a></li>
+                        <li class="py-2"><a href="/news/article-22840.htm" title="纹绣美甲美睫培训学校哪家好（领绣集团纹绣培训学院）">纹绣美甲美睫培训学校哪家好（领绣集团纹绣培训学院）</a></li>
+                        <li class="py-2"><a href="/news/article-47853.htm" title="性能优化之html、css、js三者的加载顺序">性能优化之html、css、js三者的加载顺序</a></li>
                     </ul>
     </div>
 </div>
@@ -129,34 +158,16 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">3</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2024-07/" title="2024-07 归档">2024-07</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">29</span> <a href="/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">29</span> <a href="/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">17</span> <a href="/date/2024-04/" title="2024-04 归档">2024-04</a></h4>
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
             </li>
                     </ul>
     </div>

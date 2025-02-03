@@ -1,11 +1,22 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html xml:lang="zh-CN" lang="zh-CN">
 
 <head>
         <link rel="canonical" href="https://freehiddifynext.github.io/news/article-28870.htm" />
     <title>SpringCloud&#8212;-Feign隔离和降级</title>
         <meta name="description" content="限流是一种预防措施，虽然限流可以尽量避免因高并发而引起的服务故障，但服务还会因为其它原因而故障。 而要将这些故障控制在一定范围，避免雪崩，就要靠线程隔离（舱壁模式）和熔断降级手段了。线程隔离：调用者在" />
         <link rel="icon" href="/assets/website/img/freehiddifynext/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="FreeHiddifyNext节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freehiddifynext.github.io/news/article-28870.htm" />
+    <meta property="og:site_name" content="FreeHiddifyNext节点订阅站" />
+    <meta property="og:title" content="SpringCloud&#8212;-Feign隔离和降级" />
+    <meta property="og:image" content="https://freehiddifynext.github.io/uploads/20240414/10c868be3c151570b43d4c1639e32a7d.webp" />
+        <meta property="og:release_date" content="2024-12-21T10:10:06" />
+    <meta property="og:updated_time" content="2024-12-21T10:10:06" />
+        <meta property="og:description" content="限流是一种预防措施，虽然限流可以尽量避免因高并发而引起的服务故障，但服务还会因为其它原因而故障。 而要将这些故障控制在一定范围，避免雪崩，就要靠线程隔离（舱壁模式）和熔断降级手段了。线程隔离：调用者在" />
+        
     <!--meta tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,6 +30,24 @@
       }
     </script>
     <!--//meta tags ends here-->
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="SpringCloud&#8212;-Feign隔离和降级">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    
     <!--booststrap-->
     <link href="/assets/website/css/freehiddifynext/bootstrap.min.css" rel="stylesheet" type="text/css" media="all">
     <!--//booststrap end-->
@@ -108,16 +137,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2024-11-25-free-node-subscribe.htm" title="11月25日18.6M/S|Hiddify-Next免费机场订阅每天更新订阅链接">11月25日18.6M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-6-6-free-node-subscribe-links.htm" title="6月6日18.7M/S|Hiddify-Next免费节点每天更新订阅链接">6月6日18.7M/S|Hiddify-Next免费节点每天更新订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-6-free-ssr-subscribe.htm" title="9月6日20.5M/S|Hiddify-Next免费节点每天更新订阅链接">9月6日20.5M/S|Hiddify-Next免费节点每天更新订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-7-30-free-shadowrocket-node.htm" title="7月30日18.2M/S|Hiddify-Next免费节点每天更新订阅链接">7月30日18.2M/S|Hiddify-Next免费节点每天更新订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-4-19-free-shadowrocket-node.htm" title="4月19日19.6M/S|V2ray/SSR/Shadowrocket/Clash免费节点每天更新订阅链接">4月19日19.6M/S|V2ray/SSR/Shadowrocket/Clash免费节点每天更新订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-29-clash-v2ray-ss-ssr.htm" title="10月29日21.5M/S|Hiddify-Next免费机场订阅每天更新订阅链接">10月29日21.5M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-8-10-free-ssr-node.htm" title="8月10日19.3M/S|Hiddify-Next免费节点每天更新订阅链接">8月10日19.3M/S|Hiddify-Next免费节点每天更新订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-27021.htm" title="动物疫苗的类型包括（动物疫苗的种类和制备原理）">动物疫苗的类型包括（动物疫苗的种类和制备原理）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-6-24-free-node-subscribe-links.htm" title="6月24日20.5M/S|Hiddify-Next免费节点每天更新订阅链接">6月24日20.5M/S|Hiddify-Next免费节点每天更新订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-21-clash-v2ray-ss-ssr.htm" title="10月21日22.1M/S|Hiddify-Next免费机场订阅每天更新订阅链接">10月21日22.1M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-41426.htm" title="python 在sql语句中使用%s,%d,%f">python 在sql语句中使用%s,%d,%f</a></li>
+                        <li class="py-2"><a href="/news/article-25157.htm" title="【天津免费领养狗狗】（天津免费领养狗狗正规网）">【天津免费领养狗狗】（天津免费领养狗狗正规网）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-13-free-shadowrocket-node.htm" title="11月13日20.1M/S|Hiddify-Next免费机场订阅每天更新订阅链接">11月13日20.1M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-33632.htm" title="宠物粮市场前景如何发展（宠物粮行业分析）">宠物粮市场前景如何发展（宠物粮行业分析）</a></li>
+                        <li class="py-2"><a href="/news/article-42419.htm" title="猫咪三针疫苗多久打一次啊视频（猫三针疫苗要多久）">猫咪三针疫苗多久打一次啊视频（猫三针疫苗要多久）</a></li>
+                        <li class="py-2"><a href="/news/article-44903.htm" title="宠物粮食加工厂加盟电话号码查询 宠物粮食加工厂加盟电话号码查询是多少">宠物粮食加工厂加盟电话号码查询 宠物粮食加工厂加盟电话号码查询是多少</a></li>
+                        <li class="py-2"><a href="/news/article-40924.htm" title="将Spring Boot 项目打包成Jar包并部署到Nginx服务器中">将Spring Boot 项目打包成Jar包并部署到Nginx服务器中</a></li>
+                        <li class="py-2"><a href="/news/article-35900.htm" title="公办动物医院 公办动物医院有哪些">公办动物医院 公办动物医院有哪些</a></li>
+                        <li class="py-2"><a href="/news/article-29328.htm" title="申请动物诊疗机构提交的资料有哪些（申请动物诊疗机构的条件）">申请动物诊疗机构提交的资料有哪些（申请动物诊疗机构的条件）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-2-shadowrocket-node.htm" title="12月2日19.1M/S|Hiddify-Next免费机场订阅每天更新订阅链接">12月2日19.1M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
                     </ul>
     </div>
 </div>
@@ -129,34 +158,16 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">3</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2024-07/" title="2024-07 归档">2024-07</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">29</span> <a href="/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">29</span> <a href="/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">17</span> <a href="/date/2024-04/" title="2024-04 归档">2024-04</a></h4>
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
             </li>
                     </ul>
     </div>

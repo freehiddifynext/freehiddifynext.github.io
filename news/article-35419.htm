@@ -1,11 +1,22 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html xml:lang="zh-CN" lang="zh-CN">
 
 <head>
         <link rel="canonical" href="https://freehiddifynext.github.io/news/article-35419.htm" />
     <title>linux搭建NFS网络文件共享服务</title>
         <meta name="description" content="一、概念 NFS是Network File System的缩写，它的主要功能是通过网络将不同的主机系统之间可以彼此共享文件或者目录。NFS客户端可以通过挂载的方式将NFS服务端共享的数据文件目录挂载到" />
         <link rel="icon" href="/assets/website/img/freehiddifynext/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="FreeHiddifyNext节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freehiddifynext.github.io/news/article-35419.htm" />
+    <meta property="og:site_name" content="FreeHiddifyNext节点订阅站" />
+    <meta property="og:title" content="linux搭建NFS网络文件共享服务" />
+    <meta property="og:image" content="https://freehiddifynext.github.io/uploads/20240414/49991883b1523a3bd855f07ad657519f.webp" />
+        <meta property="og:release_date" content="2025-01-04T10:22:48" />
+    <meta property="og:updated_time" content="2025-01-04T10:22:48" />
+        <meta property="og:description" content="一、概念 NFS是Network File System的缩写，它的主要功能是通过网络将不同的主机系统之间可以彼此共享文件或者目录。NFS客户端可以通过挂载的方式将NFS服务端共享的数据文件目录挂载到" />
+        
     <!--meta tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,6 +30,24 @@
       }
     </script>
     <!--//meta tags ends here-->
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="linux搭建NFS网络文件共享服务">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    
     <!--booststrap-->
     <link href="/assets/website/css/freehiddifynext/bootstrap.min.css" rel="stylesheet" type="text/css" media="all">
     <!--//booststrap end-->
@@ -108,16 +137,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/news/article-21465.htm" title="聊城宠物狗商家有哪些公司（聊城的宠物店）">聊城宠物狗商家有哪些公司（聊城的宠物店）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-1-5-free-node-subscribe.htm" title="1月5日20.4M/S|Hiddify-Next免费机场订阅每天更新订阅链接">1月5日20.4M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-31-clash-node-daily-updates.htm" title="1月31日19.1M/S|Hiddify-Next免费机场订阅每天更新订阅链接">1月31日19.1M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-37958.htm" title="动物注射疫苗前后注意事项有哪些呢视频（动物注射疫苗前后注意事项有哪些呢视频教学）">动物注射疫苗前后注意事项有哪些呢视频（动物注射疫苗前后注意事项有哪些呢视频教学）</a></li>
                         <li class="py-2"><a href="/news/article-25155.htm" title="动物医院在哪个位置好一点（动物医院价目表）">动物医院在哪个位置好一点（动物医院价目表）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-26-free-ssr-node.htm" title="11月26日22.6M/S|Hiddify-Next免费机场订阅每天更新订阅链接">11月26日22.6M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-21012.htm" title="学美容美发的正规学校推荐（学美容美发的正规学校推荐西安）">学美容美发的正规学校推荐（学美容美发的正规学校推荐西安）</a></li>
-                        <li class="py-2"><a href="/news/article-25625.htm" title="数据结构 &#8211; 单链表 C++ 实现">数据结构 &#8211; 单链表 C++ 实现</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-30-clash-node.htm" title="11月30日20.4M/S|Hiddify-Next免费机场订阅每天更新订阅链接">11月30日20.4M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-19-shadowrocket-node.htm" title="11月19日20M/S|Hiddify-Next免费机场订阅每天更新订阅链接">11月19日20M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-33631.htm" title="被家猫咬了一个小孔就一丁点血,然后早上伤口已经愈合（被猫咬出一个小伤口流血了）">被家猫咬了一个小孔就一丁点血,然后早上伤口已经愈合（被猫咬出一个小伤口流血了）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-19-free-v2ray.htm" title="10月19日21.3M/S|Hiddify-Next免费机场订阅每天更新订阅链接">10月19日21.3M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-37494.htm" title="带你快速认识NamenodeHA和Yarn HA,为搭建HadoopHA集群打下基础!">带你快速认识NamenodeHA和Yarn HA,为搭建HadoopHA集群打下基础!</a></li>
+                        <li class="py-2"><a href="/news/article-32195.htm" title="瑞派宠物连锁医院（瑞派宠物医院全国分店）">瑞派宠物连锁医院（瑞派宠物医院全国分店）</a></li>
+                        <li class="py-2"><a href="/news/article-21930.htm" title="有没有24小时营业的宠物店（这附近哪里有24小时宠物店）">有没有24小时营业的宠物店（这附近哪里有24小时宠物店）</a></li>
+                        <li class="py-2"><a href="/news/article-18629.htm" title="猫咪轻微抓伤破皮（猫咪抓伤轻微破皮要紧吗）">猫咪轻微抓伤破皮（猫咪抓伤轻微破皮要紧吗）</a></li>
+                        <li class="py-2"><a href="/news/article-48292.htm" title="猫咪疫苗打针多少钱（猫咪打疫苗多少钱一针?）">猫咪疫苗打针多少钱（猫咪打疫苗多少钱一针?）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-13-free-shadowrocket-node.htm" title="11月13日20.1M/S|Hiddify-Next免费机场订阅每天更新订阅链接">11月13日20.1M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-23-clash-v2ray-ss-ssr.htm" title="12月23日19.4M/S|Hiddify-Next免费机场订阅每天更新订阅链接">12月23日19.4M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
                     </ul>
     </div>
 </div>
@@ -129,16 +158,16 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">18</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
             </li>
                     </ul>
     </div>
