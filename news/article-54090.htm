@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freehiddifynext.github.io/news/article-54090.htm" />
+    <title>关于Springcloud Sleuth分布式请求链路跟踪的使用 小结</title>
+        <meta name="description" content="目录 1.&nbsp;Sleuth概述 2. Zipkin配置 3.&nbsp;Sleuth案例 3.1 服务提供者 3.2&nbsp;服务消费者 3.3 依赖关系    Sleuth configu" />
+        <link rel="icon" href="/assets/website/img/freehiddifynext/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="FreeHiddifyNext节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freehiddifynext.github.io/news/article-54090.htm" />
+    <meta property="og:site_name" content="FreeHiddifyNext节点订阅站" />
+    <meta property="og:title" content="关于Springcloud Sleuth分布式请求链路跟踪的使用 小结" />
+    <meta property="og:image" content="https://freehiddifynext.github.io/uploads/20240414/0713acbe97b694c9e3f83955969a2adf.webp" />
+        <meta property="og:release_date" content="2025-02-10T07:37:23" />
+    <meta property="og:updated_time" content="2025-02-10T07:37:23" />
+        <meta property="og:description" content="目录 1.&nbsp;Sleuth概述 2. Zipkin配置 3.&nbsp;Sleuth案例 3.1 服务提供者 3.2&nbsp;服务消费者 3.3 依赖关系    Sleuth configu" />
+        
+    <!--meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+      }, false);
+      
+      function hideURLbar() {
+        window.scrollTo(0, 1);
+      }
+    </script>
+    <!--//meta tags ends here-->
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="关于Springcloud Sleuth分布式请求链路跟踪的使用 小结">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    
+    <!--booststrap-->
+    <link href="/assets/website/css/freehiddifynext/bootstrap.min.css" rel="stylesheet" type="text/css" media="all">
+    <!--//booststrap end-->
+    <!-- font-awesome icons -->
+    <link href="/assets/website/css/freehiddifynext/font-awesome.min.css" rel="stylesheet">
+    <!-- //font-awesome icons -->
+    <!--stylesheets-->
+    <link href="/assets/website/css/freehiddifynext/style.css" rel='stylesheet' type='text/css' media="all">
+    <!--//stylesheets-->
+    <link href="http://fonts.googleapis.com/css?family=Thasadith:400,700" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N7EH3QDE4Q"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N7EH3QDE4Q');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!--headder-->
+    <div class="header-outs inner_page-banner " id="home">
+                <div class="headder-top">
+            <!-- nav -->
+            <nav>
+                <div id="logo">
+                    <a href="/">
+                                        <span>Free Hiddify Next</span>
+                                        </a>
+                </div>
+                <label for="drop" class="toggle">Menu</label>
+                <input type="checkbox" id="drop">
+                <ul class="menu mt-2">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a href="/client.htm">客户端</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                    </ul>
+            </nav>
+            <!-- //nav -->
+        </div>
+    </div>
+    <!--//headder-->
+    <!-- short -->
+    <div class="using-border py-3">
+        <div class="inner_breadcrumb  ml-4">
+            <ul class="short_ls">
+                <li>
+                    <a href="/">首页</a>
+                    <span>/</span>
+                </li>
+                <li>
+                    <a href="/news/">新闻资讯</a>
+                    <span>/</span>
+                </li>
+                <li>正文</li>
+            </ul>
+        </div>
+    </div>
+    <!-- //short-->
+    <!-- about -->
+    <section class="about py-lg-4 py-md-3 py-sm-3 py-3" id="about">
+        <div class="container py-lg-5 py-md-4 py-sm-4 py-3">
+            <div class="row">
+                <div class="col-md-9">
+                  <h1 class="title text-center mb-lg-5 mb-md-4 mb-sm-4 mb-3">关于Springcloud Sleuth分布式请求链路跟踪的使用 小结</h1>
+                                  <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> <p id="main-toc"><strong>目录</strong></p> <p id="1.%C2%A0Sleuth%E6%A6%82%E8%BF%B0-toc" style="margin-left:0px;"><a href="#1.%C2%A0Sleuth%E6%A6%82%E8%BF%B0" rel="nofollow">1.&nbsp;Sleuth概述</a></p> <p id="2.%20Zipkin%E9%85%8D%E7%BD%AE-toc" style="margin-left:0px;"><a href="#2.%20Zipkin%E9%85%8D%E7%BD%AE" rel="nofollow">2. Zipkin配置</a></p> <p id="3.%C2%A0Sleuth%E6%A1%88%E4%BE%8B-toc" style="margin-left:0px;"><a href="#3.%C2%A0Sleuth%E6%A1%88%E4%BE%8B" rel="nofollow">3.&nbsp;Sleuth案例</a></p> <p id="3.1%20%E6%9C%8D%E5%8A%A1%E6%8F%90%E4%BE%9B%E8%80%85-toc" style="margin-left:40px;"><a href="#3.1%20%E6%9C%8D%E5%8A%A1%E6%8F%90%E4%BE%9B%E8%80%85" rel="nofollow">3.1 服务提供者</a></p> <p id="3.2%C2%A0%E6%9C%8D%E5%8A%A1%E6%B6%88%E8%B4%B9%E8%80%85-toc" style="margin-left:40px;"><a href="#3.2%C2%A0%E6%9C%8D%E5%8A%A1%E6%B6%88%E8%B4%B9%E8%80%85" rel="nofollow">3.2&nbsp;服务消费者</a></p> <p id="3.3%20%E4%BE%9D%E8%B5%96%E5%85%B3%E7%B3%BB-toc" style="margin-left:40px;"><a href="#3.3%20%E4%BE%9D%E8%B5%96%E5%85%B3%E7%B3%BB" rel="nofollow">3.3 依赖关系</a></p> <hr id="hr-toc"/> </h1> <blockquote> <p>Sleuth configures everything you need to get started. This includes where trace data (spans) are reported to, how many traces to keep (sampling), if remote fields (baggage) are sent, and which libraries are traced.</p> </blockquote> <p>微服务框架中，一个由客户端发起的请求在后端系统中经过多个不同的服务节点调用来协同产生最后的请求结果，每个请求都会形成一条复杂的分布式服务调用链路，而<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://spring.io/projects/spring-cloud-sleuth"  title="Springcloud Sleuth" rel="nofollow">Springcloud Sleuth</a>提供了一套完整的服务跟踪的解决方案。</p> <p><img fetchpriority="high" decoding="async" alt="" height="333" src="http://img.555519.xyz/uploads/20221130/6b62f2731a755294e8ac9899768f1954.jpg"></p> </h1> <p>1) 下载<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://dl.bintray.com/openzipkin/maven/io/zipkin/java/zipkin-server/"  title="Zipkin" rel="nofollow">Zipkin</a>的zipkin-server-2.12.9-exec.jar。</p> <p>2) 启动zipkin：java -jar .\zipkin-server-2.12.9-exec.jar。</p> <p><img decoding="async" alt="" height="235" src="http://img.555519.xyz/uploads/20221130/1d1c5695fb86a20658fa30e8c533555b.jpg"></p> <p>3) 访问zipkin（localhost:9411/zipkin/）。</p> <p><img decoding="async" alt="" height="156" src="http://img.555519.xyz/uploads/20221130/e33a250908573870d849f165f41d02b2.jpg"></p> </h1> <p>以下案例代码的<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://github.com/BAStriver/springcloud-test"  title="Github地址" rel="nofollow">Github地址</a>。</p> <p>四个modules分别是：cloud-eureka-server7001，cloud-provider-hystrix-payment8001，cloud-consumer-feign-hystrix-order80。</p> <h2 id="3.1%20%E6%9C%8D%E5%8A%A1%E6%8F%90%E4%BE%9B%E8%80%85">3.1 服务提供者</h2> <p>1)&nbsp;cloud-provider-payment8001添加zipkin依赖。</p> <pre><code>&lt;dependency&gt;     &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;     &lt;artifactId&gt;spring-cloud-starter-zipkin&lt;/artifactId&gt; &lt;/dependency&gt;</code></pre> <p>2) 添加zipkin配置。</p> <pre><code>zipkin:   base-url: http://localhost:9411   sleuth:     sampler:       #采样取值介于 0到1之间，1则表示全部收集       probability: 1</code></pre> <p>3)&nbsp;PaymentController添加接口：</p> <pre><code class="language-java">@GetMapping(value="/payment/zipkin") public String paymentZipkin() { 	return "hello,i am paymentZipkin server fallback,O(∩_∩)O哈哈~"; }</code></pre> <h2 id="3.2%C2%A0%E6%9C%8D%E5%8A%A1%E6%B6%88%E8%B4%B9%E8%80%85">3.2&nbsp;服务消费者</h2> <p>1)&nbsp;cloud-consumer-feign-hystrix-order80添加zipkin依赖。</p> <pre><code>&lt;dependency&gt;     &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;     &lt;artifactId&gt;spring-cloud-starter-zipkin&lt;/artifactId&gt; &lt;/dependency&gt;</code></pre> <p>2)&nbsp;添加zipkin配置。</p> <pre><code>zipkin:   base-url: http://localhost:9411   sleuth:     sampler:       #采样取值介于 0到1之间，1则表示全部收集       probability: 1</code></pre> <p>3)&nbsp;ordercontroller添加接口：</p> <pre><code class="language-java">@GetMapping(value="/consumer/payment/zipkin") public String paymentZipkin() { 	return restTemplate.getForObject("http://127.0.0.1:8001/payment/zipkin/",String.class); }</code></pre> <h2 id="3.3%20%E4%BE%9D%E8%B5%96%E5%85%B3%E7%B3%BB">3.3 依赖关系</h2> <p><img loading="lazy" decoding="async" alt="" height="280" src="http://img.555519.xyz/uploads/20221130/0d1d461e6a4dd36de98106ef809860c3.jpg"></p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-53554.htm">被猫抓伤出血要吃消炎药吗（被猫抓伤出血吃药可以吗）</a></p>
+                                        <p>下一个：<a href="/news/article-54091.htm">使用 Bitnami PostgreSQL Docker 镜像快速设置流复制集群</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                  <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-12-24-node-share-links.htm" title="12月24日18.6M/S|Hiddify-Next免费机场订阅每天更新订阅链接">12月24日18.6M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-30767.htm" title="国内宠物粮上市公司名单 国内宠物粮上市公司名单最新">国内宠物粮上市公司名单 国内宠物粮上市公司名单最新</a></li>
+                        <li class="py-2"><a href="/news/article-41426.htm" title="python 在sql语句中使用%s,%d,%f">python 在sql语句中使用%s,%d,%f</a></li>
+                        <li class="py-2"><a href="/news/article-32194.htm" title="南京宠物领养平台电话是多少（南京最大的宠物店免费领养）">南京宠物领养平台电话是多少（南京最大的宠物店免费领养）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-16-free-clash.htm" title="12月16日21.4M/S|Hiddify-Next免费机场订阅每天更新订阅链接">12月16日21.4M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-39935.htm" title="上海宠物领养救助站报警电话号码（上海宠物领养中心）">上海宠物领养救助站报警电话号码（上海宠物领养中心）</a></li>
+                        <li class="py-2"><a href="/news/article-34931.htm" title="动物疫苗防疫站上班时间是几点的（动物防疫站打针免费吗）">动物疫苗防疫站上班时间是几点的（动物防疫站打针免费吗）</a></li>
+                        <li class="py-2"><a href="/news/article-54090.htm" title="关于Springcloud Sleuth分布式请求链路跟踪的使用 小结">关于Springcloud Sleuth分布式请求链路跟踪的使用 小结</a></li>
+                        <li class="py-2"><a href="/news/article-48830.htm" title="厦门领养宠物的平台的简单介绍">厦门领养宠物的平台的简单介绍</a></li>
+                        <li class="py-2"><a href="/news/article-45897.htm" title="Java中线程状态+线程安全问题+synchronized的用法详解_java_">Java中线程状态+线程安全问题+synchronized的用法详解_java_</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">36</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //about -->
+    
+    <!-- footer -->
+<footer class="py-lg-4 py-md-3 py-sm-3 py-3">
+    <div class="container py-lg-5 py-md-5 py-sm-4 py-3">
+        <div class="bottem-wthree-footer text-center pt-md-4 pt-3">
+            <p>
+                <a href="/">首页</a> |
+                <a href="/free-node/">免费节点</a> |
+                <a href="/news/">新闻资讯</a> |
+                <a href="/about-us.htm">关于我们</a> |
+                <a href="/disclaimer.htm">免责申明</a> |
+                <a href="/privacy.htm">隐私申明</a> |
+                <a href="/sitemap.xml">网站地图</a>
+            </p>
+            <p>
+                <a href="/">FreeHiddifyNext节点订阅站</a> 版权所有
+                <br />
+                Powered by WordPress
+            </p>
+        </div>
+        <!-- move icon -->
+        <div class="text-center">
+            <a href="#home" class="move-top text-center mt-3"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+        </div>
+        <!--//move icon -->
+    </div>
+</footer>
+<!--//footer -->
+<script src="/assets/website/js/frontend/freehiddifynext/jquery-1.11.1.min.js"></script>
+<script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+<script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

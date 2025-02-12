@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freehiddifynext.github.io/news/article-54091.htm" />
+    <title>使用 Bitnami PostgreSQL Docker 镜像快速设置流复制集群</title>
+        <meta name="description" content="bitnami-docker-postgresql 仓库 源码：bitnami-docker-postgresql  https://github.com/bitnami/bitnami-docker" />
+        <link rel="icon" href="/assets/website/img/freehiddifynext/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="FreeHiddifyNext节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freehiddifynext.github.io/news/article-54091.htm" />
+    <meta property="og:site_name" content="FreeHiddifyNext节点订阅站" />
+    <meta property="og:title" content="使用 Bitnami PostgreSQL Docker 镜像快速设置流复制集群" />
+    <meta property="og:image" content="https://freehiddifynext.github.io/uploads/20240414/f7af5b1a59a5aa5b53df664b37af8ec5.webp" />
+        <meta property="og:release_date" content="2025-02-10T07:37:23" />
+    <meta property="og:updated_time" content="2025-02-10T07:37:23" />
+        <meta property="og:description" content="bitnami-docker-postgresql 仓库 源码：bitnami-docker-postgresql  https://github.com/bitnami/bitnami-docker" />
+        
+    <!--meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+      }, false);
+      
+      function hideURLbar() {
+        window.scrollTo(0, 1);
+      }
+    </script>
+    <!--//meta tags ends here-->
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="使用 Bitnami PostgreSQL Docker 镜像快速设置流复制集群">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    
+    <!--booststrap-->
+    <link href="/assets/website/css/freehiddifynext/bootstrap.min.css" rel="stylesheet" type="text/css" media="all">
+    <!--//booststrap end-->
+    <!-- font-awesome icons -->
+    <link href="/assets/website/css/freehiddifynext/font-awesome.min.css" rel="stylesheet">
+    <!-- //font-awesome icons -->
+    <!--stylesheets-->
+    <link href="/assets/website/css/freehiddifynext/style.css" rel='stylesheet' type='text/css' media="all">
+    <!--//stylesheets-->
+    <link href="http://fonts.googleapis.com/css?family=Thasadith:400,700" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N7EH3QDE4Q"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N7EH3QDE4Q');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!--headder-->
+    <div class="header-outs inner_page-banner " id="home">
+                <div class="headder-top">
+            <!-- nav -->
+            <nav>
+                <div id="logo">
+                    <a href="/">
+                                        <span>Free Hiddify Next</span>
+                                        </a>
+                </div>
+                <label for="drop" class="toggle">Menu</label>
+                <input type="checkbox" id="drop">
+                <ul class="menu mt-2">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a href="/client.htm">客户端</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                    </ul>
+            </nav>
+            <!-- //nav -->
+        </div>
+    </div>
+    <!--//headder-->
+    <!-- short -->
+    <div class="using-border py-3">
+        <div class="inner_breadcrumb  ml-4">
+            <ul class="short_ls">
+                <li>
+                    <a href="/">首页</a>
+                    <span>/</span>
+                </li>
+                <li>
+                    <a href="/news/">新闻资讯</a>
+                    <span>/</span>
+                </li>
+                <li>正文</li>
+            </ul>
+        </div>
+    </div>
+    <!-- //short-->
+    <!-- about -->
+    <section class="about py-lg-4 py-md-3 py-sm-3 py-3" id="about">
+        <div class="container py-lg-5 py-md-4 py-sm-4 py-3">
+            <div class="row">
+                <div class="col-md-9">
+                  <h1 class="title text-center mb-lg-5 mb-md-4 mb-sm-4 mb-3">使用 Bitnami PostgreSQL Docker 镜像快速设置流复制集群</h1>
+                                  <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/d4f4fa28795fc6ca740cba32a590781c.jpg" alt="使用 Bitnami PostgreSQL Docker 镜像快速设置流复制集群"></p> <h2 id="bitnami-docker-postgresql-仓库">bitnami-docker-postgresql 仓库</h2> <p>源码：<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://github.com/bitnami/bitnami-docker-postgresql"  target="_blank" rel="nofollow">bitnami-docker-postgresql</a></p> <ul> <li><small><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://github.com/bitnami/bitnami-docker-postgresql"  target="_blank" rel="nofollow">https://github.com/bitnami/bitnami-docker-postgresql</a></small></li> </ul> <h2 id="流复制相关环境变量">流复制相关环境变量</h2> <p>使用以下环境变量，可以使用<code>Bitnami PostgreSQL Docker 镜像</code> 轻松设置<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://www.postgresql.org/docs/9.4/static/warm-standby.html#STREAMING-REPLICATION"  target="_blank" rel="nofollow">流复制</a>集群：</p> <ul> <li><code>POSTGRESQL_REPLICATION_MODE</code>: replication 模式。可能的值<code>master</code>/<code>slave</code>。没有默认值。</li> <li><code>POSTGRESQL_REPLICATION_USER</code>: 首次运行时在主服务器上创建的 replication 用户。没有默认值。</li> <li><code>POSTGRESQL_REPLICATION_PASSWORD</code>: replication 用户密码。 没有默认值。</li> <li><code>POSTGRESQL_REPLICATION_PASSWORD_FILE</code>: 包含 replication 用户密码的文件的路径。这将覆盖<code>POSTGRESQL_REPLICATION_PASSWORD</code> 中指定的值。没有默认值。</li> <li><code>POSTGRESQL_MASTER_HOST</code>: replication master（slave 参数）Hostname/IP。没有默认值。</li> <li><code>POSTGRESQL_MASTER_PORT_NUMBER</code>: replication master 的服务器端口（slave 参数）。默认是<code>5432</code>。</li> </ul> <p>在<code>复制(replication)</code>集群中，您可以拥有一个<code>主(master)</code>服务器和零个或多个<code>从(slave)</code>服务器。 启用复制后，<code>master</code> 节点处于读写模式，而<code>slave</code> 节点处于只读模式。 为了获得最佳性能，建议将读取限制在<code>slave</code> 上。</p> <ul> <li><small><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://www.postgresql.org/docs/9.4/static/warm-standby.html#STREAMING-REPLICATION"  target="_blank" rel="nofollow">http://www.postgresql.org/docs/9.4/static/warm-standby.html#STREAMING-REPLICATION</a></small></li> </ul> <h2 id="第-1-步创建-replication-master">第 1 步：创建 replication master</h2> <p>第一步是启动 master。</p> <pre><code class="language-console">$ docker run --name postgresql-master \   -e POSTGRESQL_REPLICATION_MODE=master \   -e POSTGRESQL_USERNAME=my_user \   -e POSTGRESQL_PASSWORD=password123 \   -e POSTGRESQL_DATABASE=my_database \   -e POSTGRESQL_REPLICATION_USER=my_repl_user \   -e POSTGRESQL_REPLICATION_PASSWORD=my_repl_password \   bitnami/postgresql:latest</code></pre> <p>在此命令中，我们使用<code>POSTGRESQL_REPLICATION_MODE=master</code> 参数将容器配置为<code>master</code> 容器。使用<code>POSTGRESQL_REPLICATION_USER</code> 和<code>POSTGRESQL_REPLICATION_PASSWORD</code> 参数指定<code>replication</code> 用户。</p> <h2 id="步骤-2创建-replication-slave">步骤 2：创建 replication slave</h2> <p>接下来我们启动一个<code>replication slave</code> 容器。</p> <pre><code class="language-console">$ docker run --name postgresql-slave \   --link postgresql-master:master \   -e POSTGRESQL_REPLICATION_MODE=slave \   -e POSTGRESQL_MASTER_HOST=master \   -e POSTGRESQL_MASTER_PORT_NUMBER=5432 \   -e POSTGRESQL_REPLICATION_USER=my_repl_user \   -e POSTGRESQL_REPLICATION_PASSWORD=my_repl_password \   bitnami/postgresql:latest</code></pre> <p>在上面的命令中，使用<code>POSTGRESQL_REPLICATION_MODE</code> 参数将容器配置为<code>slave</code>。 在<code>replication slave</code> 启动之前，<code>slave</code> 容器使用<code>POSTGRESQL_MASTER_HOST</code> 和<code>POSTGRESQL_MASTER_PORT_NUMBER</code> 参数连接到<code>master</code> 并从<code>master</code> 复制初始数据库。<code>POSTGRESQL_REPLICATION_USER</code> 和<code>POSTGRESQL_REPLICATION_PASSWORD</code> 凭证用于向<code>master</code> 进行身份验证。为了改变<code>pg_hba.conf</code> 的默认设置，<code>slave</code> 需要知道是否设置了<code>POSTGRESQL_PASSWORD</code>。</p> <p>使用这两个命令，您现在可以启动并运行一个两节点<code>PostgreSQL</code> 主从(<code>master-slave</code>)流复制集群。 您可以通过添加/删除<code>从(slave)</code>服务器来扩展集群，而不会导致任何停机。</p> <blockquote> <p><strong>Note</strong>: 集群完整地复制 master 服务器，包括所有用户和数据库。</p> </blockquote> <p>如果<code>master</code> 服务器宕机，您可以重新配置一个<code>slave</code> 服务器作为<code>master</code> 服务器并通过创建触发器文件<code>/tmp/postgresql.trigger.5432</code> 开始接受写入。例如，以下命令将<code>postgresql-slave</code> 重新配置为<code>master</code> 服务器：</p> <pre><code class="language-console">$ docker exec postgresql-slave touch /tmp/postgresql.trigger.5432</code></pre> <blockquote> <p><strong>Note</strong>: 需要更新集群中其他<code>slave</code> 服务器的配置，以便他们知道新的<code>master</code> 服务器。这将要求您根据我们的示例使用<code>--link postgresql-slave:master</code> 重新启动其他<code>slave</code> 服务器。</p> </blockquote> <p>使用<code>Docker Compose</code>，可以使用以下方式设置主从复制：</p> <pre><code class="language-yaml">version: '2'  services:   postgresql-master:     image: 'bitnami/postgresql:latest'     ports:       - '5432'     volumes:       - 'postgresql_master_data:/bitnami/postgresql'     environment:       - POSTGRESQL_REPLICATION_MODE=master       - POSTGRESQL_REPLICATION_USER=repl_user       - POSTGRESQL_REPLICATION_PASSWORD=repl_password       - POSTGRESQL_USERNAME=my_user       - POSTGRESQL_PASSWORD=my_password       - POSTGRESQL_DATABASE=my_database   postgresql-slave:     image: 'bitnami/postgresql:latest'     ports:       - '5432'     depends_on:       - postgresql-master     environment:       - POSTGRESQL_REPLICATION_MODE=slave       - POSTGRESQL_REPLICATION_USER=repl_user       - POSTGRESQL_REPLICATION_PASSWORD=repl_password       - POSTGRESQL_MASTER_HOST=postgresql-master       - POSTGRESQL_PASSWORD=my_password       - POSTGRESQL_MASTER_PORT_NUMBER=5432  volumes:   postgresql_master_data:</code></pre> <p>使用以下方法缩放<code>slave</code> 的数量：</p> <pre><code class="language-console">$ docker-compose up --detach --scale postgresql-master=1 --scale postgresql-slave=3</code></pre> <p>上面的命令将<code>slave</code> 的数量增加到<code>3</code>。你可以用同样的方法缩小。</p> <blockquote> <p><strong>Note</strong>: 您不应该扩大/缩小主节点的数量。始终只运行一个主节点。</p> </blockquote> <h2 id="同步提交">同步提交</h2> <p>默认情况下，<code>slave</code> 实例配置为异步复制。为了保证更高的数据稳定性（以牺牲一些性能为代价），可以使用以下环境变量设置同步提交（即，在将事务提交写入一组副本之前，事务提交不会将成功返回给客户端）。</p> <ul> <li><code>POSTGRESQL_SYNCHRONOUS_COMMIT_MODE</code>: 建立同步提交的类型。可用选项有：<code>on</code>、<code>remote_apply</code>、<code>remote_write</code>、<code>local</code> 和<code>off</code>。 默认值为<code>on</code>。有关更多信息，请查看<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.postgresql.org/docs/9.6/runtime-config-wal.html#GUC-SYNCHRONOUS-COMMIT"  target="_blank" rel="nofollow">官方 PostgreSQL 文档</a>。 <ul> <li><small><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.postgresql.org/docs/9.6/runtime-config-wal.html#GUC-SYNCHRONOUS-COMMIT"  target="_blank" rel="nofollow">https://www.postgresql.org/docs/9.6/runtime-config-wal.html#GUC-SYNCHRONOUS-COMMIT</a></small></li> </ul> </li> <li><code>POSTGRESQL_NUM_SYNCHRONOUS_REPLICAS</code>: 确定将启用同步复制的副本数。此数量不得超过您在集群中配置的<code>slave</code> 的数量。</li> </ul> <p>使用<code>Docker Compose</code>，可以按如下方式设置带有同步提交的主从复制：</p> <pre><code class="language-yaml">version: '2'  services:   postgresql-master:     image: 'bitnami/postgresql:latest'     ports:       - '5432'     volumes:       - 'postgresql_master_data:/bitnami/postgresql'     environment:       - POSTGRESQL_REPLICATION_MODE=master       - POSTGRESQL_REPLICATION_USER=repl_user       - POSTGRESQL_REPLICATION_PASSWORD=repl_password       - POSTGRESQL_USERNAME=my_user       - POSTGRESQL_PASSWORD=my_password       - POSTGRESQL_DATABASE=my_database       - POSTGRESQL_SYNCHRONOUS_COMMIT_MODE=on       - POSTGRESQL_NUM_SYNCHRONOUS_REPLICAS=1     volumes:       - '/path/to/postgresql-persistence:/bitnami/postgresql'   postgresql-slave:     image: 'bitnami/postgresql:latest'     ports:       - '5432'     depends_on:       - postgresql-master     environment:       - POSTGRESQL_REPLICATION_MODE=slave       - POSTGRESQL_REPLICATION_USER=repl_user       - POSTGRESQL_REPLICATION_PASSWORD=repl_password       - POSTGRESQL_MASTER_HOST=postgresql-master       - POSTGRESQL_MASTER_PORT_NUMBER=5432   postgresql-slave2:     image: 'bitnami/postgresql:latest'     ports:       - '5432'     depends_on:       - postgresql-master     environment:       - POSTGRESQL_REPLICATION_MODE=slave       - POSTGRESQL_REPLICATION_USER=repl_user       - POSTGRESQL_REPLICATION_PASSWORD=repl_password       - POSTGRESQL_MASTER_HOST=postgresql-master       - POSTGRESQL_MASTER_PORT_NUMBER=5432</code></pre> <p>在上面的示例中，提交需要同时写入主服务器和其中一个从服务器才能被接受。另一个<code>slave</code> 将继续使用异步复制。使用以下<code>SQL</code> 查询对其进行检查：</p> <pre><code class="language-console">postgres=# select application_name as server, state, postgres-#       sync_priority as priority, sync_state postgres-#       from pg_stat_replication; | server      | state     | priority | sync_state | |-------------|-----------|----------|------------| | walreceiver | streaming | 0        | sync       | | walreceiver | streaming | 0        | async      |</code></pre> <blockquote> <p><strong>Note:</strong> 对于更高级的设置，您可以通过设置<code>POSTGRESQL_CLUSTER_APP_NAME</code> 环境变量，使用<code>application_name</code> 参数定义不同的复制组。</p> </blockquote> <h2 id="更多">更多</h2> <ul> <li><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://mp.weixin.qq.com/s/Hbs5YQ2oKcnMKHzVWrp4Tw"  target="_blank" rel="nofollow">Pgpool-II 4.3 中文手册-前言</a></li> <li><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://mp.weixin.qq.com/s/a1l51jpMR_ObQwmGAdI8-w"  target="_blank" rel="nofollow">pgpool-II 4.3 中文手册 - 入门教程</a></li> <li><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://mp.weixin.qq.com/s/1X65AAs8O1qcddf5wqpRRQ"  target="_blank" rel="nofollow">「在 Kubernetes 上运行 Pgpool-Il」实现 PostgreSQL 查询(读)负载均衡和连接池</a></li> </ul> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-54090.htm">关于Springcloud Sleuth分布式请求链路跟踪的使用 小结</a></p>
+                                        <p>下一个：<a href="/news/article-54636.htm">vue.js实现标签页切换</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                  <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-30113.htm" title="猫狗动物医院 猫狗动物医院ns">猫狗动物医院 猫狗动物医院ns</a></li>
+                        <li class="py-2"><a href="/news/article-54637.htm" title="动物疫苗板块股票行情（动物疫苗概念龙头股票）">动物疫苗板块股票行情（动物疫苗概念龙头股票）</a></li>
+                        <li class="py-2"><a href="/news/article-40439.htm" title="动物疫苗品牌排行榜前十名 动物疫苗品牌排行榜前十名有哪些">动物疫苗品牌排行榜前十名 动物疫苗品牌排行榜前十名有哪些</a></li>
+                        <li class="py-2"><a href="/news/article-24689.htm" title="内江宠物店有狗卖的在哪里（内江宠物店位置）">内江宠物店有狗卖的在哪里（内江宠物店位置）</a></li>
+                        <li class="py-2"><a href="/news/article-21930.htm" title="有没有24小时营业的宠物店（这附近哪里有24小时宠物店）">有没有24小时营业的宠物店（这附近哪里有24小时宠物店）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-19-node-share-links.htm" title="1月19日22.6M/S|Hiddify-Next免费机场订阅每天更新订阅链接">1月19日22.6M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-30767.htm" title="国内宠物粮上市公司名单 国内宠物粮上市公司名单最新">国内宠物粮上市公司名单 国内宠物粮上市公司名单最新</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-10-free-v2ray-subscribe.htm" title="2月10日22.3M/S|Hiddify-Next免费机场订阅每天更新订阅链接">2月10日22.3M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-24-free-clash-subscribe.htm" title="11月24日20.9M/S|Hiddify-Next免费机场订阅每天更新订阅链接">11月24日20.9M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-16-free-node-subscribe-links.htm" title="11月16日21.5M/S|Hiddify-Next免费机场订阅每天更新订阅链接">11月16日21.5M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">36</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //about -->
+    
+    <!-- footer -->
+<footer class="py-lg-4 py-md-3 py-sm-3 py-3">
+    <div class="container py-lg-5 py-md-5 py-sm-4 py-3">
+        <div class="bottem-wthree-footer text-center pt-md-4 pt-3">
+            <p>
+                <a href="/">首页</a> |
+                <a href="/free-node/">免费节点</a> |
+                <a href="/news/">新闻资讯</a> |
+                <a href="/about-us.htm">关于我们</a> |
+                <a href="/disclaimer.htm">免责申明</a> |
+                <a href="/privacy.htm">隐私申明</a> |
+                <a href="/sitemap.xml">网站地图</a>
+            </p>
+            <p>
+                <a href="/">FreeHiddifyNext节点订阅站</a> 版权所有
+                <br />
+                Powered by WordPress
+            </p>
+        </div>
+        <!-- move icon -->
+        <div class="text-center">
+            <a href="#home" class="move-top text-center mt-3"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+        </div>
+        <!--//move icon -->
+    </div>
+</footer>
+<!--//footer -->
+<script src="/assets/website/js/frontend/freehiddifynext/jquery-1.11.1.min.js"></script>
+<script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+<script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
