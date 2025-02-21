@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freehiddifynext.github.io/news/article-59704.htm" />
+    <title>深入理解 Go 中的字符串_Golang</title>
+        <meta name="description" content="目录  字符串的本质 字符串的底层原理    字符串的本质 在编程语言中，字符串发挥着重要的角色。字符串背后的数据结构一般有两种类型：  一种在编译时指定长度，不能修改 一种具有动态的长度，可以修改。" />
+        <link rel="icon" href="/assets/website/img/freehiddifynext/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="FreeHiddifyNext节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freehiddifynext.github.io/news/article-59704.htm" />
+    <meta property="og:site_name" content="FreeHiddifyNext节点订阅站" />
+    <meta property="og:title" content="深入理解 Go 中的字符串_Golang" />
+    <meta property="og:image" content="https://freehiddifynext.github.io/uploads/20240414/94a0835147c0b7fb1a6ff73eca534535.webp" />
+        <meta property="og:release_date" content="2025-02-20T09:55:36" />
+    <meta property="og:updated_time" content="2025-02-20T09:55:36" />
+        <meta property="og:description" content="目录  字符串的本质 字符串的底层原理    字符串的本质 在编程语言中，字符串发挥着重要的角色。字符串背后的数据结构一般有两种类型：  一种在编译时指定长度，不能修改 一种具有动态的长度，可以修改。" />
+        
+    <!--meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+      }, false);
+      
+      function hideURLbar() {
+        window.scrollTo(0, 1);
+      }
+    </script>
+    <!--//meta tags ends here-->
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="深入理解 Go 中的字符串_Golang">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    
+    <!--booststrap-->
+    <link href="/assets/website/css/freehiddifynext/bootstrap.min.css" rel="stylesheet" type="text/css" media="all">
+    <!--//booststrap end-->
+    <!-- font-awesome icons -->
+    <link href="/assets/website/css/freehiddifynext/font-awesome.min.css" rel="stylesheet">
+    <!-- //font-awesome icons -->
+    <!--stylesheets-->
+    <link href="/assets/website/css/freehiddifynext/style.css" rel='stylesheet' type='text/css' media="all">
+    <!--//stylesheets-->
+    <link href="http://fonts.googleapis.com/css?family=Thasadith:400,700" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N7EH3QDE4Q"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N7EH3QDE4Q');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!--headder-->
+    <div class="header-outs inner_page-banner " id="home">
+                <div class="headder-top">
+            <!-- nav -->
+            <nav>
+                <div id="logo">
+                    <a href="/">
+                                        <span>Free Hiddify Next</span>
+                                        </a>
+                </div>
+                <label for="drop" class="toggle">Menu</label>
+                <input type="checkbox" id="drop">
+                <ul class="menu mt-2">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a href="/client.htm">客户端</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                    </ul>
+            </nav>
+            <!-- //nav -->
+        </div>
+    </div>
+    <!--//headder-->
+    <!-- short -->
+    <div class="using-border py-3">
+        <div class="inner_breadcrumb  ml-4">
+            <ul class="short_ls">
+                <li>
+                    <a href="/">首页</a>
+                    <span>/</span>
+                </li>
+                <li>
+                    <a href="/news/">新闻资讯</a>
+                    <span>/</span>
+                </li>
+                <li>正文</li>
+            </ul>
+        </div>
+    </div>
+    <!-- //short-->
+    <!-- about -->
+    <section class="about py-lg-4 py-md-3 py-sm-3 py-3" id="about">
+        <div class="container py-lg-5 py-md-4 py-sm-4 py-3">
+            <div class="row">
+                <div class="col-md-9">
+                  <h1 class="title text-center mb-lg-5 mb-md-4 mb-sm-4 mb-3">深入理解 Go 中的字符串_Golang</h1>
+                                  <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="navCategory"> <h5 class="catalogue">目录</h5> <ul class="first_class_ul"> <li><a href="#_label0" rel="nofollow">字符串的本质</a></li> <li><a href="#_label1" rel="nofollow">字符串的底层原理</a></li> </ul> </div> <p class="maodian"><a name="_label0" rel="nofollow"></a></p> <h2>字符串的本质</h2> <p>在编程语言中，字符串发挥着重要的角色。<strong>字符串背后的数据结构一般有两种类型：</strong></p> <ul> <li>一种在编译时指定长度，不能修改</li> <li>一种具有动态的长度，可以修改。</li> </ul> <p><strong>比如：</strong>与Python 中的字符串一样，Go 语言中的字符串不能被修改，只能被访问。<br />在 Python 中，<strong>如果改变一个字符串的值会得到如下结果：</strong></p> <div class="ay1code"> <pre class="brush:go;">&gt;&gt;&gt; hi = "Hello"  &gt;&gt;&gt; hi  'Hello'  &gt;&gt;&gt; hi[0] = 'h'  Traceback (most recent call last):  File "&lt;stdin&gt;", line 1, in &lt;module&gt;  TypeError: 'str' object does not support item assignment  &gt;&gt;&gt;</pre> </div> <p><strong>同理，在 Go 中也一样：</strong></p> <div class="ay1code"> <pre class="brush:go;">package main  import "fmt"  func main() {  var hello = "Hello"  hello[1] = 'h'  fmt.Println(hello)  }  // # command-line-arguments  // string_in_go/main.go:8:11: cannot assign to hello[1] (strings are immutable)</pre> </div> <p><strong>字符串的终止方式有两种：</strong></p> <ul> <li>一种是 C 语言的隐式声明，以字符 “\0” 作为终止符</li> <li>一种是 Go 语言的显式声明</li> </ul> <p><strong>Go 语言的 string 的表示结构如下：</strong></p> <div class="ay1code"> <pre class="brush:go;">type StringHeader struct {  Data uintptr // Data 指向底层的字符数组  Len int // Len 用来表示字符串的长度  }</pre> </div> <p>字符串的<strong>本质</strong>上是一串字符数组，每个字符都在存储时对应了一个或多个整数。用这些整数来表示字符，比如打印 <code>hello</code> 的字节数组如下：</p> <div class="ay1code"> <pre class="brush:go;">package main  import "fmt"  func main() {  var hello = "Hello"  for i := 0; i &lt; len(hello); i++ {  fmt.Printf("%x ", hello[i])  }  }  // Output: 48 65 6c 6c 6f</pre> </div> <p class="maodian"><a name="_label1" rel="nofollow"></a></p> <h2>字符串的底层原理</h2> <p><strong>字符串有特殊标识，有两种声明方式：</strong></p> <blockquote> <p>var s1 string = `hello world`<br />var s2 string = "hello world"</p> </blockquote> <p>字符串常量在词法解析阶段最终会被标记为 StringLit 类型的 Token 并被传递到编译的下一个阶段。<br />在语法分析阶段，采取递归下降的方式读取 UTF-8 字符，单撇号或双引号是字符串的标识。</p> <p><strong>分析的逻辑位于  syntax/scanner.go 文件中:</strong></p> <div class="ay1code"> <pre class="brush:go;">func (s *scanner) stdString() {  ok := true  s.nextch()  for {  if s.ch == '"' {  s.nextch()  break  }  if s.ch == '\\' {  s.nextch()  if !s.escape('"') {  ok = false  }  continue  }  if s.ch == '\n' {  s.errorf("newline in string")  ok = false  break  }  if s.ch &lt; 0 {  s.errorAtf(0, "string not terminated")  ok = false  break  }  s.nextch()  }  s.setLit(StringLit, ok)  }  func (s *scanner) rawString() {  ok := true  s.nextch()  for {  if s.ch == '`' {  s.nextch()  break  }  if s.ch &lt; 0 {  s.errorAtf(0, "string not terminated")  ok = false  break  }  s.nextch()  }  // We leave CRs in the string since they are part of the  // literal (even though they are not part of the literal  // value).  s.setLit(StringLit, ok)  }</pre> </div> <p>从上面的代码可以看到，Go 中有两种字符串的检查：一种是标准字符串以双引号定义 <code>""</code>，如 <code>"Hello,World"</code>, 还有一种是原始字符串，用 \<code>\</code> 定义的， 因此针对两种字符串有两种语法分析函数：</p> <ul> <li>如果是单撇号，则调用 <code>rawString </code>函数</li> <li>如果是双引号，则调用 <code>stdString</code> 函数</li> </ul> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-59703.htm">CI框架分页类及其实现</a></p>
+                                        <p>下一个：<a href="/news/article-60282.htm">Maven 项目打war包步骤</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                  <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-23756.htm" title="Java数组foreach赋值不生效的问题">Java数组foreach赋值不生效的问题</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-26-node-share.htm" title="1月26日20.5M/S|Hiddify-Next免费机场订阅每天更新订阅链接">1月26日20.5M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-26095.htm" title="附近免费领养小猫小狗（附近领养宠物小猫）">附近免费领养小猫小狗（附近领养宠物小猫）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-22-free-node-subscribe-links.htm" title="1月22日20.1M/S|Hiddify-Next免费机场订阅每天更新订阅链接">1月22日20.1M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-12-free-node-subscribe-links.htm" title="11月12日19.1M/S|Hiddify-Next免费机场订阅每天更新订阅链接">11月12日19.1M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-18-free-v2ray-subscribe.htm" title="12月18日18.8M/S|Hiddify-Next免费机场订阅每天更新订阅链接">12月18日18.8M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-3-node-share-links.htm" title="1月3日22M/S|Hiddify-Next免费机场订阅每天更新订阅链接">1月3日22M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-8-shadowrocket-node.htm" title="2月8日18.3M/S|Hiddify-Next免费机场订阅每天更新订阅链接">2月8日18.3M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-33168.htm" title="在springboot的启动项中，修改yml文件的配置">在springboot的启动项中，修改yml文件的配置</a></li>
+                        <li class="py-2"><a href="/news/article-60282.htm" title="Maven 项目打war包步骤">Maven 项目打war包步骤</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">63</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //about -->
+    
+    <!-- footer -->
+<footer class="py-lg-4 py-md-3 py-sm-3 py-3">
+    <div class="container py-lg-5 py-md-5 py-sm-4 py-3">
+        <div class="bottem-wthree-footer text-center pt-md-4 pt-3">
+            <p>
+                <a href="/">首页</a> |
+                <a href="/free-node/">免费节点</a> |
+                <a href="/news/">新闻资讯</a> |
+                <a href="/about-us.htm">关于我们</a> |
+                <a href="/disclaimer.htm">免责申明</a> |
+                <a href="/privacy.htm">隐私申明</a> |
+                <a href="/sitemap.xml">网站地图</a>
+            </p>
+            <p>
+                <a href="/">FreeHiddifyNext节点订阅站</a> 版权所有
+                <br />
+                Powered by WordPress
+            </p>
+        </div>
+        <!-- move icon -->
+        <div class="text-center">
+            <a href="#home" class="move-top text-center mt-3"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+        </div>
+        <!--//move icon -->
+    </div>
+</footer>
+<!--//footer -->
+<script src="/assets/website/js/frontend/freehiddifynext/jquery-1.11.1.min.js"></script>
+<script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+<script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
