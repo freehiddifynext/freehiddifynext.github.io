@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freehiddifynext.github.io/news/article-62057.htm" />
+    <title>C ++程序，实现布斯的乘法算法来对两个有符号数相乘</title>
+        <meta name="description" content="Booth的算法是一种乘法算法，将两个有符号的二进制数乘以2的恭维表示法。Booth使用的台式计算器在转换时比添加时要快，并创建了算法来提高速度。 算法 Begin &nbsp;&nbsp;&nbsp" />
+        <link rel="icon" href="/assets/website/img/freehiddifynext/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="FreeHiddifyNext节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freehiddifynext.github.io/news/article-62057.htm" />
+    <meta property="og:site_name" content="FreeHiddifyNext节点订阅站" />
+    <meta property="og:title" content="C ++程序，实现布斯的乘法算法来对两个有符号数相乘" />
+    <meta property="og:image" content="https://freehiddifynext.github.io/uploads/20240414/70f4b3c1517fd6851566f3435e3795e1.webp" />
+        <meta property="og:release_date" content="2025-02-24T09:15:23" />
+    <meta property="og:updated_time" content="2025-02-24T09:15:23" />
+        <meta property="og:description" content="Booth的算法是一种乘法算法，将两个有符号的二进制数乘以2的恭维表示法。Booth使用的台式计算器在转换时比添加时要快，并创建了算法来提高速度。 算法 Begin &nbsp;&nbsp;&nbsp" />
+        
+    <!--meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+      }, false);
+      
+      function hideURLbar() {
+        window.scrollTo(0, 1);
+      }
+    </script>
+    <!--//meta tags ends here-->
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="C ++程序，实现布斯的乘法算法来对两个有符号数相乘">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    
+    <!--booststrap-->
+    <link href="/assets/website/css/freehiddifynext/bootstrap.min.css" rel="stylesheet" type="text/css" media="all">
+    <!--//booststrap end-->
+    <!-- font-awesome icons -->
+    <link href="/assets/website/css/freehiddifynext/font-awesome.min.css" rel="stylesheet">
+    <!-- //font-awesome icons -->
+    <!--stylesheets-->
+    <link href="/assets/website/css/freehiddifynext/style.css" rel='stylesheet' type='text/css' media="all">
+    <!--//stylesheets-->
+    <link href="http://fonts.googleapis.com/css?family=Thasadith:400,700" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N7EH3QDE4Q"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N7EH3QDE4Q');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!--headder-->
+    <div class="header-outs inner_page-banner " id="home">
+                <div class="headder-top">
+            <!-- nav -->
+            <nav>
+                <div id="logo">
+                    <a href="/">
+                                        <span>Free Hiddify Next</span>
+                                        </a>
+                </div>
+                <label for="drop" class="toggle">Menu</label>
+                <input type="checkbox" id="drop">
+                <ul class="menu mt-2">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a href="/client.htm">客户端</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                    </ul>
+            </nav>
+            <!-- //nav -->
+        </div>
+    </div>
+    <!--//headder-->
+    <!-- short -->
+    <div class="using-border py-3">
+        <div class="inner_breadcrumb  ml-4">
+            <ul class="short_ls">
+                <li>
+                    <a href="/">首页</a>
+                    <span>/</span>
+                </li>
+                <li>
+                    <a href="/news/">新闻资讯</a>
+                    <span>/</span>
+                </li>
+                <li>正文</li>
+            </ul>
+        </div>
+    </div>
+    <!-- //short-->
+    <!-- about -->
+    <section class="about py-lg-4 py-md-3 py-sm-3 py-3" id="about">
+        <div class="container py-lg-5 py-md-4 py-sm-4 py-3">
+            <div class="row">
+                <div class="col-md-9">
+                  <h1 class="title text-center mb-lg-5 mb-md-4 mb-sm-4 mb-3">C ++程序，实现布斯的乘法算法来对两个有符号数相乘</h1>
+                                  <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<p>Booth的算法是一种乘法算法，将两个有符号的二进制数乘以2的恭维表示法。Booth使用的台式计算器在转换时比添加时要快，并创建了算法来提高速度。</p> <h2>算法</h2> <pre>Begin &nbsp;&nbsp;&nbsp;Put&nbsp;multiplicand&nbsp;in&nbsp;BR&nbsp;and&nbsp;multiplier&nbsp;in&nbsp;QR &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;then&nbsp;the&nbsp;algorithm&nbsp;works&nbsp;as&nbsp;per&nbsp;the&nbsp;following&nbsp;conditions: &nbsp;&nbsp;&nbsp;1.&nbsp;If&nbsp;Qn&nbsp;and&nbsp;Qn+1&nbsp;are&nbsp;same&nbsp;i.e.&nbsp;00&nbsp;or&nbsp;11&nbsp;perform&nbsp;arithmetic&nbsp;shift&nbsp;by&nbsp;1&nbsp;bit. &nbsp;&nbsp;&nbsp;2.&nbsp;If&nbsp;Qn&nbsp;Qn+1&nbsp;=&nbsp;10&nbsp;do&nbsp;A=&nbsp;A&nbsp;+&nbsp;BR&nbsp;and&nbsp;perform&nbsp;arithmetic&nbsp;shift&nbsp;by&nbsp;1&nbsp;bit. &nbsp;&nbsp;&nbsp;3.&nbsp;If&nbsp;Qn&nbsp;Qn+1&nbsp;=&nbsp;01&nbsp;do&nbsp;A=&nbsp;A&nbsp;–&nbsp;BR&nbsp;and&nbsp;perform&nbsp;arithmetic&nbsp;shift&nbsp;by&nbsp;1&nbsp;bit. End</pre> <h2>范例程式码</h2> <pre>#include&lt;iostream&gt; using&nbsp;namespace&nbsp;std; void&nbsp;add(int&nbsp;a[],&nbsp;int&nbsp;x[],&nbsp;int&nbsp;q); void&nbsp;complement(int&nbsp;a[],&nbsp;int&nbsp;n)&nbsp;{ &nbsp;&nbsp;&nbsp;int&nbsp;i; &nbsp;&nbsp;&nbsp;int&nbsp;x[8]&nbsp;=&nbsp;{&nbsp;NULL&nbsp;}; &nbsp;&nbsp;&nbsp;x[0]&nbsp;=&nbsp;1; &nbsp;&nbsp;&nbsp;for&nbsp;(i&nbsp;=&nbsp;0;&nbsp;i&nbsp;&lt;&nbsp;n;&nbsp;i++)&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a[i]&nbsp;=&nbsp;(a[i]&nbsp;+&nbsp;1)&nbsp;%&nbsp;2; &nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;add(a,&nbsp;x,&nbsp;n); } void&nbsp;add(int&nbsp;ac[],&nbsp;int&nbsp;x[],&nbsp;int&nbsp;q)&nbsp;{ &nbsp;&nbsp;&nbsp;int&nbsp;i,&nbsp;c&nbsp;=&nbsp;0; &nbsp;&nbsp;&nbsp;for&nbsp;(i&nbsp;=&nbsp;0;&nbsp;i&nbsp;&lt;&nbsp;q;&nbsp;i++)&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ac[i]&nbsp;=&nbsp;ac[i]&nbsp;+&nbsp;x[i]&nbsp;+&nbsp;c; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(ac[i]&nbsp;&gt;&nbsp;1)&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ac[i]&nbsp;=&nbsp;ac[i]&nbsp;%&nbsp;2; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c&nbsp;=&nbsp;1; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}else &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c&nbsp;=&nbsp;0; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;void&nbsp;ashr(int&nbsp;ac[],&nbsp;int&nbsp;qr[],&nbsp;int&nbsp;&amp;qn,&nbsp;int&nbsp;q)&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;temp,&nbsp;i; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temp&nbsp;=&nbsp;ac[0]; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;qn&nbsp;=&nbsp;qr[0]; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout&nbsp;&lt;&lt;&nbsp;"\t\tashr\t\t"; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(i&nbsp;=&nbsp;0;&nbsp;i&nbsp;&lt;&nbsp;q&nbsp;-&nbsp;1;&nbsp;i++)&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ac[i]&nbsp;=&nbsp;ac[i&nbsp;+&nbsp;1]; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;qr[i]&nbsp;=&nbsp;qr[i&nbsp;+&nbsp;1]; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;qr[q&nbsp;-&nbsp;1]&nbsp;=&nbsp;temp; &nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;void&nbsp;display(int&nbsp;ac[],&nbsp;int&nbsp;qr[],&nbsp;int&nbsp;qrn)&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;i; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(i&nbsp;=&nbsp;qrn&nbsp;-&nbsp;1;&nbsp;i&nbsp;&gt;=&nbsp;0;&nbsp;i--) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout&nbsp;&lt;&lt;&nbsp;ac[i]; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout&nbsp;&lt;&lt;&nbsp;"&nbsp;"; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(i&nbsp;=&nbsp;qrn&nbsp;-&nbsp;1;&nbsp;i&nbsp;&gt;=&nbsp;0;&nbsp;i--) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout&nbsp;&lt;&lt;&nbsp;qr[i]; &nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;int&nbsp;main(int&nbsp;argc,&nbsp;char&nbsp;**argv)&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;mt[10],&nbsp;br[10],&nbsp;qr[10],&nbsp;sc,&nbsp;ac[10]&nbsp;=&nbsp;{&nbsp;0&nbsp;}; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;brn,&nbsp;qrn,&nbsp;i,&nbsp;qn,&nbsp;temp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout&nbsp;&lt;&lt;&nbsp;"\n--Enter&nbsp;the&nbsp;multiplicand&nbsp;and&nbsp;multipier&nbsp;in&nbsp;signed&nbsp;2's &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;complement&nbsp;form&nbsp;if&nbsp;negative--"; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout&nbsp;&lt;&lt;&nbsp;"\n&nbsp;Number&nbsp;of&nbsp;multiplicand&nbsp;bit="; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cin&nbsp;&gt;&gt;&nbsp;brn; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout&nbsp;&lt;&lt;&nbsp;"\nmultiplicand="; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(i&nbsp;=&nbsp;brn&nbsp;-&nbsp;1;&nbsp;i&nbsp;&gt;=&nbsp;0;&nbsp;i--) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cin&nbsp;&gt;&gt;&nbsp;br[i];&nbsp;//multiplicand &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(i&nbsp;=&nbsp;brn&nbsp;-&nbsp;1;&nbsp;i&nbsp;&gt;=&nbsp;0;&nbsp;i--) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mt[i]&nbsp;=&nbsp;br[i]; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;complement(mt,&nbsp;brn); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout&nbsp;&lt;&lt;&nbsp;"\nNo.&nbsp;of&nbsp;multiplier&nbsp;bit="; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cin&nbsp;&gt;&gt;&nbsp;qrn; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sc&nbsp;=&nbsp;qrn; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout&nbsp;&lt;&lt;&nbsp;"Multiplier="; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(i&nbsp;=&nbsp;qrn&nbsp;-&nbsp;1;&nbsp;i&nbsp;&gt;=&nbsp;0;&nbsp;i--) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cin&nbsp;&gt;&gt;&nbsp;qr[i]; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;qn&nbsp;=&nbsp;0; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temp&nbsp;=&nbsp;0; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout&nbsp;&lt;&lt;&nbsp;"qn\tq[n+1]\t\tBR\t\tAC\tQR\t\tsc\n"; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout&nbsp;&lt;&lt;&nbsp;"\t\t\tinitial\t\t"; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;display(ac,&nbsp;qr,&nbsp;qrn); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout&nbsp;&lt;&lt;&nbsp;"\t\t"&nbsp;&lt;&lt;&nbsp;sc&nbsp;&lt;&lt;&nbsp;"\n"; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while&nbsp;(sc&nbsp;!=&nbsp;0)&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout&nbsp;&lt;&lt;&nbsp;qr[0]&nbsp;&lt;&lt;&nbsp;"\t"&nbsp;&lt;&lt;&nbsp;qn; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;((qn&nbsp;+&nbsp;qr[0])&nbsp;==&nbsp;1)&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(temp&nbsp;==&nbsp;0)&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;add(ac,&nbsp;mt,&nbsp;qrn); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout&nbsp;&lt;&lt;&nbsp;"\t\tsubtracting&nbsp;BR\t"; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(i&nbsp;=&nbsp;qrn&nbsp;-&nbsp;1;&nbsp;i&nbsp;&gt;=&nbsp;0;&nbsp;i--) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout&nbsp;&lt;&lt;&nbsp;ac[i]; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temp&nbsp;=&nbsp;1; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else&nbsp;if&nbsp;(temp&nbsp;==&nbsp;1)&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;add(ac,&nbsp;br,&nbsp;qrn); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout&nbsp;&lt;&lt;&nbsp;"\t\tadding&nbsp;BR\t"; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(i&nbsp;=&nbsp;qrn&nbsp;-&nbsp;1;&nbsp;i&nbsp;&gt;=&nbsp;0;&nbsp;i--) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout&nbsp;&lt;&lt;&nbsp;ac[i]; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temp&nbsp;=&nbsp;0; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout&nbsp;&lt;&lt;&nbsp;"\n\t"; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ashr(ac,&nbsp;qr,&nbsp;qn,&nbsp;qrn); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else&nbsp;if&nbsp;(qn&nbsp;-&nbsp;qr[0]&nbsp;==&nbsp;0) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ashr(ac,&nbsp;qr,&nbsp;qn,&nbsp;qrn); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;display(ac,&nbsp;qr,&nbsp;qrn); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout&nbsp;&lt;&lt;&nbsp;"\t"; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sc--; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout&nbsp;&lt;&lt;&nbsp;"\t"&nbsp;&lt;&lt;&nbsp;sc&nbsp;&lt;&lt;&nbsp;"\n"; &nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;cout&nbsp;&lt;&lt;&nbsp;"Result="; &nbsp;&nbsp;&nbsp;display(ac,&nbsp;qr,&nbsp;qrn); }</pre> <p>输出结果</p> <pre>--Enter&nbsp;the&nbsp;multiplicand&nbsp;and&nbsp;multipier&nbsp;in&nbsp;signed&nbsp;2's&nbsp;complement&nbsp;form&nbsp;if negative-- Number&nbsp;of&nbsp;multiplicand&nbsp;bit=5 multiplicand=0&nbsp;1&nbsp;1&nbsp;1&nbsp;1 No.&nbsp;of&nbsp;multiplier&nbsp;bit=5 Multiplier=1&nbsp;0&nbsp;1&nbsp;1&nbsp;1 qn&nbsp;q[n+1]&nbsp;BR&nbsp;AC&nbsp;QR&nbsp;sc initial&nbsp;00000&nbsp;10111&nbsp;5 1&nbsp;0&nbsp;subtracting&nbsp;BR&nbsp;10001 ashr&nbsp;11000&nbsp;11011&nbsp;4 1&nbsp;1&nbsp;ashr&nbsp;11100&nbsp;01101&nbsp;3 1&nbsp;1&nbsp;ashr&nbsp;11110&nbsp;00110&nbsp;2 0&nbsp;1&nbsp;adding&nbsp;BR&nbsp;01101 ashr&nbsp;00110&nbsp;10011&nbsp;1 1&nbsp;0&nbsp;subtracting&nbsp;BR&nbsp;10111 ashr&nbsp;11011&nbsp;11001&nbsp;0 Result=11011&nbsp;11001</pre> <div></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-61466.htm">天津宠物狗免费领养地点（天津哪里有宠物领养的地方）</a></p>
+                                        <p>下一个：<a href="/news/article-62058.htm">宠物猫疫苗多少钱一个（宠物猫疫苗多少钱一个针）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                  <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-1-17-free-v2ray.htm" title="1月17日21.1M/S|Hiddify-Next免费机场订阅每天更新订阅链接">1月17日21.1M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-28-free-v2ray.htm" title="12月28日18.6M/S|Hiddify-Next免费机场订阅每天更新订阅链接">12月28日18.6M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-12-clash-windows.htm" title="2月12日21.9M/S|Hiddify-Next免费机场订阅每天更新订阅链接">2月12日21.9M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-58433.htm" title="美团评价宠物医院好评怎么写 美团评价宠物医院好评怎么写文案">美团评价宠物医院好评怎么写 美团评价宠物医院好评怎么写文案</a></li>
+                        <li class="py-2"><a href="/news/article-23295.htm" title="Redis持久化机制及缓存失效解决方案">Redis持久化机制及缓存失效解决方案</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-13-free-node-subscribe.htm" title="12月13日21.8M/S|Hiddify-Next免费机场订阅每天更新订阅链接">12月13日21.8M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-11-node-share-links.htm" title="1月11日19.5M/S|Hiddify-Next免费机场订阅每天更新订阅链接">1月11日19.5M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-36497.htm" title="广州宠物批发市场哪里便宜（广州哪里有宠物用品批发市场）">广州宠物批发市场哪里便宜（广州哪里有宠物用品批发市场）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-22-clash-node.htm" title="12月22日18.6M/S|Hiddify-Next免费机场订阅每天更新订阅链接">12月22日18.6M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-20551.htm" title="宠物用品一件代发进货渠道（宠物用品一件代发进货渠道在哪）">宠物用品一件代发进货渠道（宠物用品一件代发进货渠道在哪）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">78</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //about -->
+    
+    <!-- footer -->
+<footer class="py-lg-4 py-md-3 py-sm-3 py-3">
+    <div class="container py-lg-5 py-md-5 py-sm-4 py-3">
+        <div class="bottem-wthree-footer text-center pt-md-4 pt-3">
+            <p>
+                <a href="/">首页</a> |
+                <a href="/free-node/">免费节点</a> |
+                <a href="/news/">新闻资讯</a> |
+                <a href="/about-us.htm">关于我们</a> |
+                <a href="/disclaimer.htm">免责申明</a> |
+                <a href="/privacy.htm">隐私申明</a> |
+                <a href="/sitemap.xml">网站地图</a>
+            </p>
+            <p>
+                <a href="/">FreeHiddifyNext节点订阅站</a> 版权所有
+                <br />
+                Powered by WordPress
+            </p>
+        </div>
+        <!-- move icon -->
+        <div class="text-center">
+            <a href="#home" class="move-top text-center mt-3"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+        </div>
+        <!--//move icon -->
+    </div>
+</footer>
+<!--//footer -->
+<script src="/assets/website/js/frontend/freehiddifynext/jquery-1.11.1.min.js"></script>
+<script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+<script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

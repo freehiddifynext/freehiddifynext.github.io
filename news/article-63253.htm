@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freehiddifynext.github.io/news/article-63253.htm" />
+    <title>python读取hdfs上的parquet文件以及python访问hdfs HA的三种方法</title>
+        <meta name="description" content="python读取hdfs上的parquet文件 在使用python做大数据和机器学习处理过程中，首先需要读取hdfs数据，对于常用格式数据一般比较容易读取，parquet略微特殊。从hdfs上使用py" />
+        <link rel="icon" href="/assets/website/img/freehiddifynext/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="FreeHiddifyNext节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freehiddifynext.github.io/news/article-63253.htm" />
+    <meta property="og:site_name" content="FreeHiddifyNext节点订阅站" />
+    <meta property="og:title" content="python读取hdfs上的parquet文件以及python访问hdfs HA的三种方法" />
+    <meta property="og:image" content="https://freehiddifynext.github.io/uploads/20240414/49991883b1523a3bd855f07ad657519f.webp" />
+        <meta property="og:release_date" content="2025-02-26T08:33:52" />
+    <meta property="og:updated_time" content="2025-02-26T08:33:52" />
+        <meta property="og:description" content="python读取hdfs上的parquet文件 在使用python做大数据和机器学习处理过程中，首先需要读取hdfs数据，对于常用格式数据一般比较容易读取，parquet略微特殊。从hdfs上使用py" />
+        
+    <!--meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+      }, false);
+      
+      function hideURLbar() {
+        window.scrollTo(0, 1);
+      }
+    </script>
+    <!--//meta tags ends here-->
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="python读取hdfs上的parquet文件以及python访问hdfs HA的三种方法">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    
+    <!--booststrap-->
+    <link href="/assets/website/css/freehiddifynext/bootstrap.min.css" rel="stylesheet" type="text/css" media="all">
+    <!--//booststrap end-->
+    <!-- font-awesome icons -->
+    <link href="/assets/website/css/freehiddifynext/font-awesome.min.css" rel="stylesheet">
+    <!-- //font-awesome icons -->
+    <!--stylesheets-->
+    <link href="/assets/website/css/freehiddifynext/style.css" rel='stylesheet' type='text/css' media="all">
+    <!--//stylesheets-->
+    <link href="http://fonts.googleapis.com/css?family=Thasadith:400,700" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N7EH3QDE4Q"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N7EH3QDE4Q');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!--headder-->
+    <div class="header-outs inner_page-banner " id="home">
+                <div class="headder-top">
+            <!-- nav -->
+            <nav>
+                <div id="logo">
+                    <a href="/">
+                                        <span>Free Hiddify Next</span>
+                                        </a>
+                </div>
+                <label for="drop" class="toggle">Menu</label>
+                <input type="checkbox" id="drop">
+                <ul class="menu mt-2">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a href="/client.htm">客户端</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                    </ul>
+            </nav>
+            <!-- //nav -->
+        </div>
+    </div>
+    <!--//headder-->
+    <!-- short -->
+    <div class="using-border py-3">
+        <div class="inner_breadcrumb  ml-4">
+            <ul class="short_ls">
+                <li>
+                    <a href="/">首页</a>
+                    <span>/</span>
+                </li>
+                <li>
+                    <a href="/news/">新闻资讯</a>
+                    <span>/</span>
+                </li>
+                <li>正文</li>
+            </ul>
+        </div>
+    </div>
+    <!-- //short-->
+    <!-- about -->
+    <section class="about py-lg-4 py-md-3 py-sm-3 py-3" id="about">
+        <div class="container py-lg-5 py-md-4 py-sm-4 py-3">
+            <div class="row">
+                <div class="col-md-9">
+                  <h1 class="title text-center mb-lg-5 mb-md-4 mb-sm-4 mb-3">python读取hdfs上的parquet文件以及python访问hdfs HA的三种方法</h1>
+                                  <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> <h3>python读取hdfs上的parquet文件</h3> <p>在使用python做大数据和机器学习处理过程中，首先需要读取hdfs数据，对于常用格式数据一般比较容易读取，parquet略微特殊。从hdfs上使用python获取parquet格式数据的方法(当然也可以先把文件拉到本地再读取也可以)：</p> <p>1、安装anaconda环境。</p> <p>2、安装hdfs3。<br /> &nbsp; &nbsp; &nbsp;&nbsp;conda install hdfs3</p> <p>3、安装fastparquet。<br /> &nbsp; &nbsp; &nbsp; conda install fastparquet</p> <p>4、安装python-snappy。<br /> &nbsp; &nbsp; &nbsp;&nbsp;conda install python-snappy</p> <p>5、读取文件</p> <pre class="has"><code class="language-python">##namenode mode: from hdfs3 import HDFileSystem from fastparquet import ParquetFile  hdfs = HDFileSystem(host=IP, port=8020) sc = hdfs.open  pf = ParquetFile(filename, open_with=sc) df = pf.to_pandas()  ##返回pandas的DataFrame类型   ##HA mode: from hdfs3 import HDFileSystem from fastparquet import ParquetFile  host = "nameservice1" conf = { &nbsp; &nbsp; &nbsp; &nbsp; "dfs.nameservices":"nameservice1", &nbsp; &nbsp; &nbsp; &nbsp; ......  } hdfs = HDFileSystem(host = host, pars = conf) ......</code></pre> <h3>python访问HDFS HA的三种方法</h3> <p>python访问hdfs常用的包有三个，如下：</p> <p>1、hdfs3</p> <p>其实从安装便捷性和使用上来说，并不推荐hdfs3，因为他的系统依赖和网络要求较高，但是某些情况下使用hdfs3会比较方便，<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://hdfs3.readthedocs.io/en/latest/"  rel="nofollow">官网资料点这里</a>。如上面介绍，IP直接访问namenode：</p> <pre class="has"><code class="language-python">from hdfs3 import HDFileSystem  hdfs = HDFileSystem(host=namenode, port=8020) hdfs.ls('/tmp')</code></pre> <p>HA访问：</p> <pre class="has"><code class="language-python">host = "nameservice1" conf = {"dfs.nameservices": "nameservice1",         "dfs.ha.namenodes.nameservice1": "namenode113,namenode188",         "dfs.namenode.rpc-address.nameservice1.namenode113": "hostname_of_server1:8020",         "dfs.namenode.rpc-address.nameservice1.namenode188": "hostname_of_server2:8020",         "dfs.namenode.http-address.nameservice1.namenode188": "hostname_of_server1:50070",         "dfs.namenode.http-address.nameservice1.namenode188": "hostname_of_server2:50070",         "hadoop.security.authentication": "kerberos" } fs = HDFileSystem(host=host, pars=conf)   ##或者下面这种配置 host = "ns1" conf = {         "dfs.nameservices":"ns1", 		"dfs.ha.namenodes.ns1":"namenode122,namenode115", 		"dfs.namenode.rpc-address.ns1.namenode122":"nnlab01:8020", 		"dfs.namenode.servicerpc-address.ns1.namenode122":"nnlab01:8022", 		"dfs.namenode.http-address.ns1.namenode122":"nnlab01:50070", 		"dfs.namenode.https-address.ns1.namenode122":"nnlab01:50470", 		"dfs.namenode.rpc-address.ns1.namenode115":"nnlab02:8020", 		"dfs.namenode.servicerpc-address.ns1.namenode115":"nnlab02:8022", 		"dfs.namenode.http-address.ns1.namenode115":"nnlab02:50070", 		"dfs.namenode.https-address.ns1.namenode115":"nnlab02:50470", }  hdfs = HDFileSystem(host = host, pars = conf)</code></pre> <p>2、hdfs</p> <p>这种方法在使用的时候配置比较简单，<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://hdfscli.readthedocs.io/en/latest/"  rel="nofollow">官网资料</a>也比较丰富，但是需要注意的是该API可以模拟用户访问，权限较大。IP直接访问：</p> <pre class="has"><code>import hdfs  client = hdfs.client.InsecureClient(url="http://namenode:50070", user="hdfs")</code></pre> <p>HA访问：</p> <pre class="has"><code class="language-python">import hdfs  client = hdfs.client.InsecureClient(url="http://namenode1:50070;http://namenode2:50070", user="hdfs")</code></pre> <p>3、pyhdfs</p> <p>安装命令：pip install PyHDFS</p> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://pyhdfs.readthedocs.io/en/latest/"  rel="nofollow">官网地址</a>，直接访问：</p> <pre class="has"><code class="language-python">import pyhdfs  client = pyhdfs.HdfsClient(hosts="namenode:50070",user_name="hdfs")</code></pre> <p>HA访问</p> <pre class="has"><code class="language-python">import pyhdfs  client = pyhdfs.HdfsClient(hosts=["namenode1:50070","namenode2:50070"],user_name="hdfs")</code></pre> <p>&nbsp;</p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-62655.htm">宠物猫多少钱一只啊（普通的宠物猫多少钱一只）</a></p>
+                                        <p>下一个：<a href="/news/article-63254.htm">动物疫苗行业标准最新规定（动物疫苗法规）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                  <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-34931.htm" title="动物疫苗防疫站上班时间是几点的（动物防疫站打针免费吗）">动物疫苗防疫站上班时间是几点的（动物防疫站打针免费吗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-5-free-node-subscribe.htm" title="1月5日20.4M/S|Hiddify-Next免费机场订阅每天更新订阅链接">1月5日20.4M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-12-free-node-subscribe-links.htm" title="11月12日19.1M/S|Hiddify-Next免费机场订阅每天更新订阅链接">11月12日19.1M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-18-node-share.htm" title="2月18日18.5M/S|Hiddify-Next免费机场订阅每天更新订阅链接">2月18日18.5M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-24506.htm" title="1-spring boot&#8211;FailureAnalyzer">1-spring boot&#8211;FailureAnalyzer</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-13-free-node-subscribe.htm" title="12月13日21.8M/S|Hiddify-Next免费机场订阅每天更新订阅链接">12月13日21.8M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-20549.htm" title="饲料厂饲料机设备多少钱一套（饲料机器多少钱一台）">饲料厂饲料机设备多少钱一套（饲料机器多少钱一台）</a></li>
+                        <li class="py-2"><a href="/news/article-22839.htm" title="动物疫苗接种的注意事项包括有哪些内容（动物疫苗接种的注意事项包括有哪些内容呢）">动物疫苗接种的注意事项包括有哪些内容（动物疫苗接种的注意事项包括有哪些内容呢）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-30-free-clash.htm" title="12月30日22.9M/S|Hiddify-Next免费机场订阅每天更新订阅链接">12月30日22.9M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-30-clash-node.htm" title="11月30日20.4M/S|Hiddify-Next免费机场订阅每天更新订阅链接">11月30日20.4M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">78</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //about -->
+    
+    <!-- footer -->
+<footer class="py-lg-4 py-md-3 py-sm-3 py-3">
+    <div class="container py-lg-5 py-md-5 py-sm-4 py-3">
+        <div class="bottem-wthree-footer text-center pt-md-4 pt-3">
+            <p>
+                <a href="/">首页</a> |
+                <a href="/free-node/">免费节点</a> |
+                <a href="/news/">新闻资讯</a> |
+                <a href="/about-us.htm">关于我们</a> |
+                <a href="/disclaimer.htm">免责申明</a> |
+                <a href="/privacy.htm">隐私申明</a> |
+                <a href="/sitemap.xml">网站地图</a>
+            </p>
+            <p>
+                <a href="/">FreeHiddifyNext节点订阅站</a> 版权所有
+                <br />
+                Powered by WordPress
+            </p>
+        </div>
+        <!-- move icon -->
+        <div class="text-center">
+            <a href="#home" class="move-top text-center mt-3"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+        </div>
+        <!--//move icon -->
+    </div>
+</footer>
+<!--//footer -->
+<script src="/assets/website/js/frontend/freehiddifynext/jquery-1.11.1.min.js"></script>
+<script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+<script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
