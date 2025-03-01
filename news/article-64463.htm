@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freehiddifynext.github.io/news/article-64463.htm" />
+    <title>在MySQL中，SERIAL和AUTO_INCREMENT有什么区别？</title>
+        <meta name="description" content="在MySQL中，SERIAL和AUTO_INCREMENT均用于将序列定义为字段的默认值。但是它们在技术上彼此不同。 除BIT和DECIMAL之外，所有数字数据类型均支持AUTO_INCREMENT属" />
+        <link rel="icon" href="/assets/website/img/freehiddifynext/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="FreeHiddifyNext节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freehiddifynext.github.io/news/article-64463.htm" />
+    <meta property="og:site_name" content="FreeHiddifyNext节点订阅站" />
+    <meta property="og:title" content="在MySQL中，SERIAL和AUTO_INCREMENT有什么区别？" />
+    <meta property="og:image" content="https://freehiddifynext.github.io/uploads/20240414/cf23587aada6ae66b50cafa2e31460ee.webp" />
+        <meta property="og:release_date" content="2025-02-28T06:56:05" />
+    <meta property="og:updated_time" content="2025-02-28T06:56:05" />
+        <meta property="og:description" content="在MySQL中，SERIAL和AUTO_INCREMENT均用于将序列定义为字段的默认值。但是它们在技术上彼此不同。 除BIT和DECIMAL之外，所有数字数据类型均支持AUTO_INCREMENT属" />
+        
+    <!--meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+      }, false);
+      
+      function hideURLbar() {
+        window.scrollTo(0, 1);
+      }
+    </script>
+    <!--//meta tags ends here-->
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="在MySQL中，SERIAL和AUTO_INCREMENT有什么区别？">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    
+    <!--booststrap-->
+    <link href="/assets/website/css/freehiddifynext/bootstrap.min.css" rel="stylesheet" type="text/css" media="all">
+    <!--//booststrap end-->
+    <!-- font-awesome icons -->
+    <link href="/assets/website/css/freehiddifynext/font-awesome.min.css" rel="stylesheet">
+    <!-- //font-awesome icons -->
+    <!--stylesheets-->
+    <link href="/assets/website/css/freehiddifynext/style.css" rel='stylesheet' type='text/css' media="all">
+    <!--//stylesheets-->
+    <link href="http://fonts.googleapis.com/css?family=Thasadith:400,700" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N7EH3QDE4Q"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N7EH3QDE4Q');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!--headder-->
+    <div class="header-outs inner_page-banner " id="home">
+                <div class="headder-top">
+            <!-- nav -->
+            <nav>
+                <div id="logo">
+                    <a href="/">
+                                        <span>Free Hiddify Next</span>
+                                        </a>
+                </div>
+                <label for="drop" class="toggle">Menu</label>
+                <input type="checkbox" id="drop">
+                <ul class="menu mt-2">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a href="/client.htm">客户端</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                    </ul>
+            </nav>
+            <!-- //nav -->
+        </div>
+    </div>
+    <!--//headder-->
+    <!-- short -->
+    <div class="using-border py-3">
+        <div class="inner_breadcrumb  ml-4">
+            <ul class="short_ls">
+                <li>
+                    <a href="/">首页</a>
+                    <span>/</span>
+                </li>
+                <li>
+                    <a href="/news/">新闻资讯</a>
+                    <span>/</span>
+                </li>
+                <li>正文</li>
+            </ul>
+        </div>
+    </div>
+    <!-- //short-->
+    <!-- about -->
+    <section class="about py-lg-4 py-md-3 py-sm-3 py-3" id="about">
+        <div class="container py-lg-5 py-md-4 py-sm-4 py-3">
+            <div class="row">
+                <div class="col-md-9">
+                  <h1 class="title text-center mb-lg-5 mb-md-4 mb-sm-4 mb-3">在MySQL中，SERIAL和AUTO_INCREMENT有什么区别？</h1>
+                                  <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<p>在MySQL中，SERIAL和AUTO_INCREMENT均用于将序列定义为字段的默认值。但是它们在技术上彼此不同。</p> <p>除BIT和DECIMAL之外，所有数字数据类型均支持AUTO_INCREMENT属性。每个表只能有一个AUTO_INCREMENT字段，并且一个表中的AUTO_INCREMENT字段生成的序列不能在其他任何表中使用。</p> <p>此属性要求字段上存在UNIQUE索引，以确保序列不重复。默认情况下，序列从1开始，每次插入都以1递增。</p> <h2>示例</h2> <pre>mysql&gt;&nbsp;Create&nbsp;Table&nbsp;Student(Student_id&nbsp;INT&nbsp;PRIMARY&nbsp;KEY&nbsp;NOT&nbsp;NULL&nbsp;AUTO_INCREMENT,&nbsp;Name&nbsp;Varchar(20));</pre> <p>上面的查询声明了Student_id AUTO_INCREMENT。</p> <pre>mysql&gt;&nbsp;Insert&nbsp;Into&nbsp;Student(Name)&nbsp;values('RAM'),('SHYAM'); Records:&nbsp;2&nbsp;Duplicates:&nbsp;0&nbsp;Warnings:&nbsp;0  mysql&gt;&nbsp;Select&nbsp;*&nbsp;from&nbsp;Student; +------------+-------+ |&nbsp;Student_id&nbsp;|&nbsp;Name&nbsp;&nbsp;| +------------+-------+ |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;|&nbsp;RAM&nbsp;&nbsp;&nbsp;| |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;|&nbsp;SHYAM&nbsp;| +------------+-------+ 2&nbsp;rows&nbsp;in&nbsp;set&nbsp;(0.00&nbsp;sec)  mysql&gt;&nbsp;Show&nbsp;Create&nbsp;Table&nbsp;Student\G ***************************&nbsp;1.&nbsp;row&nbsp;*************************** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Table:&nbsp;Student Create&nbsp;Table:&nbsp;CREATE&nbsp;TABLE&nbsp;`student`&nbsp;( &nbsp;&nbsp;&nbsp;`Student_id`&nbsp;int(11)&nbsp;NOT&nbsp;NULL&nbsp;AUTO_INCREMENT, &nbsp;&nbsp;&nbsp;`Name`&nbsp;varchar(20)&nbsp;DEFAULT&nbsp;NULL, &nbsp;&nbsp;&nbsp;PRIMARY&nbsp;KEY&nbsp;(`Student_id`) )&nbsp;ENGINE=InnoDB&nbsp;AUTO_INCREMENT=3&nbsp;DEFAULT&nbsp;CHARSET=latin1 1&nbsp;row&nbsp;in&nbsp;set&nbsp;(0.00&nbsp;sec)</pre> <p>另一方面，SERIAL DEFAULT VALUE是NOT NULL AUTO_INCREMENT UNIQUE KEY的简写。整数数值类型（如TINYINT，SMALLINT，MEDIUMINT，INT和BIGINT）支持SERIAL DEFAULT VALUE关键字。</p> <h2>示例</h2> <pre>mysql&gt;&nbsp;Create&nbsp;Table&nbsp;Student_serial(Student_id&nbsp;SERIAL,&nbsp;Name&nbsp;VArchar(20));  mysql&gt;&nbsp;Insert&nbsp;into&nbsp;Student_serial(Name)&nbsp;values('RAM'),('SHYAM'); Records:&nbsp;2&nbsp;Duplicates:&nbsp;0&nbsp;Warnings:&nbsp;0  mysql&gt;&nbsp;Select&nbsp;*&nbsp;from&nbsp;Student_serial; +------------+-------+ |&nbsp;Student_id&nbsp;|&nbsp;Name&nbsp;| +------------+-------+ |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;|&nbsp;RAM&nbsp;&nbsp;&nbsp;| |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;|&nbsp;SHYAM&nbsp;| +------------+-------+ 2&nbsp;rows&nbsp;in&nbsp;set&nbsp;(0.00&nbsp;sec)  mysql&gt;&nbsp;Show&nbsp;Create&nbsp;Table&nbsp;Student_serial\G ***************************&nbsp;1.&nbsp;row&nbsp;*************************** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Table:&nbsp;Student_serial Create&nbsp;Table:&nbsp;CREATE&nbsp;TABLE&nbsp;`student_serial`&nbsp;( &nbsp;&nbsp;&nbsp;`Student_id`&nbsp;bigint(20)&nbsp;unsigned&nbsp;NOT&nbsp;NULL&nbsp;AUTO_INCREMENT, &nbsp;&nbsp;&nbsp;`Name`&nbsp;varchar(20)&nbsp;DEFAULT&nbsp;NULL, &nbsp;&nbsp;&nbsp;UNIQUE&nbsp;KEY&nbsp;`Student_id`&nbsp;(`Student_id`) )&nbsp;ENGINE=InnoDB&nbsp;AUTO_INCREMENT=3&nbsp;DEFAULT&nbsp;CHARSET=latin1 1&nbsp;row&nbsp;in&nbsp;set&nbsp;(0.00&nbsp;sec)</pre> <div></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-63866.htm">一只宠物猫大约多少钱生活费（一只宠物猫要多少钱）</a></p>
+                                        <p>下一个：<a href="/news/article-64466.htm">Vue指令之v-for的使用说明_vue.js</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                  <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-43896.htm" title="使用pandas读取文件时的注意事项">使用pandas读取文件时的注意事项</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-10-free-high-speed-nodes.htm" title="1月10日19.9M/S|Hiddify-Next免费机场订阅每天更新订阅链接">1月10日19.9M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-13-node-share.htm" title="2月13日22.2M/S|Hiddify-Next免费机场订阅每天更新订阅链接">2月13日22.2M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-53553.htm" title="Spring MVC启动原理详解">Spring MVC启动原理详解</a></li>
+                        <li class="py-2"><a href="/news/article-19175.htm" title="猫猫轻微抓伤打两针疫苗行吗（猫咪抓伤需要打狂犬疫苗吗 打了一针后面没打了）">猫猫轻微抓伤打两针疫苗行吗（猫咪抓伤需要打狂犬疫苗吗 打了一针后面没打了）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-11-free-ssr-node.htm" title="11月11日18.6M/S|Hiddify-Next免费机场订阅每天更新订阅链接">11月11日18.6M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-48291.htm" title="扬州宠物店在什么地方（扬州宠物店在什么地方开）">扬州宠物店在什么地方（扬州宠物店在什么地方开）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-16-free-ssr-subscribe.htm" title="2月16日20.1M/S|Hiddify-Next免费机场订阅每天更新订阅链接">2月16日20.1M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-29-free-v2ray.htm" title="11月29日18M/S|Hiddify-Next免费机场订阅每天更新订阅链接">11月29日18M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-13-free-clash-subscribe.htm" title="1月13日22.7M/S|Hiddify-Next免费机场订阅每天更新订阅链接">1月13日22.7M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">3</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //about -->
+    
+    <!-- footer -->
+<footer class="py-lg-4 py-md-3 py-sm-3 py-3">
+    <div class="container py-lg-5 py-md-5 py-sm-4 py-3">
+        <div class="bottem-wthree-footer text-center pt-md-4 pt-3">
+            <p>
+                <a href="/">首页</a> |
+                <a href="/free-node/">免费节点</a> |
+                <a href="/news/">新闻资讯</a> |
+                <a href="/about-us.htm">关于我们</a> |
+                <a href="/disclaimer.htm">免责申明</a> |
+                <a href="/privacy.htm">隐私申明</a> |
+                <a href="/sitemap.xml">网站地图</a>
+            </p>
+            <p>
+                <a href="/">FreeHiddifyNext节点订阅站</a> 版权所有
+                <br />
+                Powered by WordPress
+            </p>
+        </div>
+        <!-- move icon -->
+        <div class="text-center">
+            <a href="#home" class="move-top text-center mt-3"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+        </div>
+        <!--//move icon -->
+    </div>
+</footer>
+<!--//footer -->
+<script src="/assets/website/js/frontend/freehiddifynext/jquery-1.11.1.min.js"></script>
+<script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+<script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
