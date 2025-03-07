@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freehiddifynext.github.io/news/article-68892.htm" />
+    <title>GO语言学习——基本数据类型字符串</title>
+        <meta name="description" content="字符串 Go语言中的字符串以原生数据类型出现。 Go 语言里的字符串的内部实现使用UTF-8编码。 字符串的值为双引号(")中的内容，可以在Go语言的源码中直接添加非ASCII码字符 GO语言中字符串" />
+        <link rel="icon" href="/assets/website/img/freehiddifynext/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="FreeHiddifyNext节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freehiddifynext.github.io/news/article-68892.htm" />
+    <meta property="og:site_name" content="FreeHiddifyNext节点订阅站" />
+    <meta property="og:title" content="GO语言学习——基本数据类型字符串" />
+    <meta property="og:image" content="https://freehiddifynext.github.io/uploads/20240414/94a0835147c0b7fb1a6ff73eca534535.webp" />
+        <meta property="og:release_date" content="2025-03-07T06:35:13" />
+    <meta property="og:updated_time" content="2025-03-07T06:35:13" />
+        <meta property="og:description" content="字符串 Go语言中的字符串以原生数据类型出现。 Go 语言里的字符串的内部实现使用UTF-8编码。 字符串的值为双引号(")中的内容，可以在Go语言的源码中直接添加非ASCII码字符 GO语言中字符串" />
+        
+    <!--meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+      }, false);
+      
+      function hideURLbar() {
+        window.scrollTo(0, 1);
+      }
+    </script>
+    <!--//meta tags ends here-->
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="GO语言学习——基本数据类型字符串">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    
+    <!--booststrap-->
+    <link href="/assets/website/css/freehiddifynext/bootstrap.min.css" rel="stylesheet" type="text/css" media="all">
+    <!--//booststrap end-->
+    <!-- font-awesome icons -->
+    <link href="/assets/website/css/freehiddifynext/font-awesome.min.css" rel="stylesheet">
+    <!-- //font-awesome icons -->
+    <!--stylesheets-->
+    <link href="/assets/website/css/freehiddifynext/style.css" rel='stylesheet' type='text/css' media="all">
+    <!--//stylesheets-->
+    <link href="http://fonts.googleapis.com/css?family=Thasadith:400,700" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N7EH3QDE4Q"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N7EH3QDE4Q');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!--headder-->
+    <div class="header-outs inner_page-banner " id="home">
+                <div class="headder-top">
+            <!-- nav -->
+            <nav>
+                <div id="logo">
+                    <a href="/">
+                                        <span>Free Hiddify Next</span>
+                                        </a>
+                </div>
+                <label for="drop" class="toggle">Menu</label>
+                <input type="checkbox" id="drop">
+                <ul class="menu mt-2">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a href="/client.htm">客户端</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                    </ul>
+            </nav>
+            <!-- //nav -->
+        </div>
+    </div>
+    <!--//headder-->
+    <!-- short -->
+    <div class="using-border py-3">
+        <div class="inner_breadcrumb  ml-4">
+            <ul class="short_ls">
+                <li>
+                    <a href="/">首页</a>
+                    <span>/</span>
+                </li>
+                <li>
+                    <a href="/news/">新闻资讯</a>
+                    <span>/</span>
+                </li>
+                <li>正文</li>
+            </ul>
+        </div>
+    </div>
+    <!-- //short-->
+    <!-- about -->
+    <section class="about py-lg-4 py-md-3 py-sm-3 py-3" id="about">
+        <div class="container py-lg-5 py-md-4 py-sm-4 py-3">
+            <div class="row">
+                <div class="col-md-9">
+                  <h1 class="title text-center mb-lg-5 mb-md-4 mb-sm-4 mb-3">GO语言学习——基本数据类型字符串</h1>
+                                  <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<p>字符串</p> <p>Go语言中的字符串以原生数据类型出现。 Go 语言里的字符串的内部实现使用UTF-8编码。 字符串的值为双引号(")中的内容，可以在Go语言的源码中直接添加非ASCII码字符</p> <p>GO语言中字符串是用双引号包裹的</p> <p>GO语言中单引号包裹的是字符</p> <pre><code>// 字符串 s := "Hello 中国" // 单独的字母、汉字、符合表示一个字符 c1 := 'h' c2 := '1' c3 := '中' // 字节：1字节=8Bit(8个二进制位) // 1个字符'A'=1个字节 // 1个utf8编码的汉字'中'= 一般占3个字节</code></pre> <p>字符串转义符</p> <p>转义符 	       含义<br /> \r 	    回车符（返回行首）<br /> \n 	换行符（直接跳到下一行的同列位置）<br /> \t 	       制表符<br /> ' 	       单引号<br /> " 	       双引号<br /> \ 	       反斜杠</p> <p>字符串的常用操作</p> <pre><code>              方法                 	  介绍               len(str)              	  求长度            +或fmt.Sprintf           	 拼接字符串           strings.Split           	  分割           strings.contains          	判断是否包含</code></pre> <p>strings.HasPrefix,strings.HasSuffix	前缀/后缀判断<br /> strings.Index(),strings.LastIndex()	子串出现的位置<br /> strings.Join(a[]string, sep string)	join操作</p> <pre><code>package main  import ( 	"fmt" 	"strings" )  // 字符串  func main(){ 	// \ 本来是具有特殊含义的，告诉程序\就是一个单纯的\ 	path := "\"E:\\36期Python全栈开发资料\\Administrator(8E5370323193)\\预习(2)\"" 	path1 := "'E:\\36期Python全栈开发资料\\Administrator(8E5370323193)\\预习(2)'" 	fmt.Println(path) 	fmt.Println(path1)  	s := "I'm ok" 	fmt.Println(s)  	// 多行的字符串 	s2 := ` 	世情薄 	人情恶 	雨送黄昏花易落 	` 	fmt.Println(s2) 	s3 := `E:\36期Python全栈开发资料\Administrator(8E5370323193)\预习(2)` 	fmt.Println(s3)  	// 字符串相关操作 	fmt.Println(len(s3))  	// 字符串拼接 	name := "理想" 	world := "远大" 	ss := name + world 	fmt.Println(ss) 	ss1 := fmt.Sprintf("%s%s", name, world) 	// fmt.Printf("%s%s", name, world) 	fmt.Println(ss1) 	// 分割 	ret := strings.Split(s3, "\\") 	fmt.Println(ret)  	// 包含 	fmt.Println(strings.Contains(ss, "理想")) 	// 前缀 	fmt.Println(strings.HasPrefix(ss, "理想")) 	// 后缀 	fmt.Println(strings.HasSuffix(ss, "理想"))  	s4 := "abcded" 	fmt.Println(strings.Index(s4, "c")) 	fmt.Println(strings.LastIndex(s4, "c")) 	fmt.Println(strings.Index(s4, "d")) 	fmt.Println(strings.LastIndex(s4, "d")) 	// 拼接 	fmt.Println(strings.Join(ret, "+"))  }</code></pre> <p>byte和rune类型</p> <p>字符用单引号（’）包裹起来</p> <p>Go 语言的字符有以下两种：</p> <ol> <li>uint8类型，或者叫 byte 型，代表了ASCII码的一个字符。</li> <li>rune类型，代表一个 UTF-8字符。rune类型实际是一个int32</li> </ol> <p>字符串底层是一个byte数组，可以和[]byte类型相互转换。字符串是不能修改的 字符串是由byte字节组成，所以字符串的长度是byte字节的长度。 rune类型用来表示utf8字符，一个rune字符由一个或多个byte组成。</p> <p>修改字符串</p> <p>要修改字符串，需要先将其转换成[]rune或[]byte，完成后再转换为string。无论哪种转换，都会重新分配内存，并复制字节数组。</p> <p>类型转换</p> <p>强制类型转换的基本语法如下：</p> <pre><code>T(表达式)</code></pre> <p>其中，T表示要转换的类型。表达式包括变量、复杂算子和函数返回值等.</p> <pre><code>package main  import ( 	"fmt" )  func main() { 	s := "Hello 中国" 	// len()求的是byte字节的数量 	n := len(s) 	fmt.Println(n)  	// for i := 0; i &lt; len(s); i++ { 	// 	fmt.Println(s[i]) 	// 	fmt.Printf("%c\n", s[i]) // %c：字符 	// }  	// 字符串修改 	s2 := "白萝卜" // [白 萝 卜] 	s3 := []rune(s2) // 把字符串强制转换成了一个rune切片 	s3[0] = '红' // 单引号表示字符 	fmt.Println(string(s3)) // 把rune切片强制转换成字符串  	c1 := "红" 	c2 := '红' // rune(int32) 	fmt.Printf("c1:%T c2:%T\n", c1, c2) // c1:string c2:int32 	c3 := "H" 	c4 := 'H' 	c5 := byte('H') 	fmt.Printf("c3:%T c4:%T\n", c3, c4) // c3:string c4:int32 	fmt.Printf("c4:%d\n", c4) // c4:72 	fmt.Printf("c5:%T\n", c5) // c5:uint8  	// 类型转换 	n1 := 10 // int 	var f float64 	f = float64(n1) 	fmt.Println(f) 	fmt.Printf("%T\n", f) // float64   }</code></pre> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-68236.htm">卖宠物粮食的app（卖宠物粮食的上市公司）</a></p>
+                                        <p>下一个：<a href="/news/article-68893.htm">动物疫苗的生产原料有哪些呢英语（动物疫苗的生产原料有哪些,如何取得）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                  <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-55737.htm" title="聊城宠物店买的宠物哪家好（聊城宠物店买的宠物哪家好一点）">聊城宠物店买的宠物哪家好（聊城宠物店买的宠物哪家好一点）</a></li>
+                        <li class="py-2"><a href="/news/article-46876.htm" title="spring-boot/spring-security/spring-cloud全家桶环境搭建">spring-boot/spring-security/spring-cloud全家桶环境搭建</a></li>
+                        <li class="py-2"><a href="/news/article-40438.htm" title="动物医院优质好评文案 动物医院优质好评文案怎么写">动物医院优质好评文案 动物医院优质好评文案怎么写</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-3-free-ssr-node.htm" title="2月3日22M/S|Hiddify-Next免费机场订阅每天更新订阅链接">2月3日22M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-61465.htm" title="合肥赠送狗狗（合肥赠送狗狗的公司）">合肥赠送狗狗（合肥赠送狗狗的公司）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-7-node-share-links.htm" title="1月7日22.2M/S|Hiddify-Next免费机场订阅每天更新订阅链接">1月7日22.2M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-36989.htm" title="vue2 自定义指令 实现全屏 、对话框拖拽">vue2 自定义指令 实现全屏 、对话框拖拽</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-7-shadowrocket-node.htm" title="3月7日22M/S|Hiddify-Next免费机场订阅每天更新订阅链接">3月7日22M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-44903.htm" title="宠物粮食加工厂加盟电话号码查询 宠物粮食加工厂加盟电话号码查询是多少">宠物粮食加工厂加盟电话号码查询 宠物粮食加工厂加盟电话号码查询是多少</a></li>
+                        <li class="py-2"><a href="/news/article-40924.htm" title="将Spring Boot 项目打包成Jar包并部署到Nginx服务器中">将Spring Boot 项目打包成Jar包并部署到Nginx服务器中</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">21</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //about -->
+    
+    <!-- footer -->
+<footer class="py-lg-4 py-md-3 py-sm-3 py-3">
+    <div class="container py-lg-5 py-md-5 py-sm-4 py-3">
+        <div class="bottem-wthree-footer text-center pt-md-4 pt-3">
+            <p>
+                <a href="/">首页</a> |
+                <a href="/free-node/">免费节点</a> |
+                <a href="/news/">新闻资讯</a> |
+                <a href="/about-us.htm">关于我们</a> |
+                <a href="/disclaimer.htm">免责申明</a> |
+                <a href="/privacy.htm">隐私申明</a> |
+                <a href="/sitemap.xml">网站地图</a>
+            </p>
+            <p>
+                <a href="/">FreeHiddifyNext节点订阅站</a> 版权所有
+                <br />
+                Powered by WordPress
+            </p>
+        </div>
+        <!-- move icon -->
+        <div class="text-center">
+            <a href="#home" class="move-top text-center mt-3"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+        </div>
+        <!--//move icon -->
+    </div>
+</footer>
+<!--//footer -->
+<script src="/assets/website/js/frontend/freehiddifynext/jquery-1.11.1.min.js"></script>
+<script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+<script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
