@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freehiddifynext.github.io/news/article-75507.htm" />
+    <title>jvm垃圾回收算法详解</title>
+        <meta name="description" content="前言 相比C语言，JVM虚拟机一个优势体现在对对象的垃圾回收上，JVM有一套完整的垃圾回收算法，可以对程序运行时产生的垃圾对象进行及时的回收，以便释放JVM相应区域的内存空间，确保程序稳定高效的运行，" />
+        <link rel="icon" href="/assets/website/img/freehiddifynext/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="FreeHiddifyNext节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freehiddifynext.github.io/news/article-75507.htm" />
+    <meta property="og:site_name" content="FreeHiddifyNext节点订阅站" />
+    <meta property="og:title" content="jvm垃圾回收算法详解" />
+    <meta property="og:image" content="https://freehiddifynext.github.io/uploads/20240414/70f4b3c1517fd6851566f3435e3795e1.webp" />
+        <meta property="og:release_date" content="2025-03-17T09:39:41" />
+    <meta property="og:updated_time" content="2025-03-17T09:39:41" />
+        <meta property="og:description" content="前言 相比C语言，JVM虚拟机一个优势体现在对对象的垃圾回收上，JVM有一套完整的垃圾回收算法，可以对程序运行时产生的垃圾对象进行及时的回收，以便释放JVM相应区域的内存空间，确保程序稳定高效的运行，" />
+        
+    <!--meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+      }, false);
+      
+      function hideURLbar() {
+        window.scrollTo(0, 1);
+      }
+    </script>
+    <!--//meta tags ends here-->
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="jvm垃圾回收算法详解">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    
+    <!--booststrap-->
+    <link href="/assets/website/css/freehiddifynext/bootstrap.min.css" rel="stylesheet" type="text/css" media="all">
+    <!--//booststrap end-->
+    <!-- font-awesome icons -->
+    <link href="/assets/website/css/freehiddifynext/font-awesome.min.css" rel="stylesheet">
+    <!-- //font-awesome icons -->
+    <!--stylesheets-->
+    <link href="/assets/website/css/freehiddifynext/style.css" rel='stylesheet' type='text/css' media="all">
+    <!--//stylesheets-->
+    <link href="http://fonts.googleapis.com/css?family=Thasadith:400,700" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N7EH3QDE4Q"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N7EH3QDE4Q');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!--headder-->
+    <div class="header-outs inner_page-banner " id="home">
+                <div class="headder-top">
+            <!-- nav -->
+            <nav>
+                <div id="logo">
+                    <a href="/">
+                                        <span>Free Hiddify Next</span>
+                                        </a>
+                </div>
+                <label for="drop" class="toggle">Menu</label>
+                <input type="checkbox" id="drop">
+                <ul class="menu mt-2">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a href="/client.htm">客户端</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                    </ul>
+            </nav>
+            <!-- //nav -->
+        </div>
+    </div>
+    <!--//headder-->
+    <!-- short -->
+    <div class="using-border py-3">
+        <div class="inner_breadcrumb  ml-4">
+            <ul class="short_ls">
+                <li>
+                    <a href="/">首页</a>
+                    <span>/</span>
+                </li>
+                <li>
+                    <a href="/news/">新闻资讯</a>
+                    <span>/</span>
+                </li>
+                <li>正文</li>
+            </ul>
+        </div>
+    </div>
+    <!-- //short-->
+    <!-- about -->
+    <section class="about py-lg-4 py-md-3 py-sm-3 py-3" id="about">
+        <div class="container py-lg-5 py-md-4 py-sm-4 py-3">
+            <div class="row">
+                <div class="col-md-9">
+                  <h1 class="title text-center mb-lg-5 mb-md-4 mb-sm-4 mb-3">jvm垃圾回收算法详解</h1>
+                                  <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-light"> <h2> <a id="_0" rel="nofollow"></a>前言</h2> <p>相比C语言，JVM虚拟机一个优势体现在对对象的垃圾回收上，JVM有一套完整的垃圾回收算法，可以对程序运行时产生的垃圾对象进行及时的回收，以便释放JVM相应区域的内存空间，确保程序稳定高效的运行，但在真正了解垃圾回收算法之前，有必要对JVM的对象的引用做一个简单的铺垫</p> <h2> <a id="JVM_3" rel="nofollow"></a>JVM对象可达性分析算法</h2> <ul> <li>Java虚拟机中的垃圾回收器采用可达性分析来探索所有存活的对象</li> <li>扫描堆中的对象，看是否能够沿着GC Root对象为起点的引用链找到该对象，找不到表示可以被回收</li> </ul> <p>想象一下，对象在什么情况下会被认为是垃圾对象呢？</p> <ul> <li>当一个对象没有被任何引用了，就认为对象无用了（如图一）</li> <li>当一组对象没有被任何引用了，可以认为这组对象无用了（如图二）</li> </ul> <p><img decoding="async" src="http://img.555519.xyz/uploads/20230203/e80bb304f3bfdea9ad8d910b1e8af22b.jpg" alt="jvm垃圾回收算法详解"></p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20230203/81cb64b8dda4973809a511a0e455e129.jpg" alt="jvm垃圾回收算法详解"><br /> 下面通过一段简单的程序代码，在不同的时刻导出dump日志，利用MAT分析工具来说明下这个问题</p> <pre><code>public static void main(String[] args) throws Exception{         List&lt;Object&gt; list1 = new ArrayList&lt;&gt;();         list1.add("aaa");         list1.add("bbb");         System.out.println(1);         System.in.read();          list1 = null;         System.out.println(1);         System.in.read();         System.out.println("end");      } </code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads/20230203/2324d454ace804d728795ea250f0a45d.jpg" alt="jvm垃圾回收算法详解"></p> <p>运行程序，利用下面的命令导出两个时刻的dump文件</p> <pre><code>map -dump:format=b,live,file=a.dump 17356 </code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads/20230203/c893513605a82166ffd9b67a8091efde.jpg" alt="jvm垃圾回收算法详解"></p> <p>分析第一个文件，在第一个时刻，此时由于list1集合中放了2个元素，因此该对象存在引用关系<br /><img decoding="async" src="http://img.555519.xyz/uploads/20230203/40e5456f2c972500f8433f28d2a51ed2.jpg" alt="jvm垃圾回收算法详解"><br /> 再分析第二个文件，在第二个时刻，此时由于list1置为null，因此该对象没有被引用的地方了，在gc root中找不到list1对象了<br /><img decoding="async" src="http://img.555519.xyz/uploads/20230203/2bd7db48e9e7bd9a5e75e1ec471db68f.jpg" alt="jvm垃圾回收算法详解"></p> <p>通过上面简单的案例演示和说明，我们再次明确，对象被标为垃圾的前提是该对象从GC Root出发进行搜索时，找不到对该对象的引用，即为不可达对象</p> <h2> <a id="_51" rel="nofollow"></a>几种常用的垃圾回收算法</h2> <p><strong>1、引用计数法</strong></p> <p>引用计数法在JVM的早期版本中有用到，引用计数是指采用计数器说明引用对象的个数，即为某个对象设置一个引用对象数量的计数器，如果该对象被引用了，计数器的数量加1，否则减一，当计数器的数值为0的时候，垃圾回收器将该对象进行回收</p> <p>如下图所示，某一时刻，对象A,B,C各自持有对对象P的引用，到另一时刻A,B,C不再对P对象进行引用了，计数器的值归为0，此时垃圾回收器就对P对象进行垃圾回收</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20230203/7f7bef5b91707a9f796bf4e2a032e553.jpg" alt="jvm垃圾回收算法详解"><br /> 引用计数法在JVM垃圾回收算法中逐渐被废弃，很简单，如果存在对象之间的循环引用，则计数器的count值永远不会清0，如此对象将会一直存在内存中得不到释放<br /><img decoding="async" src="http://img.555519.xyz/uploads/20230203/3e0ef12f52b1cb4a3d56517203156cf4.jpg" alt="jvm垃圾回收算法详解"><br /><strong>2、根搜索算法</strong></p> <p>根搜索算法是JVM的默认垃圾回收算法，也叫做“可达性分析算法”，即从GCRoot出发，有引用的对象都是不可回收的，其他的可以进行标记后再回收</p> <p>如下图所示，对某个线程栈来说，里面有局部变量，有静态变量，常量池，或对本地native方法的调用，假设从某个栈帧的局部变量出发，可认为是GCRoot的搜索起点，以此为起点，搜索整个引用链条上的所有引用对象，在这个链条上的对象认为是GCRoot可达的对象，否则将会被设为可回收对象被垃圾回收器回收<br /><img decoding="async" src="http://img.555519.xyz/uploads/20230203/3fb5b5cb0e8a8d55ea5a7659c03f40d3.jpg" alt="jvm垃圾回收算法详解"><br /><strong>3、标记清除法（Mark-Sweep）</strong></p> <p>标记清除算法主要经历标记和清除2个步骤，通过根搜索算法中的可达性分析之后，那些被标记为垃圾对象的内存空间，通过该算法直接清除</p> <p>标记清除算法简单粗暴，效率很高，因为不涉及到其他的步骤，但是从下面的图示也可以看到，标记清除算法产生了不连续的内存碎片（产生了内存间隙）导致其内存使用率比较低，如果程序中需要为某个大对象分配一大块连续的内存空间，则很难通过这种算法腾出这样的内存空间，因此该算法在JVM中并没有使用到（作为一种垃圾回收算法的思想值得借鉴）<br /><img decoding="async" src="http://img.555519.xyz/uploads/20230203/61153cd719384c267eb3299e26cabb86.jpg" alt="jvm垃圾回收算法详解"><br /><strong>4、复制交换算法（Mark-Sweep）</strong></p> <p>为解决Mark-Sweep算法的缺陷，Copying算法就被提了出来。它将可用内存按容量划分为大小相等的两块，每次只使用其中的一块。当某一块内存用完了，就将还存活着的对象复制到另外一块上面，然后再把已使用的内存空间一次清理掉，这样一来就不容易出现内存碎片的问题</p> <p>在堆的年轻代进行GC的时候使用的就是复制算法，还记得新生代的区域划分吗？S0和S1两个区域的内存在实际使用时，总是其中一块在使用，当达到了minor gc的条件时，就按照复制算法，将这块空间中存活的对象转移到另一块，再清理当前这块空间的垃圾对象</p> <p>总结来说，复制算法速度快，无内存碎片，但缺点也比较明显，就是浪费空间，在年轻代的 Minor Gc中使用<br /><img decoding="async" src="http://img.555519.xyz/uploads/20230203/3fe8bebda73e0a27a3cd627d0f8bceb7.jpg" alt="jvm垃圾回收算法详解"><br /><strong>5、标记压缩算法（Mark-Compact）</strong></p> <p>为解决Copying算法的缺陷，充分利用内存空间，提出了Mark-Compact算法。该算法标记阶段和Mark-Sweep一样，但是在完成标记之后，它不是直接清理可回收对象，而是将存活对象都向一端移动，然后清理掉端边界以外的内存</p> <p>标记压缩算法整个垃圾回收的过程包括，<strong>标记 -&gt; 压缩 -&gt; 整理 -&gt;清除</strong>，通过下图展示也不难发现，标记压缩进行垃圾回收之后，整个内存区域的分布比较连续（无内存碎片），但是很明显这种算法的中间操作步骤相对上面两种算法要复杂，因此在进行GC过程中比较耗时效率较低，在老年代的Full Gc时使用的就是标记压缩算法<br /><img decoding="async" src="http://img.555519.xyz/uploads/20230203/eaf6f1d7fb2e702b77daa18ff5e1d59d.jpg" alt="jvm垃圾回收算法详解"></p> <h2> <a id="JVM__89" rel="nofollow"></a>JVM 分代收集算法</h2> <p><img decoding="async" src="http://img.555519.xyz/uploads/20230203/e92a023f70f4f0f242c97d34f70858f4.jpg" alt="jvm垃圾回收算法详解"><br /> 在JVM的内存结构中，按照堆内存的结构划分，大的方面可以分为年轻代和老年代，堆内存是JVM中进行垃圾回收的主要区域</p> <p>但是各个区域在使用过程中的作用，对象生成规则，对象生命周期的不同又可以细分为各个逻辑上的结构，比如在新生代区域，可以划分为 Eden区和Survivor区，而Survivor再细分为from(s0)区和to(s1)区，通过区域的划分，各个区域的职责更加明确</p> <p>我们知道，新生代和老年代一个很大的区别在于，新生代是对象频繁产生的区域，也是Minor Gc很频繁的区域，而老年代中的对象大多则是比较稳定的对象，从这个角度上说，各个区域在进行垃圾回收时策略自然不相同</p> <p>分代收集算法是目前大部分JVM的垃圾收集器采用的算法，新生代对象朝生夕死，生命周期短，内存空间需要频繁的进行清理以应对快速而来的新对象，因此需要更高效的垃圾回收算法</p> <p><strong>新生代</strong></p> <blockquote> <p>目前大部分垃圾收集器对新生代都采取Copying算法，因为新生代中每次垃圾回收都要回收大部分对象，也就是说需要复制的操作次数较少，但实际中并不是按照1：1的比例来划分新生代的空间的，一般来说是将新生代划分为一块较大的Eden空间和两块较小的Survivor空间（一般为8:1:1），每次使用Eden空间和其中的一块Survivor空间，当进行回收时，将Eden和Survivor中还存活的对象复制到另一块Survivor空间中，然后清理掉Eden和刚才使用过的Survivor空间</p> </blockquote> <p><strong>老年代</strong></p> <p>老年代内存空间相对较大，可以存放更多的对象，通常情况下每次发生Full Gc的间隔时间也较长，而且在老年代中经常需要存放一些大对象，需要连续的内存空间，基于这些特点，在目前主流的JVM垃圾回收器中对于老年代采用压缩算法</p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-74825.htm">宠康动物医院是全国连锁吗多少钱（宠康动物诊所）</a></p>
+                                        <p>下一个：<a href="/news/article-75508.htm">Unity怎么更换默认脚本编辑器VS</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                  <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-60283.htm" title="什么叫领养宠物的人呢（领养宠物狗是什么意思）">什么叫领养宠物的人呢（领养宠物狗是什么意思）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-15-free-v2ray-subscribe.htm" title="3月15日22.1M/S|Hiddify-Next免费机场订阅每天更新订阅链接">3月15日22.1M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-39450.htm" title="动物疫苗注射的作用有哪些方面呢（动物疫苗包括哪些）">动物疫苗注射的作用有哪些方面呢（动物疫苗包括哪些）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-31-clash-node-daily-updates.htm" title="1月31日19.1M/S|Hiddify-Next免费机场订阅每天更新订阅链接">1月31日19.1M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-41427.htm" title="宠物粮食上市 宠物粮食上市公司">宠物粮食上市 宠物粮食上市公司</a></li>
+                        <li class="py-2"><a href="/news/article-43896.htm" title="使用pandas读取文件时的注意事项">使用pandas读取文件时的注意事项</a></li>
+                        <li class="py-2"><a href="/news/article-40439.htm" title="动物疫苗品牌排行榜前十名 动物疫苗品牌排行榜前十名有哪些">动物疫苗品牌排行榜前十名 动物疫苗品牌排行榜前十名有哪些</a></li>
+                        <li class="py-2"><a href="/news/article-65096.htm" title="http url特殊字符转义">http url特殊字符转义</a></li>
+                        <li class="py-2"><a href="/news/article-51421.htm" title="人用针剂跟畜用针剂一样吗 人用针剂跟畜用针剂一样吗图片">人用针剂跟畜用针剂一样吗 人用针剂跟畜用针剂一样吗图片</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-11-node-share-links.htm" title="1月11日19.5M/S|Hiddify-Next免费机场订阅每天更新订阅链接">1月11日19.5M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">57</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //about -->
+    
+    <!-- footer -->
+<footer class="py-lg-4 py-md-3 py-sm-3 py-3">
+    <div class="container py-lg-5 py-md-5 py-sm-4 py-3">
+        <div class="bottem-wthree-footer text-center pt-md-4 pt-3">
+            <p>
+                <a href="/">首页</a> |
+                <a href="/free-node/">免费节点</a> |
+                <a href="/news/">新闻资讯</a> |
+                <a href="/about-us.htm">关于我们</a> |
+                <a href="/disclaimer.htm">免责申明</a> |
+                <a href="/privacy.htm">隐私申明</a> |
+                <a href="/sitemap.xml">网站地图</a>
+            </p>
+            <p>
+                <a href="/">FreeHiddifyNext节点订阅站</a> 版权所有
+                <br />
+                Powered by WordPress
+            </p>
+        </div>
+        <!-- move icon -->
+        <div class="text-center">
+            <a href="#home" class="move-top text-center mt-3"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+        </div>
+        <!--//move icon -->
+    </div>
+</footer>
+<!--//footer -->
+<script src="/assets/website/js/frontend/freehiddifynext/jquery-1.11.1.min.js"></script>
+<script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+<script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
