@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freehiddifynext.github.io/news/article-77537.htm" />
+    <title>vue v-for循环出来的数组加不同的颜色(颜色循环)</title>
+        <meta name="description" content="上面方块是由后端返回的数组 需求是每四个方块循环不同的背景颜色 下面展示一些内联代码片。 // 具体v-for的代码块&lt;div v-for="(item, index) in appList":" />
+        <link rel="icon" href="/assets/website/img/freehiddifynext/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="FreeHiddifyNext节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freehiddifynext.github.io/news/article-77537.htm" />
+    <meta property="og:site_name" content="FreeHiddifyNext节点订阅站" />
+    <meta property="og:title" content="vue v-for循环出来的数组加不同的颜色(颜色循环)" />
+    <meta property="og:image" content="https://freehiddifynext.github.io/uploads/20240414/459beb48ce10822456f2c2795523efdf.webp" />
+        <meta property="og:release_date" content="2025-03-20T10:00:32" />
+    <meta property="og:updated_time" content="2025-03-20T10:00:32" />
+        <meta property="og:description" content="上面方块是由后端返回的数组 需求是每四个方块循环不同的背景颜色 下面展示一些内联代码片。 // 具体v-for的代码块&lt;div v-for="(item, index) in appList":" />
+        
+    <!--meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+      }, false);
+      
+      function hideURLbar() {
+        window.scrollTo(0, 1);
+      }
+    </script>
+    <!--//meta tags ends here-->
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="vue v-for循环出来的数组加不同的颜色(颜色循环)">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    
+    <!--booststrap-->
+    <link href="/assets/website/css/freehiddifynext/bootstrap.min.css" rel="stylesheet" type="text/css" media="all">
+    <!--//booststrap end-->
+    <!-- font-awesome icons -->
+    <link href="/assets/website/css/freehiddifynext/font-awesome.min.css" rel="stylesheet">
+    <!-- //font-awesome icons -->
+    <!--stylesheets-->
+    <link href="/assets/website/css/freehiddifynext/style.css" rel='stylesheet' type='text/css' media="all">
+    <!--//stylesheets-->
+    <link href="http://fonts.googleapis.com/css?family=Thasadith:400,700" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N7EH3QDE4Q"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N7EH3QDE4Q');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!--headder-->
+    <div class="header-outs inner_page-banner " id="home">
+                <div class="headder-top">
+            <!-- nav -->
+            <nav>
+                <div id="logo">
+                    <a href="/">
+                                        <span>Free Hiddify Next</span>
+                                        </a>
+                </div>
+                <label for="drop" class="toggle">Menu</label>
+                <input type="checkbox" id="drop">
+                <ul class="menu mt-2">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a href="/client.htm">客户端</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                    </ul>
+            </nav>
+            <!-- //nav -->
+        </div>
+    </div>
+    <!--//headder-->
+    <!-- short -->
+    <div class="using-border py-3">
+        <div class="inner_breadcrumb  ml-4">
+            <ul class="short_ls">
+                <li>
+                    <a href="/">首页</a>
+                    <span>/</span>
+                </li>
+                <li>
+                    <a href="/news/">新闻资讯</a>
+                    <span>/</span>
+                </li>
+                <li>正文</li>
+            </ul>
+        </div>
+    </div>
+    <!-- //short-->
+    <!-- about -->
+    <section class="about py-lg-4 py-md-3 py-sm-3 py-3" id="about">
+        <div class="container py-lg-5 py-md-4 py-sm-4 py-3">
+            <div class="row">
+                <div class="col-md-9">
+                  <h1 class="title text-center mb-lg-5 mb-md-4 mb-sm-4 mb-3">vue v-for循环出来的数组加不同的颜色(颜色循环)</h1>
+                                  <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220603/46072099c2b6b68e8e2c80eb622e10ec.jpg" alt="vue v-for循环出来的数组加不同的颜色(颜色循环)"><br /> 上面方块是由后端返回的数组 需求是每四个方块循环不同的背景颜色<br /> 下面展示一些<code>内联代码片</code>。</p> <pre><code class="prism language-javascript"><span class="token comment">// 具体v-for的代码块</span><span class="token operator">&lt;</span>div v<span class="token operator">-</span><span class="token keyword">for</span><span class="token operator">=</span><span class="token string">"(item, index) in appList"</span><span class="token operator">:</span>key<span class="token operator">=</span><span class="token string">"index"</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span>span<span class="token operator">:</span>style<span class="token operator">=</span><span class="token string">"{'background':item.color}"</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">&gt;</span><span class="token comment">// 方块 样式就不写了</span><span class="token operator">&lt;</span>span<span class="token operator">&gt;</span><span class="token punctuation">{<!-- --></span><span class="token punctuation">{<!-- --></span>系统名称<span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span><span class="token comment">//  appList 为后端返回数组</span></code></pre> <pre><code class="prism language-javascript"><span class="token comment">// appList 处理</span><span class="token keyword">this</span><span class="token punctuation">.</span>appList<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">item<span class="token punctuation">,</span> index</span><span class="token punctuation">)</span><span class="token operator">=&gt;</span><span class="token punctuation">{<!-- --></span> 	item<span class="token punctuation">.</span>color<span class="token operator">=</span><span class="token keyword">this</span><span class="token punctuation">.</span>colorList<span class="token punctuation">[</span>index<span class="token operator">%</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token comment">// colorList为自定义四种颜色值数组 colorList: ['#2a7aff','#7ed321','#f31876','#f65a5a']</span><span class="token comment">// index%4 根据你的需求取值 我这里是4个一循环</span></code></pre> <p>以上因为我的需求比较简单就用的这种方式 如果你的需求也很简单可以试试这种方法</p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-76843.htm">吉林市宠物猫领养（吉林市宠物猫领养价格）</a></p>
+                                        <p>下一个：<a href="/news/article-77538.htm">无货源网店怎么发货操作流程（无货源网店怎么发货操作流程图）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                  <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-2-27-free-clash-subscribe.htm" title="2月27日21.5M/S|Hiddify-Next免费机场订阅每天更新订阅链接">2月27日21.5M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-41427.htm" title="宠物粮食上市 宠物粮食上市公司">宠物粮食上市 宠物粮食上市公司</a></li>
+                        <li class="py-2"><a href="/news/article-70840.htm" title="狗粮厂设备（狗粮生产设备厂家）">狗粮厂设备（狗粮生产设备厂家）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-15-free-v2ray-subscribe.htm" title="3月15日22.1M/S|Hiddify-Next免费机场订阅每天更新订阅链接">3月15日22.1M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-16-free-ssr-subscribe.htm" title="2月16日20.1M/S|Hiddify-Next免费机场订阅每天更新订阅链接">2月16日20.1M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-19-node-share-links.htm" title="1月19日22.6M/S|Hiddify-Next免费机场订阅每天更新订阅链接">1月19日22.6M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-10-free-high-speed-nodes.htm" title="1月10日19.9M/S|Hiddify-Next免费机场订阅每天更新订阅链接">1月10日19.9M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-45897.htm" title="Java中线程状态+线程安全问题+synchronized的用法详解_java_">Java中线程状态+线程安全问题+synchronized的用法详解_java_</a></li>
+                        <li class="py-2"><a href="/news/article-55194.htm" title="动物疫苗和人体疫苗的区别是什么呢英语 动物疫苗和人体疫苗的区别是什么呢英语翻译">动物疫苗和人体疫苗的区别是什么呢英语 动物疫苗和人体疫苗的区别是什么呢英语翻译</a></li>
+                        <li class="py-2"><a href="/news/article-47853.htm" title="性能优化之html、css、js三者的加载顺序">性能优化之html、css、js三者的加载顺序</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">66</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //about -->
+    
+    <!-- footer -->
+<footer class="py-lg-4 py-md-3 py-sm-3 py-3">
+    <div class="container py-lg-5 py-md-5 py-sm-4 py-3">
+        <div class="bottem-wthree-footer text-center pt-md-4 pt-3">
+            <p>
+                <a href="/">首页</a> |
+                <a href="/free-node/">免费节点</a> |
+                <a href="/news/">新闻资讯</a> |
+                <a href="/about-us.htm">关于我们</a> |
+                <a href="/disclaimer.htm">免责申明</a> |
+                <a href="/privacy.htm">隐私申明</a> |
+                <a href="/sitemap.xml">网站地图</a>
+            </p>
+            <p>
+                <a href="/">FreeHiddifyNext节点订阅站</a> 版权所有
+                <br />
+                Powered by WordPress
+            </p>
+        </div>
+        <!-- move icon -->
+        <div class="text-center">
+            <a href="#home" class="move-top text-center mt-3"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+        </div>
+        <!--//move icon -->
+    </div>
+</footer>
+<!--//footer -->
+<script src="/assets/website/js/frontend/freehiddifynext/jquery-1.11.1.min.js"></script>
+<script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+<script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
