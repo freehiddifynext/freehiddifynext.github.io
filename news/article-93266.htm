@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freehiddifynext.github.io/news/article-93266.htm" />
+    <title>Centos7系统离线安装nginx步骤(亲测，超详细步骤)</title>
+        <meta name="description" content="1.整理离线安装需要的包，打包成nginxOfflinePack.tar.gz 压缩包复制到centos相应目录 我整理的包已上传到csdn资源库 ，下载地址 https://download.csd" />
+        <link rel="icon" href="/assets/website/img/freehiddifynext/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="FreeHiddifyNext节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freehiddifynext.github.io/news/article-93266.htm" />
+    <meta property="og:site_name" content="FreeHiddifyNext节点订阅站" />
+    <meta property="og:title" content="Centos7系统离线安装nginx步骤(亲测，超详细步骤)" />
+    <meta property="og:image" content="https://freehiddifynext.github.io/uploads/20240414/cf23587aada6ae66b50cafa2e31460ee.webp" />
+        <meta property="og:release_date" content="2025-04-11T08:56:58" />
+    <meta property="og:updated_time" content="2025-04-11T08:56:58" />
+        <meta property="og:description" content="1.整理离线安装需要的包，打包成nginxOfflinePack.tar.gz 压缩包复制到centos相应目录 我整理的包已上传到csdn资源库 ，下载地址 https://download.csd" />
+        
+    <!--meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+      }, false);
+      
+      function hideURLbar() {
+        window.scrollTo(0, 1);
+      }
+    </script>
+    <!--//meta tags ends here-->
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Centos7系统离线安装nginx步骤(亲测，超详细步骤)">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    
+    <!--booststrap-->
+    <link href="/assets/website/css/freehiddifynext/bootstrap.min.css" rel="stylesheet" type="text/css" media="all">
+    <!--//booststrap end-->
+    <!-- font-awesome icons -->
+    <link href="/assets/website/css/freehiddifynext/font-awesome.min.css" rel="stylesheet">
+    <!-- //font-awesome icons -->
+    <!--stylesheets-->
+    <link href="/assets/website/css/freehiddifynext/style.css" rel='stylesheet' type='text/css' media="all">
+    <!--//stylesheets-->
+    <link href="http://fonts.googleapis.com/css?family=Thasadith:400,700" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N7EH3QDE4Q"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N7EH3QDE4Q');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!--headder-->
+    <div class="header-outs inner_page-banner " id="home">
+                <div class="headder-top">
+            <!-- nav -->
+            <nav>
+                <div id="logo">
+                    <a href="/">
+                                        <span>Free Hiddify Next</span>
+                                        </a>
+                </div>
+                <label for="drop" class="toggle">Menu</label>
+                <input type="checkbox" id="drop">
+                <ul class="menu mt-2">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a href="/client.htm">客户端</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                    </ul>
+            </nav>
+            <!-- //nav -->
+        </div>
+    </div>
+    <!--//headder-->
+    <!-- short -->
+    <div class="using-border py-3">
+        <div class="inner_breadcrumb  ml-4">
+            <ul class="short_ls">
+                <li>
+                    <a href="/">首页</a>
+                    <span>/</span>
+                </li>
+                <li>
+                    <a href="/news/">新闻资讯</a>
+                    <span>/</span>
+                </li>
+                <li>正文</li>
+            </ul>
+        </div>
+    </div>
+    <!-- //short-->
+    <!-- about -->
+    <section class="about py-lg-4 py-md-3 py-sm-3 py-3" id="about">
+        <div class="container py-lg-5 py-md-4 py-sm-4 py-3">
+            <div class="row">
+                <div class="col-md-9">
+                  <h1 class="title text-center mb-lg-5 mb-md-4 mb-sm-4 mb-3">Centos7系统离线安装nginx步骤(亲测，超详细步骤)</h1>
+                                  <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> <p>1.整理离线安装需要的包，打包成nginxOfflinePack.tar.gz 压缩包复制到centos相应目录</p> <p>我整理的包已上传到csdn资源库 ，下载地址</p> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://download.csdn.net/download/qq445829096/12451908"  rel="nofollow">https://download.csdn.net/download/qq445829096/12451908</a></p> <p><img fetchpriority="high" decoding="async" alt="" height="485" src="http://img.555519.xyz/uploads3/20220608/969e703e903b5f72c2f57ec5130f3167.jpg"></p> <p>2.下载完成后复制到centos相应目录，推荐一个linux远程神器MobaXterm</p> <p>执行命令，文件复制功能都很好用，还有小游戏...</p> <p><img decoding="async" alt="" height="518" src="http://img.555519.xyz/uploads3/20220608/d5080a6a949250d78109f5a63d29df6e.jpg"></p> <p>3.解压nginxOfflinePack.tar.gz&nbsp; ，我这边是解压到/dev/nginxOfflinePack 目录</p> <p>cd到存放nginxOfflinePack.tar.gz的目录</p> <p>执行tar zxvf nginxOfflinePack.tar.gz</p> <p><img decoding="async" alt="" height="310" src="http://img.555519.xyz/uploads3/20220608/49e1c3ee512b88d51f00df467a77f5a7.jpg"></p> <p>4.</p> <p>安装<br /> 开始安装</p> <p>把包放在一个文件夹中，cd到nginxOfflinePack目录</p> <p><strong>然后运行命令：rpm -Uvh *.rpm --nodeps --force</strong></p> <p><img loading="lazy" decoding="async" alt="" height="313" src="http://img.555519.xyz/uploads3/20220608/cae8aa8fe60e6f5d48204e1752ca7c4c.jpg"><br /><strong>安装pcre：</strong><br /> nginxOfflinePack目录 执行</p> <p>tar -zxvf pcre-8.43.tar.gz</p> <p>之后cd到pcre-8.43目录 依次执行以下3个指令安装<br /> ./configure<br /> make<br /> make install</p> <p><strong>安装openssl：</strong></p> <p>nginxOfflinePack目录 执行<br /> tar -zxvf openssl-1.0.2r.tar.gz<br /> 之后cd到openssl-1.0.2r目录 依次执行以下3个指令安装</p> <p><strong><img loading="lazy" decoding="async" alt="" height="69" src="http://img.555519.xyz/uploads3/20220608/702dd6ecb75a0117c6ce995ce7f1986a.jpg"><br /> ./configure或者./config&nbsp; (如果./configure提示上图错误，则使用./config)</strong><br /> make<br /> make install</p> <p><strong>安装zlib：</strong></p> <p>nginxOfflinePack目录 执行<br /> tar -zxvf zlib-1.2.11.tar.gz</p> <p>之后cd到zlib-1.2.11目录 依次执行以下3个指令安装<br /> ./configure<br /> make<br /> make install</p> <p><img loading="lazy" decoding="async" alt="" height="393" src="http://img.555519.xyz/uploads3/20220608/bbbd977f4caf29303f33239e8472c606.jpg"></p> <p><img loading="lazy" decoding="async" alt="" height="250" src="http://img.555519.xyz/uploads3/20220608/0964aa6adfa7263590dd364ace3df907.jpg"><br /><strong>安装nginx：</strong></p> <p>nginxOfflinePack目录 执行<br /> tar -zxvf nginx-1.16.0.tar.gz</p> <p><img loading="lazy" decoding="async" alt="" height="137" src="http://img.555519.xyz/uploads3/20220608/507373a94e71445f0e7031e57cd526a1.jpg"></p> <p>之后cd到nginx-1.16.0目录 依次执行以下3个指令安装<br /> ./configure<br /> make<br /> make install</p> <p><img loading="lazy" decoding="async" alt="" height="143" src="http://img.555519.xyz/uploads3/20220608/1ea5b6fe858effd825aed33a701cb16c.jpg"></p> <p>注意 执行make install后 nginx的安装目录会打印出来，不指定的话默认都是该目录</p> <p><img loading="lazy" decoding="async" alt="" height="351" src="http://img.555519.xyz/uploads3/20220608/179d6f33cbc7c8f7b3bffa0c22ce32a9.jpg"></p> <p><strong>初次启动</strong><br /> cd /usr/local/nginx/sbin<br /><strong>执行指令</strong> ./nginx</p> <p>./表示是当前目录<br /> 浏览器已可访问nginx，打开浏览器访问此机器的 IP，如果浏览器出现 Welcome to nginx! 则表示 Nginx 安装并运行成功。；</p> <p>如果暂没有window电脑可以访问到也可以执行指令查看</p> <p>任意路径执行执行&nbsp;curl http://127.0.0.1&nbsp; &nbsp;(nginx配置文件配置的默认端口是80)</p> <p><img loading="lazy" decoding="async" alt="" height="419" src="http://img.555519.xyz/uploads3/20220608/48dcad8996ee498925ca94a0ab270762.jpg"></p> <p></p> <p>停止nginx</p> <p>cd /usr/local/nginx/sbin</p> <p>执行指令./nginx -s stop</p> <p>重启nginx</p> <p>cd /usr/local/nginx/sbin</p> <p><strong>执行指令</strong>./nginx -s reload</p> <p>查看nginx是够启动</p> <p><strong>ps -ef|grep nginx</strong></p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-92509.htm">养猫要打疫苗要多少钱一次（养猫要打疫苗要多少钱一次呀）</a></p>
+                                        <p>下一个：<a href="/news/article-93270.htm">动物疫苗证书有什么用（动物疫苗许可证）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                  <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-78905.htm" title="字符串或数字中应该包含多少位数字，以便MySQL可以将其指定为日期值？">字符串或数字中应该包含多少位数字，以便MySQL可以将其指定为日期值？</a></li>
+                        <li class="py-2"><a href="/news/article-68893.htm" title="动物疫苗的生产原料有哪些呢英语（动物疫苗的生产原料有哪些,如何取得）">动物疫苗的生产原料有哪些呢英语（动物疫苗的生产原料有哪些,如何取得）</a></li>
+                        <li class="py-2"><a href="/news/article-72820.htm" title="Source Generator实战">Source Generator实战</a></li>
+                        <li class="py-2"><a href="/news/article-88813.htm" title="猫轻微抓伤有一点渗血用酒精可以吗（猫轻微抓伤有一点渗血用酒精可以吗有事吗）">猫轻微抓伤有一点渗血用酒精可以吗（猫轻微抓伤有一点渗血用酒精可以吗有事吗）</a></li>
+                        <li class="py-2"><a href="/news/article-70177.htm" title="如何在 C# 循环中捕获局部变量？">如何在 C# 循环中捕获局部变量？</a></li>
+                        <li class="py-2"><a href="/news/article-92508.htm" title="正则表达式贪婪与非贪婪模式">正则表达式贪婪与非贪婪模式</a></li>
+                        <li class="py-2"><a href="/news/article-66962.htm" title="宠物医生在线问诊免费（宠物免费咨询24小时在线医生）">宠物医生在线问诊免费（宠物免费咨询24小时在线医生）</a></li>
+                        <li class="py-2"><a href="/news/article-70840.htm" title="狗粮厂设备（狗粮生产设备厂家）">狗粮厂设备（狗粮生产设备厂家）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-31-free-clash-subscribe.htm" title="3月31日21.4M/S|Hiddify-Next免费机场订阅每天更新订阅链接">3月31日21.4M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-25-node-share-links.htm" title="3月25日20.8M/S|Hiddify-Next免费机场订阅每天更新订阅链接">3月25日20.8M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">32</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">90</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //about -->
+    
+    <!-- footer -->
+<footer class="py-lg-4 py-md-3 py-sm-3 py-3">
+    <div class="container py-lg-5 py-md-5 py-sm-4 py-3">
+        <div class="bottem-wthree-footer text-center pt-md-4 pt-3">
+                                <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+            <p>
+                <a href="/">FreeHiddifyNext节点订阅站</a> 版权所有
+                <br />
+                Powered by WordPress
+            </p>
+        </div>
+        <!-- move icon -->
+        <div class="text-center">
+            <a href="#home" class="move-top text-center mt-3"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+        </div>
+        <!--//move icon -->
+    </div>
+</footer>
+<!--//footer -->
+<script src="/assets/website/js/frontend/freehiddifynext/jquery-1.11.1.min.js"></script>
+<script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+<script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freehiddifynext.github.io/news/article-92508.htm" />
+    <title>正则表达式贪婪与非贪婪模式</title>
+        <meta name="description" content="高级用法在这里：正则表达式（三）——高级用法：search，findall，sub，split 8.贪婪与非贪婪模式  首先我们以简单的例子来说说什么是正则表达式的贪婪与非贪婪匹配？ 比如假定匹配字符" />
+        <link rel="icon" href="/assets/website/img/freehiddifynext/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="FreeHiddifyNext节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freehiddifynext.github.io/news/article-92508.htm" />
+    <meta property="og:site_name" content="FreeHiddifyNext节点订阅站" />
+    <meta property="og:title" content="正则表达式贪婪与非贪婪模式" />
+    <meta property="og:image" content="https://freehiddifynext.github.io/uploads/20240414/fe9880cb3374d0aa6c58e932b7f1aebc.webp" />
+        <meta property="og:release_date" content="2025-04-10T08:16:32" />
+    <meta property="og:updated_time" content="2025-04-10T08:16:32" />
+        <meta property="og:description" content="高级用法在这里：正则表达式（三）——高级用法：search，findall，sub，split 8.贪婪与非贪婪模式  首先我们以简单的例子来说说什么是正则表达式的贪婪与非贪婪匹配？ 比如假定匹配字符" />
+        
+    <!--meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+      }, false);
+      
+      function hideURLbar() {
+        window.scrollTo(0, 1);
+      }
+    </script>
+    <!--//meta tags ends here-->
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="正则表达式贪婪与非贪婪模式">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    
+    <!--booststrap-->
+    <link href="/assets/website/css/freehiddifynext/bootstrap.min.css" rel="stylesheet" type="text/css" media="all">
+    <!--//booststrap end-->
+    <!-- font-awesome icons -->
+    <link href="/assets/website/css/freehiddifynext/font-awesome.min.css" rel="stylesheet">
+    <!-- //font-awesome icons -->
+    <!--stylesheets-->
+    <link href="/assets/website/css/freehiddifynext/style.css" rel='stylesheet' type='text/css' media="all">
+    <!--//stylesheets-->
+    <link href="http://fonts.googleapis.com/css?family=Thasadith:400,700" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N7EH3QDE4Q"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N7EH3QDE4Q');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!--headder-->
+    <div class="header-outs inner_page-banner " id="home">
+                <div class="headder-top">
+            <!-- nav -->
+            <nav>
+                <div id="logo">
+                    <a href="/">
+                                        <span>Free Hiddify Next</span>
+                                        </a>
+                </div>
+                <label for="drop" class="toggle">Menu</label>
+                <input type="checkbox" id="drop">
+                <ul class="menu mt-2">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a href="/client.htm">客户端</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                    </ul>
+            </nav>
+            <!-- //nav -->
+        </div>
+    </div>
+    <!--//headder-->
+    <!-- short -->
+    <div class="using-border py-3">
+        <div class="inner_breadcrumb  ml-4">
+            <ul class="short_ls">
+                <li>
+                    <a href="/">首页</a>
+                    <span>/</span>
+                </li>
+                <li>
+                    <a href="/news/">新闻资讯</a>
+                    <span>/</span>
+                </li>
+                <li>正文</li>
+            </ul>
+        </div>
+    </div>
+    <!-- //short-->
+    <!-- about -->
+    <section class="about py-lg-4 py-md-3 py-sm-3 py-3" id="about">
+        <div class="container py-lg-5 py-md-4 py-sm-4 py-3">
+            <div class="row">
+                <div class="col-md-9">
+                  <h1 class="title text-center mb-lg-5 mb-md-4 mb-sm-4 mb-3">正则表达式贪婪与非贪婪模式</h1>
+                                  <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> <p>高级用法在这里：<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://blog.csdn.net/m0_37673307/article/details/81627553"  rel="nofollow">正则表达式（三）——高级用法：search，findall，sub，split</a></p> <h3><span style="color:#3399ea;">8.贪婪与非贪婪模式</span></h3> <blockquote> <p>首先我们以简单的例子来说说<strong><span style="color:#7c79e5;">什么是正则表达式的贪婪与非贪婪匹配</span>？</strong></p> <p>比如假定匹配字符串和正则表达式为：</p> <pre class="has"><code class="language-python">&gt;&gt;&gt; match_str = 'abcdefc'  #匹配字符串</code></pre> <ul> <li><strong>&nbsp;贪婪匹配:</strong></li> </ul> <pre class="has"><code class="language-python">&gt;&gt;&gt; pattern = r'ab.*c' &gt;&gt;&gt; re.match(pattern,match_str) &lt;_sre.SRE_Match object; span=(0, 7), match='abcdefc'&gt;</code></pre> <p>&nbsp;正则表达式一般趋向于最大长度匹配，<span style="color:#f33b45;">总是尝试匹配尽可能多的字符，</span>也就是所谓的贪婪匹配。如上面使用模式p匹配字符串str，结果就是匹配到：<strong>abcdefc。</strong>当出现c时，它还是继续向后找，又找到c，它就把cdef当做是(.*)的匹配</p> <ul> <li><strong>非贪婪匹配</strong>：</li> </ul> <pre class="has"><code class="language-python">&gt;&gt;&gt; pattern = r'ab.*?c'  #非贪婪匹配 &gt;&gt;&gt; re.match(pattern,match_str) &lt;_sre.SRE_Match object; span=(0, 3), match='abc'&gt;</code></pre> <p>非贪婪匹配就是匹配到结果就好，<span style="color:#f33b45;">总是尝试匹配尽可能少的字符</span>。如上面使用模式p匹配字符串str，结果就是匹配到：<strong>abc</strong>。当它遇见c后，它就停止查找，此时把空字符作为(.*)的匹配。</p> </blockquote> <blockquote> <p><span style="color:#7c79e5;"><strong>那么贪婪与非贪婪怎么区分呢？</strong></span></p> <p><strong>re模块默认是贪婪模式；在量词后面直接加上一个问号？就是非贪婪模式。</strong></p> <p>我们熟知的量词有：</p> <table align="left" border="1" cellpadding="1" cellspacing="1" style="width:500px;"> <tbody> <tr> <td>*</td> <td>任意多个</td> </tr> <tr> <td>+</td> <td>至少一个</td> </tr> <tr> <td>？</td> <td>0或1个</td> </tr> <tr> <td>{m,n}</td> <td>m到n个</td> </tr> </tbody> </table> </blockquote> <blockquote> <p>在上一节中的去除HTML中的标签时，我们使用r'&lt;.+&gt;'去匹配得到的却是一堆'\n'，我们来看看原因。拿其中的一行来看，为什么输出'\n'：</p> <pre class="has"><code class="language-html">&lt;p&gt;&lt;br/&gt;&lt;/p&gt;</code></pre> <p>&nbsp;分析：sub函数先做匹配操作，再做替换操作。在匹配操作时，首先匹配 &lt;（左尖括号），&lt;p&gt;的&lt;就已经匹配到，当匹配到&lt;p&gt;的&gt;时，匹配未结束，它继续往后匹配。当匹配到&lt;br/&gt;的&gt;时，仍然未结束，贪婪的向后继续匹配，直到匹配到&lt;/p&gt;的&gt;，再继续去匹配，字符串后面有个‘\n',结束匹配，它就把&nbsp; p&gt;&lt;br/&gt;&lt;/p 这些内容都当做 .+ 来处理。因此匹配到这一行内容除了'\n'，并进行替换操作，替换为空字符''，因此输出'\n'。因此，在 .+ 后面加上?表示非贪婪模式，当碰到&lt;p&gt;的 &gt; 就停止此次匹配。</p> <pre class="has"><code class="language-python">&gt;&gt;&gt; re.sub(r'&lt;.+?&gt;','',s)</code></pre> </blockquote> <p>至此，正则表达式的学习就告一段落了，还是需要在实践中才能检验出真理......</p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-91763.htm">动物疫苗类型有几种（动物疫苗的作用）</a></p>
+                                        <p>下一个：<a href="/news/article-92509.htm">养猫要打疫苗要多少钱一次（养猫要打疫苗要多少钱一次呀）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                  <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-80978.htm" title="深圳宠物领养公众号有哪些（深圳宠物领养公众号有哪些）">深圳宠物领养公众号有哪些（深圳宠物领养公众号有哪些）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-22-free-shadowrocket-node.htm" title="3月22日19.8M/S|Hiddify-Next免费机场订阅每天更新订阅链接">3月22日19.8M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-81641.htm" title="JVM 垃圾回收详解">JVM 垃圾回收详解</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-4-free-v2ray.htm" title="4月4日19.3M/S|Hiddify-Next免费机场订阅每天更新订阅链接">4月4日19.3M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-76843.htm" title="吉林市宠物猫领养（吉林市宠物猫领养价格）">吉林市宠物猫领养（吉林市宠物猫领养价格）</a></li>
+                        <li class="py-2"><a href="/news/article-75508.htm" title="Unity怎么更换默认脚本编辑器VS">Unity怎么更换默认脚本编辑器VS</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-3-node-share-links.htm" title="3月3日22.7M/S|Hiddify-Next免费机场订阅每天更新订阅链接">3月3日22.7M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-91760.htm" title="Java基础|Java8接口新特性">Java基础|Java8接口新特性</a></li>
+                        <li class="py-2"><a href="/news/article-80269.htm" title="狐狸领养网站大全（狐狸领养网站大全免费）">狐狸领养网站大全（狐狸领养网站大全免费）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-9-clash-v2ray-ss-ssr.htm" title="4月9日20.5M/S|Hiddify-Next免费机场订阅每天更新订阅链接">4月9日20.5M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">32</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">90</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //about -->
+    
+    <!-- footer -->
+<footer class="py-lg-4 py-md-3 py-sm-3 py-3">
+    <div class="container py-lg-5 py-md-5 py-sm-4 py-3">
+        <div class="bottem-wthree-footer text-center pt-md-4 pt-3">
+                                <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+            <p>
+                <a href="/">FreeHiddifyNext节点订阅站</a> 版权所有
+                <br />
+                Powered by WordPress
+            </p>
+        </div>
+        <!-- move icon -->
+        <div class="text-center">
+            <a href="#home" class="move-top text-center mt-3"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+        </div>
+        <!--//move icon -->
+    </div>
+</footer>
+<!--//footer -->
+<script src="/assets/website/js/frontend/freehiddifynext/jquery-1.11.1.min.js"></script>
+<script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+<script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
