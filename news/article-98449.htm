@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freehiddifynext.github.io/news/article-98449.htm" />
+    <title>解决rancher和k8s集群ingress部署在同一台机器导致的80及443端口占用问题</title>
+        <meta name="description" content="https://github.com/rancher/rancher/issues/15225 https://blog.csdn.net/qq_29726869/article/details/11" />
+        <link rel="icon" href="/assets/website/img/freehiddifynext/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="FreeHiddifyNext节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freehiddifynext.github.io/news/article-98449.htm" />
+    <meta property="og:site_name" content="FreeHiddifyNext节点订阅站" />
+    <meta property="og:title" content="解决rancher和k8s集群ingress部署在同一台机器导致的80及443端口占用问题" />
+    <meta property="og:image" content="https://freehiddifynext.github.io/uploads/20240414/b19110a32bbdd8638410c157b5cb026e.webp" />
+        <meta property="og:release_date" content="2025-04-18T09:38:00" />
+    <meta property="og:updated_time" content="2025-04-18T09:38:00" />
+        <meta property="og:description" content="https://github.com/rancher/rancher/issues/15225 https://blog.csdn.net/qq_29726869/article/details/11" />
+        
+    <!--meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+      }, false);
+      
+      function hideURLbar() {
+        window.scrollTo(0, 1);
+      }
+    </script>
+    <!--//meta tags ends here-->
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="解决rancher和k8s集群ingress部署在同一台机器导致的80及443端口占用问题">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    
+    <!--booststrap-->
+    <link href="/assets/website/css/freehiddifynext/bootstrap.min.css" rel="stylesheet" type="text/css" media="all">
+    <!--//booststrap end-->
+    <!-- font-awesome icons -->
+    <link href="/assets/website/css/freehiddifynext/font-awesome.min.css" rel="stylesheet">
+    <!-- //font-awesome icons -->
+    <!--stylesheets-->
+    <link href="/assets/website/css/freehiddifynext/style.css" rel='stylesheet' type='text/css' media="all">
+    <link rel="stylesheet" href="/assets/website/css/G.css" />
+    <!--//stylesheets-->
+    <link href="http://fonts.googleapis.com/css?family=Thasadith:400,700" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N7EH3QDE4Q"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N7EH3QDE4Q');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!--headder-->
+    <div class="header-outs inner_page-banner " id="home">
+                <div class="headder-top">
+            <!-- nav -->
+            <nav>
+                <div id="logo">
+                    <a href="/">
+                                        <span>Free Hiddify Next</span>
+                                        </a>
+                </div>
+                <label for="drop" class="toggle">Menu</label>
+                <input type="checkbox" id="drop">
+                <ul class="menu mt-2">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a href="/client.htm">客户端</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                    </ul>
+            </nav>
+            <!-- //nav -->
+        </div>
+    </div>
+    <!--//headder-->
+    <!-- short -->
+    <div class="using-border py-3">
+        <div class="inner_breadcrumb  ml-4">
+            <ul class="short_ls">
+                <li>
+                    <a href="/">首页</a>
+                    <span>/</span>
+                </li>
+                <li>
+                    <a href="/news/">新闻资讯</a>
+                    <span>/</span>
+                </li>
+                <li>正文</li>
+            </ul>
+        </div>
+    </div>
+    <!-- //short-->
+    <!-- about -->
+    <section class="about py-lg-4 py-md-3 py-sm-3 py-3" id="about">
+        <div class="container py-lg-5 py-md-4 py-sm-4 py-3">
+            <div class="row">
+                <div class="col-md-9">
+                  <h1 class="title text-center mb-lg-5 mb-md-4 mb-sm-4 mb-3">解决rancher和k8s集群ingress部署在同一台机器导致的80及443端口占用问题</h1>
+                                  <input type="hidden" id="share-website-info" data-name="" data-url="">
+                <div class="xcblog-blog-detail">
+                      				  				  				<div id="content_views" class="htmledit_views"> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://github.com/rancher/rancher/issues/15225"  title="https://github.com/rancher/rancher/issues/15225" rel="nofollow">https://github.com/rancher/rancher/issues/15225</a></p> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://blog.csdn.net/qq_29726869/article/details/113217072?utm_medium=distribute.pc_aggpage_search_result.none-task-blog-2~aggregatepage~first_rank_ecpm_v1~rank_v31_ecpm-1-113217072-null-null.pc_agg_new_rank&amp;utm_term=ingress%E7%AB%AF%E5%8F%A3%E9%83%BD%E6%98%AF80+rancher&amp;spm=1000.2123.3001.4430"  title="https://blog.csdn.net/qq_29726869/article/details/113217072?utm_medium=distribute.pc_aggpage_search_result.none-task-blog-2~aggregatepage~first_rank_ecpm_v1~rank_v31_ecpm-1-113217072-null-null.pc_agg_new_rank&amp;utm_term=ingress%E7%AB%AF%E5%8F%A3%E9%83%BD%E6%98%AF80+rancher&amp;spm=1000.2123.3001.4430" rel="nofollow">https://blog.csdn.net/qq_29726869/article/details/113217072?utm_medium=distribute.pc_aggpage_search_result.none-task-blog-2~aggregatepage~first_rank_ecpm_v1~rank_v31_ecpm-1-113217072-null-null.pc_agg_new_rank&amp;utm_term=ingress%E7%AB%AF%E5%8F%A3%E9%83%BD%E6%98%AF80+rancher&amp;spm=1000.2123.3001.4430</a></p> </h1> <p>请尝试以下步骤:</p> <p>1.通过编辑 nginx-ingress-controller DaemonSet 来更改入口端口。</p> <pre><code>kubectl edit daemonset nginx-ingress-controller -n ingress-nginx</code></pre> <p>2.向下滚动到如下所示的部分：</p> <pre><code>containers:       - args:         - /nginx-ingress-controller         - --default-backend-service=$(POD_NAMESPACE)/default-http-backend         - --configmap=$(POD_NAMESPACE)/nginx-configuration         - --tcp-services-configmap=$(POD_NAMESPACE)/tcp-services         - --udp-services-configmap=$(POD_NAMESPACE)/udp-services         - --annotations-prefix=nginx.ingress.kubernetes.io</code></pre> <p>3.在“- /nginex-ingress-controller”之后添加两行以修改您认为合适的端口。</p> <pre><code>- --http-port=8080 - --https-port=8443</code></pre> <p>4.保存对配置的更改，然后删除您的 ingress-nginx pod</p> </h1> <p>1.找到k8s下的system</p> <p><img fetchpriority="high" decoding="async" alt="" height="362" src="http://img.555519.xyz/uploads3/20220604/ef0e8ab3f615be3ff8fd3f4cb06b23be.jpg"></p> <p>2.找到工作负载下的nginx-ingress-controller，点击右边三个点的配置按钮，选择升级选项</p> <p><img decoding="async" alt="" height="880" src="http://img.555519.xyz/uploads3/20220604/d2fb7f201beb2514d10e1f41b943a95e.jpg"></p> <p>3.下拉升级服务界面，点击展开底部的显示高级选项</p> <p><img decoding="async" alt="" height="520" src="http://img.555519.xyz/uploads3/20220604/dc290248626810617aa0843a613f1d95.jpg"></p> <p><img loading="lazy" decoding="async" alt="" height="552" src="http://img.555519.xyz/uploads3/20220604/05f62a2701266ac53b01fb834739914b.jpg"></p> <p>4.展开命令选项，在命令(CMD)后面添加合适的端口 - --http-port=8080&nbsp;- --https-port=8443</p> <p><img loading="lazy" decoding="async" alt="" height="848" src="http://img.555519.xyz/uploads3/20220604/1713eb0ebaf6b858b394fab00cc88e5f.jpg"></p> <p>5.最后点击升级即可</p> <p><img loading="lazy" decoding="async" alt="" height="782" src="http://img.555519.xyz/uploads3/20220604/c4f28db3fbadb0d83c2afbcb9b0c1914.jpg"></p> </div> 			                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-97759.htm">天照实业（天照国际艺术教育怎么样）</a></p>
+                                        <p>下一个：<a href="/news/article-98450.htm">宠物粮食品牌名字4个字大全及图片视频 宠物粮食品牌名字4个字大全及图片视频教程</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                  <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-85943.htm" title="SpringCloud Feign客户端应用">SpringCloud Feign客户端应用</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-9-clash-v2ray-ss-ssr.htm" title="3月9日21.2M/S|Hiddify-Next免费机场订阅每天更新订阅链接">3月9日21.2M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-8-free-clash.htm" title="3月8日21.5M/S|Hiddify-Next免费机场订阅每天更新订阅链接">3月8日21.5M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-2-free-clash-subscribe.htm" title="3月2日22.5M/S|Hiddify-Next免费机场订阅每天更新订阅链接">3月2日22.5M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-87379.htm" title="flex卡片布局（随屏幕自适应）">flex卡片布局（随屏幕自适应）</a></li>
+                        <li class="py-2"><a href="/news/article-69541.htm" title="宠物用品回收店价格表（宠物用品回收店价格表大全）">宠物用品回收店价格表（宠物用品回收店价格表大全）</a></li>
+                        <li class="py-2"><a href="/news/article-66962.htm" title="宠物医生在线问诊免费（宠物免费咨询24小时在线医生）">宠物医生在线问诊免费（宠物免费咨询24小时在线医生）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-1-clash-node.htm" title="4月1日19.4M/S|Hiddify-Next免费机场订阅每天更新订阅链接">4月1日19.4M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-2-clash-v2ray-ss-ssr.htm" title="4月2日21.4M/S|Hiddify-Next免费机场订阅每天更新订阅链接">4月2日21.4M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-76842.htm" title="猫3针疫苗多少钱一针（猫猫3针疫苗多少钱）">猫3针疫苗多少钱一针（猫猫3针疫苗多少钱）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">59</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">90</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //about -->
+    
+    <!-- footer -->
+<footer class="py-lg-4 py-md-3 py-sm-3 py-3">
+    <div class="container py-lg-5 py-md-5 py-sm-4 py-3">
+        <div class="bottem-wthree-footer text-center pt-md-4 pt-3">
+                                <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+            <p>
+                <a href="/">FreeHiddifyNext节点订阅站</a> 版权所有
+                <br />
+                Powered by WordPress
+            </p>
+        </div>
+        <!-- move icon -->
+        <div class="text-center">
+            <a href="#home" class="move-top text-center mt-3"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+        </div>
+        <!--//move icon -->
+    </div>
+</footer>
+<!--//footer -->
+<script src="/assets/website/js/frontend/freehiddifynext/jquery-1.11.1.min.js"></script>
+<script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+<script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

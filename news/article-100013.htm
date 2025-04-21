@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freehiddifynext.github.io/news/article-100013.htm" />
+    <title>.NET宝藏API之：OutputFormatter，格式化输出对象</title>
+        <meta name="description" content="相信大家在项目中都用过统一响应参数模板。 先声明一个响应模板类： public class ResponseDto {     public int code { get; set; }     pu" />
+        <link rel="icon" href="/assets/website/img/freehiddifynext/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="FreeHiddifyNext节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freehiddifynext.github.io/news/article-100013.htm" />
+    <meta property="og:site_name" content="FreeHiddifyNext节点订阅站" />
+    <meta property="og:title" content=".NET宝藏API之：OutputFormatter，格式化输出对象" />
+    <meta property="og:image" content="https://freehiddifynext.github.io/uploads/20240414/94a0835147c0b7fb1a6ff73eca534535.webp" />
+        <meta property="og:release_date" content="2025-04-20T09:02:48" />
+    <meta property="og:updated_time" content="2025-04-20T09:02:48" />
+        <meta property="og:description" content="相信大家在项目中都用过统一响应参数模板。 先声明一个响应模板类： public class ResponseDto {     public int code { get; set; }     pu" />
+        
+    <!--meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+      }, false);
+      
+      function hideURLbar() {
+        window.scrollTo(0, 1);
+      }
+    </script>
+    <!--//meta tags ends here-->
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content=".NET宝藏API之：OutputFormatter，格式化输出对象">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    
+    <!--booststrap-->
+    <link href="/assets/website/css/freehiddifynext/bootstrap.min.css" rel="stylesheet" type="text/css" media="all">
+    <!--//booststrap end-->
+    <!-- font-awesome icons -->
+    <link href="/assets/website/css/freehiddifynext/font-awesome.min.css" rel="stylesheet">
+    <!-- //font-awesome icons -->
+    <!--stylesheets-->
+    <link href="/assets/website/css/freehiddifynext/style.css" rel='stylesheet' type='text/css' media="all">
+    <link rel="stylesheet" href="/assets/website/css/G.css" />
+    <!--//stylesheets-->
+    <link href="http://fonts.googleapis.com/css?family=Thasadith:400,700" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N7EH3QDE4Q"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N7EH3QDE4Q');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!--headder-->
+    <div class="header-outs inner_page-banner " id="home">
+                <div class="headder-top">
+            <!-- nav -->
+            <nav>
+                <div id="logo">
+                    <a href="/">
+                                        <span>Free Hiddify Next</span>
+                                        </a>
+                </div>
+                <label for="drop" class="toggle">Menu</label>
+                <input type="checkbox" id="drop">
+                <ul class="menu mt-2">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a href="/client.htm">客户端</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                    </ul>
+            </nav>
+            <!-- //nav -->
+        </div>
+    </div>
+    <!--//headder-->
+    <!-- short -->
+    <div class="using-border py-3">
+        <div class="inner_breadcrumb  ml-4">
+            <ul class="short_ls">
+                <li>
+                    <a href="/">首页</a>
+                    <span>/</span>
+                </li>
+                <li>
+                    <a href="/news/">新闻资讯</a>
+                    <span>/</span>
+                </li>
+                <li>正文</li>
+            </ul>
+        </div>
+    </div>
+    <!-- //short-->
+    <!-- about -->
+    <section class="about py-lg-4 py-md-3 py-sm-3 py-3" id="about">
+        <div class="container py-lg-5 py-md-4 py-sm-4 py-3">
+            <div class="row">
+                <div class="col-md-9">
+                  <h1 class="title text-center mb-lg-5 mb-md-4 mb-sm-4 mb-3">.NET宝藏API之：OutputFormatter，格式化输出对象</h1>
+                                  <input type="hidden" id="share-website-info" data-name="" data-url="">
+                <div class="xcblog-blog-detail">
+                      				  				  				<p>相信大家在项目中都用过统一响应参数模板。</p> <p>先声明一个响应模板类：</p> <pre><code>public class ResponseDto {     public int code { get; set; }     public string msg { get; set; }     public object data { get; set; } }</code></pre> <p>再定义返回成功和失败的方法：</p> <pre><code>public IActionResult Success(object data) { 	return ...... } public IActionResult Fail(string msg) { 	return ...... }</code></pre> <p>在接口返回时统一调用：</p> <pre><code>[HttpGet] public IActionResult Get() { 	var data = new WeatherForecast() { Date = DateTime.Now }; 	return Success(data); }</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/ae25d378608b29680dbbe77f48da306b.jpg" alt=".NET宝藏API之：OutputFormatter，格式化输出对象"></p> <p>当然了，这篇文章所讲的<code>OutputFormatter</code>和上面的统一模板不冲突哈，存在共通之处，都是格式化响应参数嘛，拿来做个引子。</p> <h3 id="outputformatter">OutputFormatter</h3> <p><code>OutputFormatter</code>是所有格式化输出的基类，有唯一的子类：<code>TextOutputFormatter</code>，同时<code>TextOutputFormatter</code>又有一大堆子类：</p> <pre><code>JsonOutputFormatter NewtonsoftJsonOutputFormatter StringOutputFormatter SystemTextJsonOutputFormatter XmlDataContractSerializerOutputFormatter XmlSerializerOutputFormatter</code></pre> <p>如果不配置任何响应参数输出格式，<code>asp.net core api</code>响应参数默认的输出格式就是<code>json</code>。</p> <p>猴：这个接口给我返回<code>xml</code>，我不要<code>json</code>。</p> <p>我：你是不是脑子有毛病？好好的<code>json</code>不用用<code>xml</code>。</p> <p>得，前端大佬得要求还是得满足不是，这时候有些同学是不是已经去百度：<code>.Net怎么将对象转换成xml？</code></p> <p><code>No</code><code>No</code><code>No</code>，这时候就轮到<code>OutputFormatter</code>的孙子<code>XmlDataContractSerializerOutputFormatter</code> 出场了。</p> <p>只需要简单给接口配置一个属性就搞定啦。</p> <pre><code>[Produces("application/xml")] [HttpGet] public WeatherForecast Get() { 	return new WeatherForecast() { Date = DateTime.Now }; }</code></pre> <p>我们来运行看一看：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/3cde0b75c6769f27bac3151c5dbc16d6.jpg" alt=".NET宝藏API之：OutputFormatter，格式化输出对象"></p> <p><code>wtf</code>，怎么会<code>406</code>。</p> <p><strong>406：表示客户端无法解析服务端返回的内容。说白了就是后台的返回结果前台无法解析就报406错误。</strong></p> <p>哦，原来是忘了在<code>Startup</code>中配置我们的孙子<code>XmlDataContractSerializerOutputFormatter</code>。</p> <pre><code>services.AddControllers((c) =&gt; { 	c.OutputFormatters.Add(new XmlDataContractSerializerOutputFormatter()); });</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/b3ef9d8b4c94ccff6c305a987d686b56.jpg" alt=".NET宝藏API之：OutputFormatter，格式化输出对象"></p> <p>注意：不只是没有在<code>Startup</code>中会出现<code>406</code>哦，以下情况也会出现：</p> <ul> <li>contentType不存在</li> <li>contentType与响应参数不匹配</li> </ul> <h3 id="outputformatter扩展">OutputFormatter扩展</h3> <p>上面介绍了内置<code>OutputFormatter</code>的使用，那如果我们想自定义呢？当然也是可以的。</p> <p>下面我们就用自定义的<code>OutputFormatter</code>实现顶部响应模板的效果：</p> <pre><code>public class ObjectOutputFormatter : TextOutputFormatter { 	public ObjectOutputFormatter() 	{ 		SupportedEncodings.Add(Encoding.UTF8); 		SupportedEncodings.Add(Encoding.Unicode); 		// 这就是我们自定义contentType的名称 		SupportedMediaTypes.Add("text/object"); 	}  	public override async Task WriteResponseBodyAsync(OutputFormatterWriteContext context, Encoding selectedEncoding) 	{ 		if (context == null) 		{ 			throw new ArgumentNullException(nameof(context)); 		} 		if (selectedEncoding == null) 		{ 			throw new ArgumentNullException(nameof(selectedEncoding)); 		} 		string text = JsonConvert.SerializeObject(new ResponseDto() 		{ 			msg = "成功，自定义的哦", 			code = 200, 			data = context.Object 		}); 		var response = context.HttpContext.Response; 		await response.WriteAsync(text, selectedEncoding); 	} }  [Produces("text/object")] [HttpGet] public WeatherForecast Get() { 	return new WeatherForecast() { Date = DateTime.Now }; }  public void ConfigureServices(IServiceCollection services) { 	services.AddControllers((c) =&gt; 	{ 		c.OutputFormatters.Add(new XmlDataContractSerializerOutputFormatter()); 		// 我们自定义的输出格式 		c.OutputFormatters.Add(new ObjectOutputFormatter()); 	}); }</code></pre> <p>搞定，我们来看看效果：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/4b54e8c7cfedbff6f62041387bc0d928.jpg" alt=".NET宝藏API之：OutputFormatter，格式化输出对象"></p> <h3 id="actionfilterattribute">ActionFilterAttribute</h3> <p>有些同学可能会想到过滤器，是的，上面的效果过滤器也能实现：</p> <pre><code>public class ResultFilter : ActionFilterAttribute {     public override void OnResultExecuting(ResultExecutingContext context)     {         ResponseDto result = new ResponseDto();         result.code = 200;         result.msg = "成功，ResultFilter";         var properties = context.Result.GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public);         result.data = properties.FirstOrDefault(c =&gt; c.Name == "Value").GetValue(context.Result);         context.Result = new JsonResult(result);         base.OnResultExecuting(context);     } }  [TypeFilter(typeof(ResultFilter))] [HttpGet] public WeatherForecast Get() { 	return new WeatherForecast() { Date = DateTime.Now }; }</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/29433177d235950b197a91c9a0b93bcc.jpg" alt=".NET宝藏API之：OutputFormatter，格式化输出对象"></p> <p>猴：有了过滤器为什么还搞个<code>OutputFormatter</code>呢？</p> <p>我：不能因为过滤器可以实现同样的功能就认为<code>OutputFormatter</code>多余了，很显然过滤器的操作对象是请求/响应上下文，而<code>OutputFormatter</code>的操作对象则是响应参数。再说了，<code>ActionFilterAttribute</code>过滤器只是众多过滤器的一种。</p> <p>猴：那过滤器和自定义<code>OutputFormatter</code>一起用会是什么效果呢？是不是像下面这样？</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/a207274c355e1f8b4e5c79da7cbf8cd4.jpg" alt=".NET宝藏API之：OutputFormatter，格式化输出对象"></p> <p>我：不是，过滤器和自定义<code>OutputFormatter</code>同时使用，生效的只有过滤器，不信可以打断点试一下哦。</p> <pre><code>[Produces("text/object")] [TypeFilter(typeof(ResultFilter))] [HttpGet] public WeatherForecast Get() { 	return new WeatherForecast() { Date = DateTime.Now }; }</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/6effa886e8c8815f0cc2ece0a4863021.jpg" alt=".NET宝藏API之：OutputFormatter，格式化输出对象"></p> <p>具体原因在这里就不细说了，等后面再分享（其实我也还没弄清楚，逼着自己去了解）</p> <p>好了，这期的宝藏<code>API</code>就到这了，下期再见哦，如果有下期的话。</p> 			                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-99196.htm">面试必问的8个CSS响应式单位,你知道几个？</a></p>
+                                        <p>下一个：<a href="/news/article-100014.htm">长期养猫人容易得啥病（猫给人传染的8种病）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                  <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-4-3-free-shadowrocket-node.htm" title="4月3日19.3M/S|Hiddify-Next免费机场订阅每天更新订阅链接">4月3日19.3M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-76180.htm" title="宠物粮排行榜 宠物粮排行榜前十名">宠物粮排行榜 宠物粮排行榜前十名</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-22-free-shadowrocket-node.htm" title="3月22日19.8M/S|Hiddify-Next免费机场订阅每天更新订阅链接">3月22日19.8M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-23-free-high-speed-nodes.htm" title="3月23日21.7M/S|Hiddify-Next免费机场订阅每天更新订阅链接">3月23日21.7M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-67621.htm" title="动物疫苗的使用方法及注意事项视频教学下载 动物疫苗的使用方法及注意事项视频教学下载">动物疫苗的使用方法及注意事项视频教学下载 动物疫苗的使用方法及注意事项视频教学下载</a></li>
+                        <li class="py-2"><a href="/news/article-98450.htm" title="宠物粮食品牌名字4个字大全及图片视频 宠物粮食品牌名字4个字大全及图片视频教程">宠物粮食品牌名字4个字大全及图片视频 宠物粮食品牌名字4个字大全及图片视频教程</a></li>
+                        <li class="py-2"><a href="/news/article-85943.htm" title="SpringCloud Feign客户端应用">SpringCloud Feign客户端应用</a></li>
+                        <li class="py-2"><a href="/news/article-74825.htm" title="宠康动物医院是全国连锁吗多少钱（宠康动物诊所）">宠康动物医院是全国连锁吗多少钱（宠康动物诊所）</a></li>
+                        <li class="py-2"><a href="/news/article-69540.htm" title="上海宠物领养网点电话号码（上海地区宠物领养）">上海宠物领养网点电话号码（上海地区宠物领养）</a></li>
+                        <li class="py-2"><a href="/news/article-78223.htm" title="猫不打疫苗有什么后果（猫不打疫苗危险吗）">猫不打疫苗有什么后果（猫不打疫苗危险吗）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">59</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">90</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //about -->
+    
+    <!-- footer -->
+<footer class="py-lg-4 py-md-3 py-sm-3 py-3">
+    <div class="container py-lg-5 py-md-5 py-sm-4 py-3">
+        <div class="bottem-wthree-footer text-center pt-md-4 pt-3">
+                                <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+            <p>
+                <a href="/">FreeHiddifyNext节点订阅站</a> 版权所有
+                <br />
+                Powered by WordPress
+            </p>
+        </div>
+        <!-- move icon -->
+        <div class="text-center">
+            <a href="#home" class="move-top text-center mt-3"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+        </div>
+        <!--//move icon -->
+    </div>
+</footer>
+<!--//footer -->
+<script src="/assets/website/js/frontend/freehiddifynext/jquery-1.11.1.min.js"></script>
+<script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+<script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

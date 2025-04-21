@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freehiddifynext.github.io/news/article-100726.htm" />
+    <title>【Electron】在 WSL2 中 打包 electron Linux 版本应用及运行 &#8211; E不小心 _在线工具</title>
+        <meta name="description" content="安装 WSL 我使用的是 Ubuntu 20.04.4 LTS 的版本。 安装 WSL 文档地址：https://docs.microsoft.com/zh-cn/windows/wsl/instal" />
+        <link rel="icon" href="/assets/website/img/freehiddifynext/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="FreeHiddifyNext节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freehiddifynext.github.io/news/article-100726.htm" />
+    <meta property="og:site_name" content="FreeHiddifyNext节点订阅站" />
+    <meta property="og:title" content="【Electron】在 WSL2 中 打包 electron Linux 版本应用及运行 &#8211; E不小心 _在线工具" />
+    <meta property="og:image" content="https://freehiddifynext.github.io/uploads/20240414/41b8223edd92aeebf891d9fdf9e91e2b.webp" />
+        <meta property="og:release_date" content="2025-04-21T06:50:47" />
+    <meta property="og:updated_time" content="2025-04-21T06:50:47" />
+        <meta property="og:description" content="安装 WSL 我使用的是 Ubuntu 20.04.4 LTS 的版本。 安装 WSL 文档地址：https://docs.microsoft.com/zh-cn/windows/wsl/instal" />
+        
+    <!--meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+      }, false);
+      
+      function hideURLbar() {
+        window.scrollTo(0, 1);
+      }
+    </script>
+    <!--//meta tags ends here-->
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="【Electron】在 WSL2 中 打包 electron Linux 版本应用及运行 &#8211; E不小心 _在线工具">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    
+    <!--booststrap-->
+    <link href="/assets/website/css/freehiddifynext/bootstrap.min.css" rel="stylesheet" type="text/css" media="all">
+    <!--//booststrap end-->
+    <!-- font-awesome icons -->
+    <link href="/assets/website/css/freehiddifynext/font-awesome.min.css" rel="stylesheet">
+    <!-- //font-awesome icons -->
+    <!--stylesheets-->
+    <link href="/assets/website/css/freehiddifynext/style.css" rel='stylesheet' type='text/css' media="all">
+    <link rel="stylesheet" href="/assets/website/css/G.css" />
+    <!--//stylesheets-->
+    <link href="http://fonts.googleapis.com/css?family=Thasadith:400,700" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N7EH3QDE4Q"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N7EH3QDE4Q');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!--headder-->
+    <div class="header-outs inner_page-banner " id="home">
+                <div class="headder-top">
+            <!-- nav -->
+            <nav>
+                <div id="logo">
+                    <a href="/">
+                                        <span>Free Hiddify Next</span>
+                                        </a>
+                </div>
+                <label for="drop" class="toggle">Menu</label>
+                <input type="checkbox" id="drop">
+                <ul class="menu mt-2">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a href="/client.htm">客户端</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                    </ul>
+            </nav>
+            <!-- //nav -->
+        </div>
+    </div>
+    <!--//headder-->
+    <!-- short -->
+    <div class="using-border py-3">
+        <div class="inner_breadcrumb  ml-4">
+            <ul class="short_ls">
+                <li>
+                    <a href="/">首页</a>
+                    <span>/</span>
+                </li>
+                <li>
+                    <a href="/news/">新闻资讯</a>
+                    <span>/</span>
+                </li>
+                <li>正文</li>
+            </ul>
+        </div>
+    </div>
+    <!-- //short-->
+    <!-- about -->
+    <section class="about py-lg-4 py-md-3 py-sm-3 py-3" id="about">
+        <div class="container py-lg-5 py-md-4 py-sm-4 py-3">
+            <div class="row">
+                <div class="col-md-9">
+                  <h1 class="title text-center mb-lg-5 mb-md-4 mb-sm-4 mb-3">【Electron】在 WSL2 中 打包 electron Linux 版本应用及运行 &#8211; E不小心 _在线工具</h1>
+                                  <input type="hidden" id="share-website-info" data-name="" data-url="">
+                <div class="xcblog-blog-detail">
+                      				  				  				</h1> </h1> <h2 id="安装-wsl">安装 WSL</h2> <p>我使用的是 <em><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.microsoft.com/store/productId/9MTTCL66CPXJ"  target="_blank"  rel="nofollow">Ubuntu 20.04.4 LTS</a></em> 的版本。</p> <p>安装 WSL 文档地址：<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://docs.microsoft.com/zh-cn/windows/wsl/install"  target="_blank"  rel="nofollow">https://docs.microsoft.com/zh-cn/windows/wsl/install</a>。</p> <p>也可以自行百度，这里就不多述了。</p> <h2 id="安装-nvm">安装 NVM</h2> <p>我选择先安装 nvm 的方式来安装 Node 环境，比较容易管理，也方便有需要的时候切换各种版本。</p> <p>通过下面的脚本安装</p> <pre><code class="language-bash">curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash </code></pre> <p>可以从 nvm 的 github 上找到最新的命令，<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://github.com/nvm-sh/nvm"  target="_blank"  rel="nofollow">https://github.com/nvm-sh/nvm</a></p> <h2 id="安装-node-环境">安装 Node 环境</h2> <p>使用 nvm 的命令 安装 node 环境</p> <pre><code class="language-bash">nvm install 14.*.* nvm use 14  # PS 如果 npm 执行到的目录不对，可能执行到了 windows 中环境的目录 # 可以再执行 nvm use xx 来临时解决 </code></pre> <h2 id="获取代码">获取代码</h2> <p>在我里这用的是我自己的架子，全当一个参考吧。</p> <p>github：<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://github.com/gaoshang212/electron-vite-react-typescript"  target="_blank"  rel="nofollow">https://github.com/gaoshang212/electron-vite-react-typescript</a></p> <pre><code class="language-bash">git clone https://github.com/gaoshang212/electron-vite-react-typescript </code></pre> <h2 id="安装-vscode-插件-remote---wsl">安装 vscode 插件 <strong><strong>Remote - WSL</strong></strong><br /> </h2> <p>为了方便在 vscode 中直接修改操作 wsl 中的文件。</p> <p>我使用 <strong><strong>Remote - WSL 这个插件，可以直接在vscode 修改代码，执行命令行。</strong></strong></p> <p>插件地址：<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl"  target="_blank"  rel="nofollow">https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl</a></p> <p>安装好插件，我们就可以在 wsl 中直接执行 code . 来打包 vscode 操作了</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220501/4b04a0f1dd5ae87ddcf1ac8f05f2a2b8.jpg" alt="【Electron】在 WSL2 中 打包 electron Linux 版本应用及运行 - E不小心 _在线工具"></p> <h2 id="打包">打包</h2> <p>我这里只打包了 <em>deb</em> 和 <em>appImage</em> 的包，用的打包模块是 electron-builder 。</p> <p>直接执行下面的命令来打包</p> <pre><code class="language-bash">npm run package </code></pre> <p>PS：如果打包 deb 报错，可以设置一个下 export DEBUG=”electron-builder”，查一下输出。</p> <p>我里碰到的是 缺少 “ar”，只要通过 <em>sudo apt install binutils</em> 安装一下，就 OK 了。</p> <p>打包结果：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220501/b9fe2bbd7df964308f0119c4099b95c0.jpg" alt="【Electron】在 WSL2 中 打包 electron Linux 版本应用及运行 - E不小心 _在线工具"></p> </h1> <h2 id="安装-vcxsrv">安装 <strong><strong>VcXsrv</strong></strong><br /> </h2> <p><strong>PS：如果你的系统是 Windows 11，内部版本是 22000 或更高，你也可以试试 还 GUI 的 WSL。<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://docs.microsoft.com/zh-cn/windows/wsl/tutorials/gui-apps"  target="_blank"  rel="nofollow">https://docs.microsoft.com/zh-cn/windows/wsl/tutorials/gui-apps</a></strong></p> <p><strong>下载 VcXsrv ，<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://sourceforge.net/projects/vcxsrv/"  target="_blank"  rel="nofollow">https://sourceforge.net/projects/vcxsrv/</a></strong></p> <p><strong>然后安装就好了。启动 XLaunch。</strong></p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220501/cf0483a391a2c8f1ad918f07ae7ff03f.jpg" alt="【Electron】在 WSL2 中 打包 electron Linux 版本应用及运行 - E不小心 _在线工具"></p> <p><strong>选择一个喜欢的方式</strong></p> <p><strong>选择下一页 → Start no client → 下一页 → 勾选 Disable access control → 下一页 → 完成。</strong></p> <h2 id="配置-wsl2">配置 WSL2</h2> <p>修改 ~/.bashrc 文件，添加下面的代码</p> <pre><code class="language-bash">export DISPLAY=$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2&gt;/dev/null):0 # in WSL 2 export LIBGL_ALWAYS_INDIRECT=true </code></pre> <p>执行下面命令应用</p> <pre><code class="language-bash">source ~/.bashrc </code></pre> <h2 id="验证打包应用">验证打包应用</h2> <p>进入 releases 目录，可以直接执行 appImage 文件。</p> <pre><code class="language-bash">cd releases ./electron-vite-react-typescript-0.0.1.AppImage </code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220501/b0471eb18e6a131bc8741f29aabacd87.jpg" alt="【Electron】在 WSL2 中 打包 electron Linux 版本应用及运行 - E不小心 _在线工具"></p> <h2 id="遇到问题">遇到问题</h2> <p>执行文件时遇到的几个报错</p> <ul> <li>报错：error while loading shared libraries: libatk-1.0.so.0: cannot open shared object file: No such file or directory <ul> <li>安装 <code>apt install libatk-bridge2.0-0</code> </li> </ul> </li> <li>报错：error while loading shared libraries: libgtk-3.so.0: cannot open shared object file: No such file or directory <ul> <li>安装 <code>apt install libgtk-3-0</code> </li> </ul> </li> <li>报错：error while loading shared libraries: libgbm.so.1: cannot open shared object file: No such file or directory <ul> <li>安装 <code>apt install libgbm-dev</code> </li> </ul> </li> </ul> 			                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-100014.htm">长期养猫人容易得啥病（猫给人传染的8种病）</a></p>
+                                        <p>下一个：<a href="/news/article-100727.htm">成都宠物领养平台领养可靠吗现在怎么样（成都宠物领养网免费）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                  <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-76843.htm" title="吉林市宠物猫领养（吉林市宠物猫领养价格）">吉林市宠物猫领养（吉林市宠物猫领养价格）</a></li>
+                        <li class="py-2"><a href="/news/article-85943.htm" title="SpringCloud Feign客户端应用">SpringCloud Feign客户端应用</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-13-free-node-subscribe.htm" title="4月13日22.8M/S|Hiddify-Next免费机场订阅每天更新订阅链接">4月13日22.8M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-66338.htm" title="动物疫苗公司 上海有哪些 动物疫苗公司 上海有哪些公司">动物疫苗公司 上海有哪些 动物疫苗公司 上海有哪些公司</a></li>
+                        <li class="py-2"><a href="/news/article-80270.htm" title="被家猫抓出一点血（被家猫抓出一点血怎么办）">被家猫抓出一点血（被家猫抓出一点血怎么办）</a></li>
+                        <li class="py-2"><a href="/news/article-92508.htm" title="正则表达式贪婪与非贪婪模式">正则表达式贪婪与非贪婪模式</a></li>
+                        <li class="py-2"><a href="/news/article-85229.htm" title="三国杀的限定技（三国杀的限定技一局可以用几次）">三国杀的限定技（三国杀的限定技一局可以用几次）</a></li>
+                        <li class="py-2"><a href="/news/article-68236.htm" title="卖宠物粮食的app（卖宠物粮食的上市公司）">卖宠物粮食的app（卖宠物粮食的上市公司）</a></li>
+                        <li class="py-2"><a href="/news/article-75508.htm" title="Unity怎么更换默认脚本编辑器VS">Unity怎么更换默认脚本编辑器VS</a></li>
+                        <li class="py-2"><a href="/news/article-81641.htm" title="JVM 垃圾回收详解">JVM 垃圾回收详解</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">59</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">90</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //about -->
+    
+    <!-- footer -->
+<footer class="py-lg-4 py-md-3 py-sm-3 py-3">
+    <div class="container py-lg-5 py-md-5 py-sm-4 py-3">
+        <div class="bottem-wthree-footer text-center pt-md-4 pt-3">
+                                <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+            <p>
+                <a href="/">FreeHiddifyNext节点订阅站</a> 版权所有
+                <br />
+                Powered by WordPress
+            </p>
+        </div>
+        <!-- move icon -->
+        <div class="text-center">
+            <a href="#home" class="move-top text-center mt-3"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+        </div>
+        <!--//move icon -->
+    </div>
+</footer>
+<!--//footer -->
+<script src="/assets/website/js/frontend/freehiddifynext/jquery-1.11.1.min.js"></script>
+<script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+<script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

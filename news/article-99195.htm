@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freehiddifynext.github.io/news/article-99195.htm" />
+    <title>JavaScript实现带有开始、暂停、复位的秒表</title>
+        <meta name="description" content="&lt;!DOCTYPE html&gt; &lt;html lang="en"&gt;      &lt;head&gt;         &lt;meta charset="UTF-8"&gt; " />
+        <link rel="icon" href="/assets/website/img/freehiddifynext/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="FreeHiddifyNext节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freehiddifynext.github.io/news/article-99195.htm" />
+    <meta property="og:site_name" content="FreeHiddifyNext节点订阅站" />
+    <meta property="og:title" content="JavaScript实现带有开始、暂停、复位的秒表" />
+    <meta property="og:image" content="https://freehiddifynext.github.io/uploads/20240414/d812773ffd0d72b63a2ef3fb47a8feb4.webp" />
+        <meta property="og:release_date" content="2025-04-19T08:57:14" />
+    <meta property="og:updated_time" content="2025-04-19T08:57:14" />
+        <meta property="og:description" content="&lt;!DOCTYPE html&gt; &lt;html lang="en"&gt;      &lt;head&gt;         &lt;meta charset="UTF-8"&gt; " />
+        
+    <!--meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+      }, false);
+      
+      function hideURLbar() {
+        window.scrollTo(0, 1);
+      }
+    </script>
+    <!--//meta tags ends here-->
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="JavaScript实现带有开始、暂停、复位的秒表">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    
+    <!--booststrap-->
+    <link href="/assets/website/css/freehiddifynext/bootstrap.min.css" rel="stylesheet" type="text/css" media="all">
+    <!--//booststrap end-->
+    <!-- font-awesome icons -->
+    <link href="/assets/website/css/freehiddifynext/font-awesome.min.css" rel="stylesheet">
+    <!-- //font-awesome icons -->
+    <!--stylesheets-->
+    <link href="/assets/website/css/freehiddifynext/style.css" rel='stylesheet' type='text/css' media="all">
+    <link rel="stylesheet" href="/assets/website/css/G.css" />
+    <!--//stylesheets-->
+    <link href="http://fonts.googleapis.com/css?family=Thasadith:400,700" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N7EH3QDE4Q"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N7EH3QDE4Q');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!--headder-->
+    <div class="header-outs inner_page-banner " id="home">
+                <div class="headder-top">
+            <!-- nav -->
+            <nav>
+                <div id="logo">
+                    <a href="/">
+                                        <span>Free Hiddify Next</span>
+                                        </a>
+                </div>
+                <label for="drop" class="toggle">Menu</label>
+                <input type="checkbox" id="drop">
+                <ul class="menu mt-2">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a href="/client.htm">客户端</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                    </ul>
+            </nav>
+            <!-- //nav -->
+        </div>
+    </div>
+    <!--//headder-->
+    <!-- short -->
+    <div class="using-border py-3">
+        <div class="inner_breadcrumb  ml-4">
+            <ul class="short_ls">
+                <li>
+                    <a href="/">首页</a>
+                    <span>/</span>
+                </li>
+                <li>
+                    <a href="/news/">新闻资讯</a>
+                    <span>/</span>
+                </li>
+                <li>正文</li>
+            </ul>
+        </div>
+    </div>
+    <!-- //short-->
+    <!-- about -->
+    <section class="about py-lg-4 py-md-3 py-sm-3 py-3" id="about">
+        <div class="container py-lg-5 py-md-4 py-sm-4 py-3">
+            <div class="row">
+                <div class="col-md-9">
+                  <h1 class="title text-center mb-lg-5 mb-md-4 mb-sm-4 mb-3">JavaScript实现带有开始、暂停、复位的秒表</h1>
+                                  <input type="hidden" id="share-website-info" data-name="" data-url="">
+                <div class="xcblog-blog-detail">
+                      				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <pre><code class="prism language-javascript"><span class="token operator">&lt;</span><span class="token operator">!</span><span class="token constant">DOCTYPE</span> html<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>html lang<span class="token operator">=</span><span class="token string">"en"</span><span class="token operator">&gt;</span>      <span class="token operator">&lt;</span>head<span class="token operator">&gt;</span>         <span class="token operator">&lt;</span>meta charset<span class="token operator">=</span><span class="token string">"UTF-8"</span><span class="token operator">&gt;</span>         <span class="token operator">&lt;</span>title<span class="token operator">&gt;</span>Title<span class="token operator">&lt;</span><span class="token operator">/</span>title<span class="token operator">&gt;</span>         <span class="token operator">&lt;</span>style<span class="token operator">&gt;</span>             #showTime <span class="token punctuation">{<!-- --></span>                 width<span class="token punctuation">:</span> <span class="token number">300</span>px<span class="token punctuation">;</span>                 height<span class="token punctuation">:</span> <span class="token number">60</span>px<span class="token punctuation">;</span>                 font<span class="token operator">-</span>size<span class="token punctuation">:</span> <span class="token number">60</span>px<span class="token punctuation">;</span>                 line<span class="token operator">-</span>height<span class="token punctuation">:</span> <span class="token number">60</span>px<span class="token punctuation">;</span>             <span class="token punctuation">}</span>         <span class="token operator">&lt;</span><span class="token operator">/</span>style<span class="token operator">&gt;</span>     <span class="token operator">&lt;</span><span class="token operator">/</span>head<span class="token operator">&gt;</span>      <span class="token operator">&lt;</span>body<span class="token operator">&gt;</span>         <span class="token operator">&lt;</span>div<span class="token operator">&gt;</span>             <span class="token operator">&lt;</span>div id<span class="token operator">=</span><span class="token string">"showTime"</span><span class="token operator">&gt;</span><span class="token number">00</span><span class="token punctuation">:</span><span class="token number">00</span><span class="token punctuation">:</span><span class="token number">00</span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>             <span class="token operator">&lt;</span>button id<span class="token operator">=</span><span class="token string">"startBn"</span><span class="token operator">&gt;</span>启动<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">&gt;</span>             <span class="token operator">&lt;</span>button id<span class="token operator">=</span><span class="token string">"restBn"</span><span class="token operator">&gt;</span>复位<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">&gt;</span>         <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>         <span class="token operator">&lt;</span>script<span class="token operator">&gt;</span>             <span class="token comment">//——————</span>             <span class="token keyword">var</span> time<span class="token punctuation">,</span> showTime<span class="token punctuation">,</span> startBn<span class="token punctuation">,</span> restBn<span class="token punctuation">,</span> pauseDate<span class="token punctuation">;</span>             <span class="token comment">//布尔开关</span>             <span class="token keyword">var</span> bool <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>             <span class="token comment">//暂停的累计时间</span>             <span class="token keyword">var</span> pauseTime <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>              <span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>             <span class="token keyword">function</span> <span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>                 showTime <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"showTime"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                 startBn <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"startBn"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                 restBn <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"restBn"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                 startBn<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"click"</span><span class="token punctuation">,</span> clickHandler<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//开始按钮 ~ 暂停按钮</span>                 restBn<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"click"</span><span class="token punctuation">,</span> clickHandler<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//复位按钮</span>                 <span class="token function">setInterval</span><span class="token punctuation">(</span>animation<span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">)</span><span class="token punctuation">;</span>             <span class="token punctuation">}</span>              <span class="token comment">//转化时间函数</span>             <span class="token keyword">function</span> <span class="token function">animation</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>                 <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>bool<span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span>                 <span class="token comment">//前时间减去上次开启时间减去暂停累计时间</span>                 <span class="token keyword">var</span> times <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getTime</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> time <span class="token operator">-</span> pauseTime<span class="token punctuation">;</span>                 <span class="token keyword">var</span> minutes <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">floor</span><span class="token punctuation">(</span>times <span class="token operator">/</span> <span class="token number">60000</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//毫秒转化为分钟</span>                 <span class="token keyword">var</span> seconds <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">floor</span><span class="token punctuation">(</span><span class="token punctuation">(</span>times <span class="token operator">-</span> minutes <span class="token operator">*</span> <span class="token number">60000</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//已知分钟 </span>                 <span class="token comment">//  将time减去分钟 除去1000得出 秒</span>                 <span class="token keyword">var</span> ms <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">floor</span><span class="token punctuation">(</span><span class="token punctuation">(</span>times <span class="token operator">-</span> minutes <span class="token operator">*</span> <span class="token number">60000</span> <span class="token operator">-</span> seconds <span class="token operator">*</span> <span class="token number">1000</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//</span>                 showTime<span class="token punctuation">.</span>innerHTML <span class="token operator">=</span>                     <span class="token punctuation">(</span>minutes <span class="token operator">&lt;</span> <span class="token number">10</span> <span class="token operator">?</span> <span class="token string">"0"</span> <span class="token operator">+</span> minutes <span class="token punctuation">:</span> minutes<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">":"</span>                     <span class="token operator">+</span> <span class="token punctuation">(</span>seconds <span class="token operator">&lt;</span> <span class="token number">10</span> <span class="token operator">?</span> <span class="token string">"0"</span> <span class="token operator">+</span> seconds <span class="token punctuation">:</span> seconds<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">":"</span>                     <span class="token operator">+</span> <span class="token punctuation">(</span>ms <span class="token operator">&lt;</span> <span class="token number">10</span> <span class="token operator">?</span> <span class="token string">"0"</span> <span class="token operator">+</span> ms <span class="token punctuation">:</span> ms<span class="token punctuation">)</span><span class="token punctuation">;</span>             <span class="token punctuation">}</span>              <span class="token comment">//点击时的事件</span>             <span class="token keyword">function</span> <span class="token function">clickHandler</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>                 e <span class="token operator">=</span> e <span class="token operator">||</span> window<span class="token punctuation">.</span>event<span class="token punctuation">;</span>                 <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span> <span class="token operator">===</span> startBn<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>                     bool <span class="token operator">=</span> <span class="token operator">!</span>bool<span class="token punctuation">;</span>                     <span class="token keyword">if</span> <span class="token punctuation">(</span>bool<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>                         <span class="token keyword">this</span><span class="token punctuation">.</span>innerHTML <span class="token operator">=</span> <span class="token string">"暂停"</span><span class="token punctuation">;</span>                         <span class="token comment">//如果我们上一次暂停时间是空，表示没有暂停过，因此，直接返回0</span>                         <span class="token comment">//如果上次的暂停时间是有值得，用当前毫秒数减去上次的毫秒数，这样就会得到暂停时间</span>                         pauseTime <span class="token operator">+=</span> <span class="token punctuation">(</span><span class="token operator">!</span>pauseDate <span class="token operator">?</span> <span class="token number">0</span> <span class="token punctuation">:</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getTime</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> pauseDate<span class="token punctuation">)</span><span class="token punctuation">;</span>                         <span class="token keyword">if</span> <span class="token punctuation">(</span>time<span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span>                         time <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getTime</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                         <span class="token keyword">return</span><span class="token punctuation">;</span><span class="token comment">//是为bool判断跳出</span>                     <span class="token punctuation">}</span>                      <span class="token keyword">this</span><span class="token punctuation">.</span>innerHTML <span class="token operator">=</span> <span class="token string">"启动"</span><span class="token punctuation">;</span>                     pauseDate <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getTime</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                     <span class="token keyword">return</span><span class="token punctuation">;</span><span class="token comment">//是为this是否等于startBn判断跳出</span>                 <span class="token punctuation">}</span>                 startBn<span class="token punctuation">.</span>innerHTML <span class="token operator">=</span> <span class="token string">"启动"</span><span class="token punctuation">;</span>                 pauseTime <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>                 pauseDate <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>                 bool <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>                 time <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>                 showTime<span class="token punctuation">.</span>innerHTML <span class="token operator">=</span> <span class="token string">"00:00:00"</span><span class="token punctuation">;</span>             <span class="token punctuation">}</span>          <span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>     <span class="token operator">&lt;</span><span class="token operator">/</span>body<span class="token operator">&gt;</span>  <span class="token operator">&lt;</span><span class="token operator">/</span>html<span class="token operator">&gt;</span> </code></pre> </p></div> 			                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-98450.htm">宠物粮食品牌名字4个字大全及图片视频 宠物粮食品牌名字4个字大全及图片视频教程</a></p>
+                                        <p>下一个：<a href="/news/article-99196.htm">面试必问的8个CSS响应式单位,你知道几个？</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                  <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-96979.htm" title="猫咪爱主人的十种表现（猫咪很爱主人的表现）">猫咪爱主人的十种表现（猫咪很爱主人的表现）</a></li>
+                        <li class="py-2"><a href="/news/article-100726.htm" title="【Electron】在 WSL2 中 打包 electron Linux 版本应用及运行 &#8211; E不小心 _在线工具">【Electron】在 WSL2 中 打包 electron Linux 版本应用及运行 &#8211; E不小心 _在线工具</a></li>
+                        <li class="py-2"><a href="/news/article-70839.htm" title="宠物粮食代工厂（生产宠物粮的工厂有哪些）">宠物粮食代工厂（生产宠物粮的工厂有哪些）</a></li>
+                        <li class="py-2"><a href="/news/article-71496.htm" title="宠物粮食加工厂加盟费多少钱一个月 宠物粮食加工厂加盟费多少钱一个月啊">宠物粮食加工厂加盟费多少钱一个月 宠物粮食加工厂加盟费多少钱一个月啊</a></li>
+                        <li class="py-2"><a href="/news/article-86654.htm" title="快速了解Spring，简明Spring使用流程 &#8211; FITA _在线工具">快速了解Spring，简明Spring使用流程 &#8211; FITA _在线工具</a></li>
+                        <li class="py-2"><a href="/news/article-81642.htm" title="动物疫苗的保存温度是多少度（动物疫苗在常温下能放多久）">动物疫苗的保存温度是多少度（动物疫苗在常温下能放多久）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-7-free-clash-subscribe.htm" title="4月7日20.9M/S|Hiddify-Next免费机场订阅每天更新订阅链接">4月7日20.9M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-92508.htm" title="正则表达式贪婪与非贪婪模式">正则表达式贪婪与非贪婪模式</a></li>
+                        <li class="py-2"><a href="/news/article-97759.htm" title="天照实业（天照国际艺术教育怎么样）">天照实业（天照国际艺术教育怎么样）</a></li>
+                        <li class="py-2"><a href="/news/article-67621.htm" title="动物疫苗的使用方法及注意事项视频教学下载 动物疫苗的使用方法及注意事项视频教学下载">动物疫苗的使用方法及注意事项视频教学下载 动物疫苗的使用方法及注意事项视频教学下载</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">59</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">90</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //about -->
+    
+    <!-- footer -->
+<footer class="py-lg-4 py-md-3 py-sm-3 py-3">
+    <div class="container py-lg-5 py-md-5 py-sm-4 py-3">
+        <div class="bottem-wthree-footer text-center pt-md-4 pt-3">
+                                <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+            <p>
+                <a href="/">FreeHiddifyNext节点订阅站</a> 版权所有
+                <br />
+                Powered by WordPress
+            </p>
+        </div>
+        <!-- move icon -->
+        <div class="text-center">
+            <a href="#home" class="move-top text-center mt-3"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+        </div>
+        <!--//move icon -->
+    </div>
+</footer>
+<!--//footer -->
+<script src="/assets/website/js/frontend/freehiddifynext/jquery-1.11.1.min.js"></script>
+<script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+<script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
