@@ -1,4 +1,4 @@
-# 4月29日23M/S|Hiddify-Next免费机场订阅每天更新订阅链接  更新时间 2025-04-29 08:27:16
+# 4月29日21.2M/S|Hiddify-Next免费机场订阅每天更新订阅链接  更新时间 2025-04-29 16:13:54
 所有免费clash节点都爬取自网络，请勿用于非法用途 。节点地址：<a href="https://freehiddifynext.github.io" target="_blank">点击跳转</a>
 
 ## clash使用教程：
