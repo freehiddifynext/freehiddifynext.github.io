@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freehiddifynext.github.io/news/article-111268.htm" />
+    <title>MySQL日期和时间数据类型（DATE、TIME、 DATETIME、 TIMESTAMP和YEAR）</title>
+        <meta name="description" content="目录 日期和时间数据类型语法 Date DATETIME和DATETIME(fsp) TIMESTAMP和TIMESTAMP[(fsp)] TIME和TIME(fsp) YEAR和YEAR(4)  &" />
+        <link rel="icon" href="/assets/website/img/freehiddifynext/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="FreeHiddifyNext节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freehiddifynext.github.io/news/article-111268.htm" />
+    <meta property="og:site_name" content="FreeHiddifyNext节点订阅站" />
+    <meta property="og:title" content="MySQL日期和时间数据类型（DATE、TIME、 DATETIME、 TIMESTAMP和YEAR）" />
+    <meta property="og:image" content="https://freehiddifynext.github.io/uploads/20240414/5d7e4562568269bf2fec2fe942b9a7b5.webp" />
+        <meta property="og:release_date" content="2025-05-04T09:27:43" />
+    <meta property="og:updated_time" content="2025-05-04T09:27:43" />
+        <meta property="og:description" content="目录 日期和时间数据类型语法 Date DATETIME和DATETIME(fsp) TIMESTAMP和TIMESTAMP[(fsp)] TIME和TIME(fsp) YEAR和YEAR(4)  &" />
+        
+    <!--meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+      }, false);
+      
+      function hideURLbar() {
+        window.scrollTo(0, 1);
+      }
+    </script>
+    <!--//meta tags ends here-->
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="MySQL日期和时间数据类型（DATE、TIME、 DATETIME、 TIMESTAMP和YEAR）">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    
+    <!--booststrap-->
+    <link href="/assets/website/css/freehiddifynext/bootstrap.min.css" rel="stylesheet" type="text/css" media="all">
+    <!--//booststrap end-->
+    <!-- font-awesome icons -->
+    <link href="/assets/website/css/freehiddifynext/font-awesome.min.css" rel="stylesheet">
+    <!-- //font-awesome icons -->
+    <!--stylesheets-->
+    <link href="/assets/website/css/freehiddifynext/style.css" rel='stylesheet' type='text/css' media="all">
+    <link rel="stylesheet" href="/assets/website/css/G.css" />
+    <!--//stylesheets-->
+    <link href="http://fonts.googleapis.com/css?family=Thasadith:400,700" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N7EH3QDE4Q"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N7EH3QDE4Q');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!--headder-->
+    <div class="header-outs inner_page-banner " id="home">
+                <div class="headder-top">
+            <!-- nav -->
+            <nav>
+                <div id="logo">
+                    <a href="/">
+                                        <span>Free Hiddify Next</span>
+                                        </a>
+                </div>
+                <label for="drop" class="toggle">Menu</label>
+                <input type="checkbox" id="drop">
+                <ul class="menu mt-2">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a href="/client.htm">客户端</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                    </ul>
+            </nav>
+            <!-- //nav -->
+        </div>
+    </div>
+    <!--//headder-->
+    <!-- short -->
+    <div class="using-border py-3">
+        <div class="inner_breadcrumb  ml-4">
+            <ul class="short_ls">
+                <li>
+                    <a href="/">首页</a>
+                    <span>/</span>
+                </li>
+                <li>
+                    <a href="/news/">新闻资讯</a>
+                    <span>/</span>
+                </li>
+                <li>正文</li>
+            </ul>
+        </div>
+    </div>
+    <!-- //short-->
+    <!-- about -->
+    <section class="about py-lg-4 py-md-3 py-sm-3 py-3" id="about">
+        <div class="container py-lg-5 py-md-4 py-sm-4 py-3">
+            <div class="row">
+                <div class="col-md-9">
+                  <h1 class="title text-center mb-lg-5 mb-md-4 mb-sm-4 mb-3">MySQL日期和时间数据类型（DATE、TIME、 DATETIME、 TIMESTAMP和YEAR）</h1>
+                                  <input type="hidden" id="share-website-info" data-name="" data-url="">
+                <div class="xcblog-blog-detail xcblog-blog-detail-defined">
+                      				  				  				<div id="content_views" class="htmledit_views"> <p id="main-toc"><strong>目录</strong></p> <p id="%E6%97%A5%E6%9C%9F%E5%92%8C%E6%97%B6%E9%97%B4%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%AF%AD%E6%B3%95-toc" style="margin-left:40px;">日期和时间数据类型语法</p> <p id="Date-toc" style="margin-left:80px;">Date</p> <p id="DATETIME%E6%88%96%E8%80%85DATETIME(fsp)-toc" style="margin-left:80px;">DATETIME和DATETIME(fsp)</p> <p id="TIMESTAMP%E5%92%8CTIMESTAMP%5B(fsp)%5D-toc" style="margin-left:80px;">TIMESTAMP和TIMESTAMP[(fsp)]</p> <p id="TIME%E5%92%8CTIME(fsp)-toc" style="margin-left:80px;">TIME和TIME(fsp)</p> <p id="YEAR%E5%92%8CYEAR(4)-toc" style="margin-left:80px;">YEAR和YEAR(4)</p> <hr id="hr-toc"/> <p>&nbsp; &nbsp; &nbsp; &nbsp; 本文基于MySQL 5.7版本。</p> <p>&nbsp; &nbsp; &nbsp; &nbsp; MySQL中表示时间值的日期和时间数据类型有以下五个：</p> <p>（1）DATE</p> <p>（2）TIME</p> <p>（3）DATETIME</p> <p>（4）TIMESTAMP</p> <p>（5）YEAR</p> <h2 id="%E6%97%A5%E6%9C%9F%E5%92%8C%E6%97%B6%E9%97%B4%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%AF%AD%E6%B3%95">日期和时间数据类型语法</h2> <p>&nbsp; &nbsp; &nbsp; &nbsp; MySQL允许对TIME、DATETIME和TIMESTAMP使用小数秒，精度最高可达微秒（6位小数）。要定义包含小数秒日期和时间数据类型的列，使用</p> <p>type_name(fsp)，</p> <p>其中type_name是TIME、DATETIME或TIMESTAMP，而fsp是小数秒精度，fsp的值，如果给定，必须在0 ~ 6之间。值为0表示没有小数部分。如果省略，默认精度为0。</p> <p>例如:</p> <pre><code class="language-sql">CREATE TABLE date_time_test (t TIME(3), dt DATETIME(6), ts TIMESTAMP(0));</code></pre> <h3 id="Date">Date</h3> <p>&nbsp; &nbsp; &nbsp; &nbsp; 支持的范围&nbsp;'1000-01-01' to '9999-12-31'，MySQL以'YYYY-MM-DD'格式显示Date类型，但允许使用字符串或数字将值赋给DATE列。字面常量转换规则如下：</p> <p>（1）格式为'YYYY-MM-DD'或'YY-MM-DD'的字符串。任何标点字符都可以用作日期部分之间的分隔符。例如，'2012-12-31'、'2012/12/31'、'2012^12^31'和'2012@12@31'是等价的。</p> <p>（2）格式为'YYYYMMDD'或'YYMMDD'的没有分隔符的字符串，只要该字符串具有日期的意义。例如，'20070523'和'070523'被解释为'2007-05-23'，但'071332'是非法的(它有无意义的月和日部分)，会变成'0000-00-00'。</p> <p>（3）作为YYYYMMDD或YYMMDD格式的数字，只要该数字作为日期有意义。例如，19830905和830905被解释为“1983-09-05”。</p> <h3 id="DATETIME%E6%88%96%E8%80%85DATETIME(fsp)">DATETIME和DATETIME(fsp)</h3> <p>&nbsp; &nbsp; &nbsp; &nbsp; DATETIME类型是Date和Time的组合。支持的范围从'1000-01-01 00:00:00.000000' 到'9999-12-31 23:59:59.999999'。MySQL以'YYYY-MM-DD hh:mm:ss[.fraction]'的格式显示DATETIME类型。但允许使用字符串或数字向DATETIME列赋值。字面常量转换规则如下：</p> <p>表中的任何TIMESTAMP或DATETIME列都可以具有自动初始化和更新属性。</p> <p>（1）格式为“YYYY-MM-DD hh:mm:ss”或“YY-MM-DD hh:mm:ss”字符串。任何标点字符都可以用作日期部分或时间部分之间的分隔符。例如，'2012-12-31 11:30:45'、'2012^12^31 11+30+45'、'2012/12/31 11*30*45'和'2012@12@31 11^30^45'是等价的。</p> <p>（2）在日期和时间部分和小数秒部分之间识别的唯一分隔符是小数点。</p> <p>（3）日期和时间部分可以用T而不是空格分隔。例如，'2012-12-31 11:30:45' '2012-12-31 t11:30:45 '是等价的。</p> <p>（4）格式为'YYYYMMDDhhmmss'或'YYMMDDhhmmss'无分隔符的字符串，只要该字符串具有日期的意义。例如，'20070523091528'和'070523091528'被解释为'2007-05-23 09:15:28'，但'071122129015'是非法的(它有一个无意义的分钟部分)，会变成'0000-00-00 00:00:00'。</p> <p>（5）YYYYMMDDhhmmss或YYMMDDhhmmss格式的数字，只要该数字作为日期有意义。例如，19830905132800和830905132800被解释为“1983-09-05 13:28:00”。</p> <h3 id="TIMESTAMP%E5%92%8CTIMESTAMP%5B(fsp)%5D">TIMESTAMP和TIMESTAMP[(fsp)]</h3> <p>&nbsp; &nbsp; &nbsp; &nbsp; 支持的范围'1970-01-01 00:00:01.000000' UTC to '2038-01-19 03:14:07.999999' UTC（UTC指的是世界标准时间），TIMESTAMP值存储为自纪元('1970-01-01 00:00:00' UTC)以来的秒数，但是它不能表示'1970-01-01 00:00:00'，因为这表示从纪元开始的0秒，值0保留用于表示“0000-00-00 00:00:00”，即“零”的TIMESTAMP值。TIMESTAMP的字面常量同DATETIME。</p> <p>&nbsp; &nbsp; &nbsp; &nbsp; 上面date_time_test表ts列是TIMESTAMP，一旦创建后，我们发现ts列默认值为当前TIMESTAMP，而且可自动更新为当前时间戳，如图：</p> <p><img fetchpriority="high" decoding="async" alt="" height="330" src="http://img.555519.xyz/uploads3/20220601/5bcfcb504d51c61c2422804a2ebe5d4f.jpg"></p> <p>向date_time_test表中插入一条数据，如下：</p> <pre><code class="language-sql">insert date_time_test(t) values('00:00:01');</code></pre> <p>查看数据，如图：</p> <p><img decoding="async" alt="" height="151" src="http://img.555519.xyz/uploads3/20220601/fe861b7679ebc0952dd8e018a0a2d28b.jpg"></p> <p>发现ts列自动更新为插入数据时的时间戳。</p> <p>更新当前数据，如图：</p> <pre><code class="language-sql">update date_time_test set t='00:00:02' where t='00:00:01';</code></pre> <p>再次查看时间戳，如图：</p> <p><img decoding="async" alt="" height="122" src="http://img.555519.xyz/uploads3/20220601/c3e20767cd5f38ffc92b08db530d2247.jpg"></p> <p>&nbsp;ts列已经更新为当前时间戳。这和MySQL的系统变量explicit_defaults_for_timestamp有关，</p> <pre><code class="language-sql">show variables like 'explicit_defaults_for_timestamp';</code></pre> <p>如图：</p> <p><img loading="lazy" decoding="async" alt="" height="94" src="http://img.555519.xyz/uploads3/20220601/94a08280d857aee92dc4d5ec0fb266fd.jpg"></p> <p>&nbsp;explicit_defaults_for_timestamp处于关闭状态，此时，插入数据时，如果ts没有指定值，会被初始化为默认值，更新数据时，ts列同时更新。&nbsp;explicit_defaults_for_timestamp处于打开状态，不会被初始化为默认，也不具备自动更新为当前时间戳。也可以对TIMESTAMP和DATETIME如下显示定义默认值和自动更新：</p> <pre><code class="language-sql">CREATE TABLE t1 (   ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,   dt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP );</code></pre> <h3 id="TIME%E5%92%8CTIME(fsp)">TIME和TIME(fsp)</h3> <p>&nbsp; &nbsp; &nbsp; &nbsp; 支持的范围'-838:59:59.000000' to '838:59:59.000000'，MySQL以'hh:mm:ss[.fraction]'格式显示TIME，但允许使用字符串或数字向TIME列赋值。TIME类型这个时间范围表明它不仅可以表示一天的时间，也可以表示经过的时间或两个事件之间的时间间隔。字面常量转换规则如下：</p> <p>（1）MySQL将带有冒号的TIME值缩写为一天中的时间，例如：'11:12'表示'11:12:00'，而不是&nbsp;'00:11:12'；</p> <p>（2）MySQL将没有冒号的TIME缩写值最右边的两个数字看成秒，例如：'1112'和1112都表示'00:11:12'</p> <p>（3）在时间部分和小数秒部分之间识别的唯一分隔符是小数点；</p> <p>（4）默认情况下，位于TIME范围之外但在其他方面有效的值将被裁剪到该范围中最近的端点。例如，'-850:00:00'和'850:00:00'会转换为'-838:59:59'和'838:59:59'。无效的TIME值将被转换为“00:00:00”。注意，由于'00:00:00'本身是一个有效的TIME值，因此无法从存储在表中的'00:00:00'值判断原始值是'00:00:00'还是无效的。</p> <h3 id="YEAR%E5%92%8CYEAR(4)">YEAR和YEAR(4)</h3> <p>&nbsp; &nbsp; &nbsp; &nbsp; 支持的范围1901到2155，或者0000。MySQL以YYYY格式显示YEAR。但允许使用字符串或数字向YEAR列赋值。</p> <p>SUM()和AVG()聚合函数不能处理时间值。要解决这个问题，请将其转换为数字，然后执行聚合操作，最后将其转换回时间值。例子:</p> <pre><code class="language-sql">SELECT SEC_TO_TIME(SUM(TIME_TO_SEC(time_col))) FROM tbl_name; SELECT FROM_DAYS(SUM(TO_DAYS(date_col))) FROM tbl_name;</code></pre> <p>YEAR接受如下格式的输入：</p> <p>（1）4位字符串'1901' 到&nbsp;'2155'；</p> <p>（2）4位数字1901&nbsp;到&nbsp;2155；</p> <p>（3）1或者2位字符串'0' 到&nbsp;'99'，MySQL将'0'到'69'转化为2000到2069，将'70'到'99'转化为1970到1999；</p> <p>（4）1或者2位数字0到&nbsp;99，MySQL将1到69转换为YEAR值2001到2069，将70到99转化为YEAR值1970到1999，0转化为YEAR值0000。</p> <p><strong>注：</strong></p> <p><strong></strong>如果没有启用strict SQL模式，MySQL会将无效的YEAR值转换为0000。在严格SQL模式下，试图插入无效的YEAR值将产生错误。</p> <p>总结如下：</p> <table border="1" cellpadding="1" cellspacing="1"> <tbody> <tr> <td></td> <td style="width:106px;">DATE</td> <td style="width:143px;">TIME</td> <td style="width:207px;">DATETIME</td> <td style="width:172px;">TIMESTAMP</td> <td style="width:71px;">YEAR</td> </tr> <tr> <td>取值范围</td> <td style="width:106px;"> <p>'1000-01-01'</p> <p>到</p> <p>'9999-12-31'</p> </td> <td style="width:143px;"> <p>'-838:59:59.000000'</p> <p>到</p> <p>'838:59:59.000000'</p> </td> <td style="width:207px;"> <p>'1000-01-01 00:00:00.000000' 到</p> <p>'9999-12-31 23:59:59.999999'</p> </td> <td style="width:172px;"> <p>'1970-01-01 00:00:01.000000' UTC to</p> <p>'2038-01-19 03:14:07.999999' UTC</p> </td> <td style="width:71px;"> <p>1901</p> <p>到</p> <p>2155</p> <p>或者0000</p> </td> </tr> <tr> <td>小数位精度</td> <td style="width:106px;">0</td> <td style="width:143px;">0~6</td> <td style="width:207px;">0~6</td> <td style="width:172px;">0~6</td> <td style="width:71px;">0</td> </tr> <tr> <td>显示格式</td> <td style="width:106px;">YYYY-MM-DD</td> <td style="width:143px;">hh:mm:ss[.fraction]</td> <td style="width:207px;">YYYY-MM-DD hh:mm:ss[.fraction]</td> <td style="width:172px;">YYYY-MM-DD hh:mm:ss[.fraction]</td> <td style="width:71px;">YYYY</td> </tr> <tr> <td>赋值</td> <td style="width:106px;">允许使用符合格式的字符串或数字赋值</td> <td style="width:143px;">允许使用符合格式的字符串或数字赋值</td> <td style="width:207px;">允许使用符合格式的字符串或数字赋值</td> <td style="width:172px;">允许使用符合格式的字符串或数字赋值</td> <td style="width:71px;">允许使用符合格式的字符串或数字赋值</td> </tr> <tr> <td>小数位分隔符</td> <td style="width:106px;">无</td> <td style="width:143px;">只识别小数点.</td> <td style="width:207px;">只识别小数点.</td> <td style="width:172px;">只识别小数点.</td> <td style="width:71px;">无</td> </tr> <tr> <td>日期分隔符</td> <td style="width:106px;">任何标点</td> <td style="width:143px;">无</td> <td style="width:207px;">任何标点</td> <td style="width:172px;">任何标点</td> <td style="width:71px;">无</td> </tr> <tr> <td>时间分隔符</td> <td style="width:106px;">无</td> <td style="width:143px;">任何标点</td> <td style="width:207px;">任何标点</td> <td style="width:172px;">任何标点</td> <td style="width:71px;">无</td> </tr> <tr> <td>无效值处理（strict mode关闭状态）</td> <td style="width:106px;"> <p>转化为</p> <p>0000-00-00</p> </td> <td style="width:143px;"> <p>转化为</p> <p>0000-00-00 00:00:00</p> </td> <td style="width:207px;"> <p>转化为</p> <p>0000-00-00 00:00:00</p> </td> <td style="width:172px;"> <p>转换为</p> <p>00:00:00</p> </td> <td style="width:71px;">转换为0000</td> </tr> </tbody> </table> </div> 			                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-110372.htm">动物注射疫苗简报怎么写范文（动物注射疫苗注意事项）</a></p>
+                                        <p>下一个：<a href="/news/article-111270.htm">国外动物疫苗公司（国外动物疫苗公司排行榜）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                  <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-95558.htm" title="宠物零食加工厂要投资多少钱 宠物零食加工厂要投资多少钱呢">宠物零食加工厂要投资多少钱 宠物零食加工厂要投资多少钱呢</a></li>
+                        <li class="py-2"><a href="/news/article-106157.htm" title="springboot mybatis-plus 配置 yml 、druid 配置 yml 、mybatis-plus 代码生成">springboot mybatis-plus 配置 yml 、druid 配置 yml 、mybatis-plus 代码生成</a></li>
+                        <li class="py-2"><a href="/news/article-104593.htm" title="图像处理学习笔记——BMP图片详解">图像处理学习笔记——BMP图片详解</a></li>
+                        <li class="py-2"><a href="/news/article-85944.htm" title="Vue指令之v-for的使用说明_vue.js">Vue指令之v-for的使用说明_vue.js</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-15-clash-v2ray-ss-ssr.htm" title="4月15日22.8M/S|Hiddify-Next免费机场订阅每天更新订阅链接">4月15日22.8M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-96978.htm" title="上海宠物医院收费标准是多少（上海宠物医院24小时）">上海宠物医院收费标准是多少（上海宠物医院24小时）</a></li>
+                        <li class="py-2"><a href="/news/article-86654.htm" title="快速了解Spring，简明Spring使用流程 &#8211; FITA _在线工具">快速了解Spring，简明Spring使用流程 &#8211; FITA _在线工具</a></li>
+                        <li class="py-2"><a href="/news/article-98449.htm" title="解决rancher和k8s集群ingress部署在同一台机器导致的80及443端口占用问题">解决rancher和k8s集群ingress部署在同一台机器导致的80及443端口占用问题</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-27-clash-v2ray-ss-ssr.htm" title="4月27日18.7M/S|Hiddify-Next免费机场订阅每天更新订阅链接">4月27日18.7M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-106829.htm" title="动物医院诊疗许可证需要提供什么材料和手续呢（动物医院资质）">动物医院诊疗许可证需要提供什么材料和手续呢（动物医院资质）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">12</span> <a href="/date/2025-05/" title="2025-05 归档">2025-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">86</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //about -->
+    
+    <!-- footer -->
+<footer class="py-lg-4 py-md-3 py-sm-3 py-3">
+    <div class="container py-lg-5 py-md-5 py-sm-4 py-3">
+        <div class="bottem-wthree-footer text-center pt-md-4 pt-3">
+                                <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+            <p>
+                <a href="/">FreeHiddifyNext节点订阅站</a> 版权所有
+                <br />
+                Powered by WordPress
+            </p>
+        </div>
+        <!-- move icon -->
+        <div class="text-center">
+            <a href="#home" class="move-top text-center mt-3"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+        </div>
+        <!--//move icon -->
+    </div>
+</footer>
+<!--//footer -->
+<script src="/assets/website/js/frontend/freehiddifynext/jquery-1.11.1.min.js"></script>
+<script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+<script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
