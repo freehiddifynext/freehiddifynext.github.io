@@ -310,44 +310,9 @@ opkg install luci-app-openclash
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>SSR 的协议插件如何增强安全性？</h5></div>
-    <div class="panel-body">
-        协议插件可隐藏真实流量特征并模拟正常协议，防止被封锁或 DPI 检测。结合加密方式和混淆方法，可以提升节点的稳定性和长期可用性，保证数据传输安全。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>V2Ray 的传输协议选择对性能有何影响？</h5></div>
-    <div class="panel-body">
-        V2Ray 支持 TCP、WebSocket、gRPC、QUIC 等多种传输协议。不同协议在延迟、抗封锁和吞吐量上差异明显。用户可根据网络环境选择最优协议，以获得稳定且高速的连接体验。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>VMess AEAD 加密如何确保数据传输安全？</h5></div>
-    <div class="panel-body">
-        AEAD 加密可防止数据篡改、重放攻击和流量特征泄露。在高封锁环境中保证节点可用，提升数据安全和连接稳定性，降低被检测风险，确保长期安全访问体验。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>QuantumultX 的重写脚本可以实现哪些功能？</h5></div>
-    <div class="panel-body">
-        QuantumultX 支持 JavaScript 重写脚本，可修改请求头、响应内容、跳转 URL、广告屏蔽和定制化流量处理。结合策略组可实现个性化网络访问和优化，提高用户体验。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Hiddify Next 如何管理用户流量配额？</h5></div>
-    <div class="panel-body">
-        管理员可以为每个用户设置上传和下载带宽以及总流量上限。超出限制可自动降速或阻止访问，保证服务器资源合理分配，提高整体网络公平性和用户体验。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Mihomo 是否比 Clash Meta 更快？</h5></div>
-    <div class="panel-body">
-        Mihomo 是 Clash Meta 的优化分支，采用最新 Go 语言版本编译并针对多线程性能进行了改进。整体运行效率略高，特别是在多节点切换和 DNS 分流方面表现更流畅。<hr />    </div>
-</div>
-<div class="panel panel-default">
     <div class="panel-heading"><h5>Vmess 与 Trojan 哪个更快？</h5></div>
     <div class="panel-body">
         在相同环境下，Trojan 通常连接更快，因为它使用原生 TLS 通道；Vmess 则稍有额外的协议开销。但在配置合理的情况下，两者的速度差距不大，主要取决于服务器线路质量。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Sing-box 如何按端口分流不同类型流量？</h5></div>
-    <div class="panel-body">
-        Sing-box 支持根据端口匹配流量，将不同应用流量分配到指定节点。结合策略组可实现精准分流，提高访问速度和网络稳定性，优化整体网络体验和管理效率。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>VLESS + Reality 模式相比普通 TLS 有什么优势？</h5></div>
@@ -355,9 +320,44 @@ opkg install luci-app-openclash
         Reality 模式通过伪装握手和真实网站特征，提高流量隐蔽性，难以被 DPI 检测。TLS 模式更侧重加密和传输效率，Reality 更适合高封锁网络环境。<hr />    </div>
 </div>
 <div class="panel panel-default">
+    <div class="panel-heading"><h5>Hiddify Next 如何管理用户流量配额？</h5></div>
+    <div class="panel-body">
+        管理员可以为每个用户设置上传和下载带宽以及总流量上限。超出限制可自动降速或阻止访问，保证服务器资源合理分配，提高整体网络公平性和用户体验。<hr />    </div>
+</div>
+<div class="panel panel-default">
     <div class="panel-heading"><h5>Nekobox 如何在 Android 上导入配置？</h5></div>
     <div class="panel-body">
-        打开 Nekobox，点击“导入配置”按钮，选择订阅链接或本地 JSON 文件。程序会解析后自动生成节点列表，用户可一键连接或测速筛选最优节点。    </div>
+        打开 Nekobox，点击“导入配置”按钮，选择订阅链接或本地 JSON 文件。程序会解析后自动生成节点列表，用户可一键连接或测速筛选最优节点。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>SSR 的协议插件如何增强安全性？</h5></div>
+    <div class="panel-body">
+        协议插件可隐藏真实流量特征并模拟正常协议，防止被封锁或 DPI 检测。结合加密方式和混淆方法，可以提升节点的稳定性和长期可用性，保证数据传输安全。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>VMess AEAD 加密如何确保数据传输安全？</h5></div>
+    <div class="panel-body">
+        AEAD 加密可防止数据篡改、重放攻击和流量特征泄露。在高封锁环境中保证节点可用，提升数据安全和连接稳定性，降低被检测风险，确保长期安全访问体验。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Mihomo 是否比 Clash Meta 更快？</h5></div>
+    <div class="panel-body">
+        Mihomo 是 Clash Meta 的优化分支，采用最新 Go 语言版本编译并针对多线程性能进行了改进。整体运行效率略高，特别是在多节点切换和 DNS 分流方面表现更流畅。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>V2Ray 的传输协议选择对性能有何影响？</h5></div>
+    <div class="panel-body">
+        V2Ray 支持 TCP、WebSocket、gRPC、QUIC 等多种传输协议。不同协议在延迟、抗封锁和吞吐量上差异明显。用户可根据网络环境选择最优协议，以获得稳定且高速的连接体验。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>QuantumultX 的重写脚本可以实现哪些功能？</h5></div>
+    <div class="panel-body">
+        QuantumultX 支持 JavaScript 重写脚本，可修改请求头、响应内容、跳转 URL、广告屏蔽和定制化流量处理。结合策略组可实现个性化网络访问和优化，提高用户体验。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Sing-box 如何按端口分流不同类型流量？</h5></div>
+    <div class="panel-body">
+        Sing-box 支持根据端口匹配流量，将不同应用流量分配到指定节点。结合策略组可实现精准分流，提高访问速度和网络稳定性，优化整体网络体验和管理效率。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
@@ -386,16 +386,16 @@ opkg install luci-app-openclash
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2025-10-12-free-subscribe-node.htm" title="10月12日18.8M/S|Hiddify-Next免费机场订阅每天更新订阅链接">10月12日18.8M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-6-free-shadowrocket-node.htm" title="10月6日21.1M/S|Hiddify-Next免费机场订阅每天更新订阅链接">10月6日21.1M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-11-clash-windows.htm" title="10月11日18.8M/S|Hiddify-Next免费机场订阅每天更新订阅链接">10月11日18.8M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-1-free-clash-subscribe.htm" title="11月1日20M/S|Hiddify-Next免费机场订阅每天更新订阅链接">11月1日20M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-27-clash-node.htm" title="10月27日21.3M/S|Hiddify-Next免费机场订阅每天更新订阅链接">10月27日21.3M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-6-node-share.htm" title="11月6日18M/S|Hiddify-Next免费机场订阅每天更新订阅链接">11月6日18M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-24-free-node-subscribe.htm" title="10月24日22.7M/S|Hiddify-Next免费机场订阅每天更新订阅链接">10月24日22.7M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-25-free-subscribe-node.htm" title="10月25日22.4M/S|Hiddify-Next免费机场订阅每天更新订阅链接">10月25日22.4M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-7-free-ssr-subscribe.htm" title="11月7日18.4M/S|Hiddify-Next免费机场订阅每天更新订阅链接">11月7日18.4M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-18-free-v2ray-subscribe.htm" title="10月18日21.5M/S|Hiddify-Next免费机场订阅每天更新订阅链接">10月18日21.5M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-10-26-node-share.htm" title="10月26日18.2M/S|Hiddify-Next免费机场订阅每天更新订阅链接">10月26日18.2M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-13-clash-node-daily-updates.htm" title="11月13日22M/S|Hiddify-Next免费机场订阅每天更新订阅链接">11月13日22M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-10-5-node-share-links.htm" title="10月5日18.8M/S|Hiddify-Next免费机场订阅每天更新订阅链接">10月5日18.8M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-10-shadowrocket-node.htm" title="11月10日22.7M/S|Hiddify-Next免费机场订阅每天更新订阅链接">11月10日22.7M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-14-free-shadowrocket-node.htm" title="11月14日22.5M/S|Hiddify-Next免费机场订阅每天更新订阅链接">11月14日22.5M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-18-node-share-links.htm" title="11月18日21.2M/S|Hiddify-Next免费机场订阅每天更新订阅链接">11月18日21.2M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-10-19-free-shadowrocket-node.htm" title="10月19日18.8M/S|Hiddify-Next免费机场订阅每天更新订阅链接">10月19日18.8M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-10-4-clash-windows.htm" title="10月4日22.1M/S|Hiddify-Next免费机场订阅每天更新订阅链接">10月4日22.1M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-10-15-free-clash-subscribe.htm" title="10月15日22.8M/S|Hiddify-Next免费机场订阅每天更新订阅链接">10月15日22.8M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-10-31-clash-node-daily-updates.htm" title="10月31日21.4M/S|Hiddify-Next免费机场订阅每天更新订阅链接">10月31日21.4M/S|Hiddify-Next免费机场订阅每天更新订阅链接</a></li>
                     </ul>
     </div>
 </div>
@@ -407,7 +407,7 @@ opkg install luci-app-openclash
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">10</span> <a href="/date/2025-11/" title="2025-11 归档">2025-11</a></h4>
+                <h4><span class="badge" style="float: right;">17</span> <a href="/date/2025-11/" title="2025-11 归档">2025-11</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">26</span> <a href="/date/2025-10/" title="2025-10 归档">2025-10</a></h4>
