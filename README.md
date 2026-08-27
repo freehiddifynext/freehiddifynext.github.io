@@ -1,4 +1,4 @@
-# 8月20日19.1M/S|Hiddify-Next免费机场订阅每天更新订阅链接  更新时间 2026-08-20 10:08:43
+# 8月27日18.6M/S|Hiddify-Next免费机场订阅每天更新订阅链接  更新时间 2026-08-27 11:00:24
 所有免费clash节点都爬取自网络，请勿用于非法用途 。节点地址：<a href="https://freehiddifynext.github.io" target="_blank">点击跳转</a>
 
 ## clash使用教程：
@@ -9,23 +9,23 @@
 
 ### 免费Clash节点订阅链接
 
-- https://freehiddifynext.github.io/uploads/2026/08/0-20260820.yaml
-- https://freehiddifynext.github.io/uploads/2026/08/1-20260820.yaml
-- https://freehiddifynext.github.io/uploads/2026/08/2-20260820.yaml
-- https://freehiddifynext.github.io/uploads/2026/08/3-20260820.yaml
-- https://freehiddifynext.github.io/uploads/2026/08/4-20260820.yaml
+- https://freehiddifynext.github.io/uploads/2026/08/0-20260827.yaml
+- https://freehiddifynext.github.io/uploads/2026/08/1-20260827.yaml
+- https://freehiddifynext.github.io/uploads/2026/08/2-20260827.yaml
+- https://freehiddifynext.github.io/uploads/2026/08/3-20260827.yaml
+- https://freehiddifynext.github.io/uploads/2026/08/4-20260827.yaml
 
 ### 免费V2ray节点订阅链接
 
-- https://freehiddifynext.github.io/uploads/2026/08/0-20260820.txt
-- https://freehiddifynext.github.io/uploads/2026/08/1-20260820.txt
-- https://freehiddifynext.github.io/uploads/2026/08/2-20260820.txt
-- https://freehiddifynext.github.io/uploads/2026/08/3-20260820.txt
-- https://freehiddifynext.github.io/uploads/2026/08/4-20260820.txt
+- https://freehiddifynext.github.io/uploads/2026/08/0-20260827.txt
+- https://freehiddifynext.github.io/uploads/2026/08/1-20260827.txt
+- https://freehiddifynext.github.io/uploads/2026/08/2-20260827.txt
+- https://freehiddifynext.github.io/uploads/2026/08/3-20260827.txt
+- https://freehiddifynext.github.io/uploads/2026/08/4-20260827.txt
 
 ### 免费Sing-box节点订阅链接
 
-- https://freehiddifynext.github.io/uploads/2026/08/20260820.json
+- https://freehiddifynext.github.io/uploads/2026/08/20260827.json
 
 ## 更多Clash节点订阅 ：
 
